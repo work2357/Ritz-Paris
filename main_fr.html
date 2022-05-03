@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="fr">
+ <head>
+  <title>ritzParis_fr</title>
+  <meta charset="utf-8"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <style>
+  /*################## 초기화 ##################*/
+	  *{margin:0; padding:0;}
+	  li{list-style-type:none;}
+	  a:link, a:visited{text-decoration:none; color:#27374d;}
+	  body{font-family:Bell MT, "CroissantOne-Regular", "Peignot";}
+	  img{border:none;}
+	  @font-face{
+		font-family:"CroissantOne-Regular", "Peignot", "Bell MT";
+		src:url("font/CroissantOne-Regular.woff"),url("font/Peignot.ttf"),url("font/Bell MT.ttf");
+	}
+	  fieldset{border:none;}
+	  legend{display:none;}
+	  /* 목차 생성용 */
+	  h4{position:absolute; left:-9999px; width:1px; height:1px; font-size:1px; line-height:0; overflow:hidden;}
+
+  /*################## wrap ##################*/
+	#wrap{min-width:1025px; width:100%;}
+
+  /*################## header ##################*/
+	  #headerWrap{width:100%; height:86px; left:0; top:0; position:fixed; background-image:linear-gradient(to top, rgba(248,250,255,0.1), rgba(248,250,255,0.6)); transition:background-color 0.2s linear; z-index:10;}
+	  #header{width:1440px; height:80px; margin:0 auto;}
+	  #headerBorder{width:100%; height:6px; margin:0 auto; background-image:linear-gradient(to top, rgba(248,250,255,0.6), rgba(255,255,255,0.1)); transition:background-color 0.2s linear;}
+
+	  #headerWrap:hover{background-color:#f8faff;}
+	  #headerWrap:hover #headerBorder{background-color:#f8faff;}
+
+	  #gnbArea{width:1270px; height:100%; float:left;}
+
+	  .topMenu{width:100%; height:20px; line-height:20px; font-family:Peignot; font-size:14px; font-weight:bold;}	
+	  .topMenu a{color:#353866;}
+
+	  .menuBar{width:1270px; height:60px;}
+	  .menuIcon{width:150px; height:50px; margin-top:7px; float:left;}
+	  .menuIcon a{width:80%; height:46px; display:block;}
+	  .menuIcon a span{width:35px; height:8px; border-bottom:3px solid #353866; display:block;}
+	  .menuIcon a .line0{margin-left:60px;}
+	  .menuIcon a .line1{margin-left:70px;}
+	  .menuIcon a .line2{margin-left:50px;}
+
+	  .gnb{width:1120px; height:60px; float:left;}
+	  .gnb li{line-height:60px; padding:0 20px; font-size:18px; display:inline;}
+	  .gnb li a{color:#353866; text-transform:uppercase;}
+
+	  .gnb li a:hover{color:#777;}
+
+	  #logo{width:120px; padding-top:10px; float:left; position:relative;}
+	  #logo img{width:100%;}
+	  
+	  /* side bar */
+	  #bar{width:240px; height:190px; right:0; top:300px; position:fixed;}
+	  #bar p{width:100%; height:60px; left:0; top:0; position:absolute; transform:translatex(180px); transition:transform 0.2s ease-out; border-radius:8px 0 0 8px; box-shadow:5px 5px 7px rgba(0,0,0,0.4);}
+	  #bar .bar0{background-color:rgba(202,228,219,0.8);}
+	  #bar .bar1{width:165px; top:65px; background-color:rgba(205,172,129,0.8);}
+	  #bar .bar2{width:150px; top:130px; background-color:rgba(0,48,63,0.8);}
+	  #bar p a{width:100%; height:100%; display:block; color:#fff; font-size:24px;}
+	  
+	  #bar p a .barIcon{width:50px; height:40px; padding-top:5px; padding-left:6px; display:block; float:left;}
+	  #bar p a .barIcon img{width:100%;}
+
+	  #bar p a .barText{width:66px; height:100%; padding-left:8px; line-height:60px; display:block; float:left;}
+	  #bar .bar0 a .barText{width:174px;}
+	  #bar .bar1 a .barText{width:49px;}
+
+	  #bar .bar0:hover{transform:translatex(35px);}
+	  #bar .bar1:hover{transform:translatex(85px);}
+	  #bar .bar2:hover{transform:translatex(105px);}
+	  
+	  #bar:after{content:""; display:block; clear:both;}
+
+  /*################## container ##################*/
+	#container{width:100%;}
+
+  /*################## container / visual ##################*/
+	  #visual{width:100%; height:100%; overflow:hidden; position:relative;}
+
+	  #mainVideo{width:100%; height:100%;}
+	  #mainVideo video{width:100%; height:100%;}
+
+	  #reserveArea{width:1050px; height:100px;  font-size:22px; position:absolute; left:50%; margin-left:-500px; bottom:50px;}
+	  #aroundArea{width:100%; height:40px;}
+	  #aroundArea p{width:399px; height:100%; line-height:40px; margin-left:651px; text-align:center; border-radius:50px 0px 0 0; box-shadow:5px 5px 15px rgba(0,0,0,0.5); background-color:rgba(0,47,168,0.3);}
+	  #aroundArea p a{text-decoration:underline; color:#fff;}
+	  #quickReserve{width:100%; height:60px; background-color:#fff;  box-shadow:5px 5px 10px rgba(0,0,0,0.5);}
+	  #quickReserve li{width:180px; height:100%; line-height:60px; text-indent:14px; float:left;}
+	  #quickReserve li a{font-size:16px; text-transform:uppercase;}
+	  #quickReserve .li0{width:308px; height:100%; border-right:2px solid #ccc;}
+	  #quickReserve .li0 img{width:35px; padding:0 8px; vertical-align:middle;}
+	  #quickReserve .li0 ul{display:none;}
+	  #quickReserve .li0:hover li{display:block;}/*가상객체써서 다시 해보기*/
+	  #quickReserve .li1{width:128px; border-right:2px solid #ccc;}
+	  #quickReserve .li1 select{padding-right:16px; border:none; font-family:Bell MT; font-size:16px;}
+	  #quickReserve .li2{width:250px; border:0; text-align:center; text-indent:0;}
+	  #quickReserve .li2 input{width:160px; border:none; font-family:Bell MT; font-size:16px; color:#aaa; text-align:center;}
+	  #quickReserve .li3{width:360px; text-indent:60px; background-color:#353866; position:relative;}
+	  #quickReserve .li3 #infoSubmit{border:none; background-color:rgba(0,0,0,0); color:#fff; font-family:Bell MT; font-size:16px;}
+	  #quickReserve .li3 .arrow{width:20px; position:absolute; right:100px; top:10px;}
+	  #quickReserve .li3 .arrow img{width:100%;}
+
+  /*################## container / letter ##################*/
+	  /* feather 이미지 크기 : 668px * 668px */
+	  #letterW{width:100%; height:820px; overflow:hidden;}
+
+	  #letter{width:1440px; height:100%; margin:0 auto; position:relative;}
+	  #letter .feather{width:680px; height:668px; background-image:url('img/main/feather_out.jpg'); background-attachment:fixed; background-repeat:no-repeat; background-size:auto 1000px; background-position:right center; float:left;}
+
+	  #letter .letterDesc{width:670px; margin-top:63px; margin-left:70px; text-align:center; font-size:24px; float:left; line-height:40px; color:#353866; transition:margin-top 4.5s ease-in;}
+	  #letter .letterDesc .fontsize{font-size:50px; font-style:italic;}
+	  .gradientTop{width:100%; height:60px; left:0; top:0; position:absolute; background-image:linear-gradient(to top, rgba(255,255,255,0), rgba(255,255,255,1)); text-indent:-9999px;}
+	  .gradientBottom{width:100%; height:50px; left:0; bottom:0; position:absolute; background-image:linear-gradient(to top, rgba(255,255,255,1), rgba(255,255,255,0)); text-indent:-9999px;}
+
+	  #letter:hover .letterDesc{margin-top:-120px;}
+	  .letterDesc:after{content:""; display:block; clear:both;}
+
+	/*############### container / interview ###############*/
+	  #interview{width:100%; height:800px; margin:0 auto; position:relative; background-color:#aea;}
+	  #interview .centerArea{width:1150px; height:750px;; margin:50px auto 0;}
+	  #interview .centerArea dt{width:600px; height:600px; border:50px solid #9ddfd3; margin-left:150px;}
+	  #interview .centerArea dt img{width:100%;}
+	  #interview .centerArea .textBox{width:600px; height:300px; background-color:#ffdada; left:695px; top:300px; position:absolute;}
+	  #interview .centerArea .textBox dt{font-size:50px; color:#9ddfd3; text-align:center; line-height:84px; color:#353866;}
+	  #interview .centerArea .textBox dd{width:94%; padding:0 3%; font-family:Peignot; font-size:20px; line-height:36px; padding-top:10px; text-align:center;}
+	  #interview .leftArrow{width:60px; left:20px; top:369px; position:absolute;}
+	  #interview .leftArrow a{width:100%; display:block;}
+	  #interview .leftArrow a img{width:100%;}
+	  #interview .rightArrow{width:60px; right:20px; top:369px; position:absolute;}
+	  #interview .rightArrow a{width:100%; display:block;}
+	  #interview .rightArrow a img{width:100%;}
+
+  /*################## container / boxes ##################*/
+	  #boxes{width:100%; height:900px; padding-top:100px; border:1px solid #f0efe7; background-color:#f8faff;}
+	  #boxes ul{width:1440px; height:720px; margin:0 auto; padding-top:40px;}
+	  #boxes ul li{width:25%; height:50%; float:left; color:#f8faff; font-size:32px; text-align:center; line-height:360px; overflow:hidden;}
+	  #boxes ul li a{width:100%; display:block; color:#fff;}
+	  #boxes ul li img{width:100%;}
+	  
+	  #boxes ul .imgBox{position:relative;}
+	  #boxes ul .imgBox .imgBox_text{width:100%; height:100%; color:#fff; background-color:rgba(0,0,0,0.4); opacity:0; transition:opacity 0.3s linear; left:0; top:0; position:absolute;}
+	  #boxes ul .imgBox:hover .imgBox_text{opacity:1;}
+
+	  #boxes ul .videoArea{width:25%; height:50%; position:relative;}
+	  #boxes ul .videoArea .video{width:100%; height:100%; left:0; top:-100px; position:absolute;}
+	  #boxes ul .videoArea .video video{width:100%;}
+	  #boxes ul .videoArea .img{width:100%; height:100%; left:0; top:0; position:absolute;}
+	  #boxes ul .videoArea:hover .video{z-index:2;}
+
+	  #boxes ul .textBoxS{width:350px; padding:0 5px; background-color:#4d8fc9;}
+	  #boxes ul .textBoxB{width:350px; padding:0 5px; background-color:#c8b08d;}
+
+	  #boxes ul li .line1{line-height:360px;}
+	  #boxes ul li .line2{width:100%; height:90px; line-height:45px; padding-top:135px;}
+	  #boxes ul li .line3{width:100%; height:130px; line-height:45px; padding-top:115px;}
+
+  /*################## container / positionArea ##################*/
+	  /* 공통작업 */
+	  #positionAreaW{width:100%; height:1400px; background-color:#f9f7cf;}
+	  #positionArea{width:1320px; height:100%; margin:0 auto; position:relative;}
+	  #positionArea h2{width:600px; height:70px; line-height:70px; text-align:center; color:#fff; font-size:40px; font-family:Peignot; background-color:#9ddfd3; position:absolute; z-index:1;}
+	  #positionArea img{width:100%;}
+	  #positionArea h3{width:100%; height:80px; line-height:80px; padding-top:70px; text-align:center;}
+	  #positionArea h3 em{font-style:normal; color:#9ddfd3; font-size:40px; font-weight:400; letter-spacing:3px;}
+	  #positionArea .subTitle{width:100%; height:80px; line-height:80px; text-align:center; font-family:Peignot; color:#e0bb6d; font-weight:400; font-size:26px; text-transform:uppercase; text-decoration:underline;}
+	  #positionArea .subTitle a{color:#ffdada;}
+
+	  /* 개별작업 - room */
+	  .roomh2{right:20px; top:100px; padding-left:350px;}
+	  .room .roomImg{width:600px; left:20px; top:60px; position:absolute;}
+	  .titleBox0{width:600px; height:300px; right:20px; top:180px; position:absolute;}
+
+	  /* 개별작업 - food */
+	  .foodh2{left:20px; bottom:80px; padding-right:350px;}
+	  .food .foodImg{width:600px; right:20px; bottom:20px; position:absolute;}
+	  .titleBox1{width:600px; height:300px; left:20px; bottom:180px; position:absolute;}
+	  
+  /*################## container / article ##################*/
+	article{width:100%; height:400px; overflow:hidden;}
+	#stay{width:1330px; height:100%; margin:0 auto; position:relative;}
+
+	.stay_text{width:80%; height:100%; margin:0 auto;}
+	.stay_text h2{width:100%; height:100px; line-height:180px; text-align:center; font-size:40px; text-transform:uppercase;}
+	.stay_text h2 span{display:inline-block; transform:translatey(-110px); position:absolute;}
+	.stay_text em{width:100%; height:200px; padding-top:100px; text-align:center; font-style:normal; font-size:20px; display:block;}
+	
+	.e00{left:282px; transition:transform 0.5s linear;}
+	.e01{left:322px; transition:transform 0.2s ease-in;}
+	.e02{left:402px; transition:transform 0.5s ease;}
+	.e03{left:434px; transition:transform 0.5s ease-out;}
+	.e04{left:474px; transition:transform 0.1s ease-in-out;}
+	.e05{left:504px; transition:transform 0.5s ease-in;}
+	.e06{left:544px; transition:transform 0.6s linear;}
+	.e07{left:584px; transition:transform 0.2s ease;}
+	.e08{left:664px; transition:transform 0.5s ease-out;}
+	.e09{left:714px; transition:transform 0.3s ease-in-out;}
+	.e10{left:754px; transition:transform 0.3s linear;}
+	.e11{left:804px; transition:transform 0.4s ease-out;}
+	.e12{left:849px; transition:transform 0.1s linear;}
+	.e13{left:889px; transition:transform 0.3s ease-in;}
+	.e14{left:929px; transition:transform 0.5s linear;}
+	.e15{left:969px; transition:transform 0.1s ease-out;}
+	.e16{left:1009px; transition:transform 0.4s ease-in-out;}
+
+	article:hover span{transform:translatey(0);}
+
+	#stay p{width:350px; position:absolute; z-index:-1;}
+	#stay p img{width:100%;}
+	.light{left:10px; top:0;}
+	.pillow{right:10px; bottom:0;}
+
+  /*################## container / todayInfo ##################*/
+	  #todayInfo{width:100%; height:950px; background-color:#f8faff;}
+	  #clockArea{width:1440px; height:250px; padding-top:100px; margin:0 auto;}
+	  #clockArea ul{width:1166px; height:100%; margin:0 auto;}
+	  #clockArea li{width:138px; height:200px; padding:0 10px; float:left;}
+	  #clockArea .parisClock{padding:0 40px;}
+	  #clockArea .clockTitle{width:138px; padding-top:20px; font-size:20px; font-family:Peignot; color:#9ddfd3; text-align:center;}
+	  #clockArea .parisClock .clockTitle{color:#ffdada;}
+
+	  #dateAreaW{width:100%; height:300px; background-color:#aaabd3;}
+	 
+	  #todayInfo .dateArea{width:1440px; height:100%; margin:0 auto; position:relative;}
+	  #todayInfo .dateArea .year{width:264px; height:114px; font-size:120px; color:#fff; font-family:Times New Roman; letter-spacing:6px; left:460px; top:50px; position:absolute;}
+	  #todayInfo .dateArea .today{width:420px; height:90px; line-height:90px; text-align:center; font-size:50px; color:#ffdada; left:630px; top:132px; position:absolute;}
+	  #todayInfo .dateArea .line{right:0; top:0; position:absolute;}
+	  #todayInfo .bookNow{width:200px; height:100px; line-height:50px; text-align:center; right:8px; top:100px; font-size:40px; position:absolute;}
+	  #todayInfo .bookNow a{color:#fff;}
+	  
+	  #wideArea{width:800px; height:300px; margin:0 auto; overflow:hidden;}
+	  /* weather에 margin-top때문에 부모가 열려서 부모(wideArea)에 overflow:hidden 걸어둠 */
+	  .weather{width:470px; height:150px; margin:50px auto 0;}
+	  .weather li{width:90px; margin-left:100px; float:left;}
+	  .weather li:first-child{margin-left:0;}
+
+	  /* .w 이미지 크기 : 70 * 30 */
+	  .weather li .w_img{width:70px; margin:0 auto; padding:15px 0;}
+	  /* .s img보다 높이가 30px 낮기 때문에 padding 위 아래 15px씩 줘서 높이값 맞춰줌 */
+	  .weather li .w_img img{width:100%;}
+
+	  /* .s 이미지 크기 : 60 * 60 */
+	  .weather li .s_img{width:60px; margin:0 auto;}
+	  .weather li .s_img img{width:100%;}
+	  .weather li h3{width:100%; height:20px; line-height:20px; color:#9ddfd3; font-size:20px; text-align:center; padding-top:35px;}
+
+	  .week{width:770px; margin:0 auto; padding-top:30px;}
+	  .week li{width:108px; height:100%; line-height:40px; border-right:2px solid #f8faff; background-color:#aaabd3; text-align:center;float:left;}
+	  .week li a{color:#fff; font-family:Peignot; font-size:15px;}
+	  .week .todayWeather{background-color:#cba6c3;}
+	  .week .todayWeather a{color:#fff;}
+
+	  .week:after{content:""; display:block; clear:both;}
+
+  /*################## container / motto ##################*/
+	  #motto{width:100%; height:700px; position:relative;}
+	  #motto .wave{width:1000px; right:0; top:0; position:absolute; z-index:1;}
+	  #motto .wave img{width:100%;}
+	  
+	  #motto #contact{width:100%; height:300px; margin:0 auto; background-color:#2d2d2d; position:relative;}
+	  
+	  #contactBox{width:500px; position:absolute; left:50%; top:50%; margin-left:-225px; margin-top:-145px;}
+
+	  .textArea{width:100%; height:150px; padding:20px 0;  color:#fff; font-size:40px; line-height:70px; text-align:center;}
+	  .textBoxArea{width:450px; height:66px; border:2px solid #aaabd3; margin:0 auto; font-size:26px; text-align:center; line-height:66px; transition:border 0.2s linear;}
+	  .textBoxArea a{color:#aaabd3; display:block; width:446px; height:62px; padding-top:2px; padding-left:2px; font-family:arial; letter-spacing:4px; transition:letter-spacing 0.2s ease-in; z-index:1; position:relative;}
+	  .textBoxArea a .bracket{margin-right:15px; transition:margin-right 0.2s ease-in;}
+	  .textBoxArea a:hover{letter-spacing:0;}
+	  .textBoxArea a:hover .bracket{margin-right:0;}
+	  .textBoxArea:hover{border:none;}
+
+	  #mottoArea{width:100%; height:400px; margin:0 auto; background-image:url('img/main/s30.jpg'); background-attachment:fixed; background-repeat:no-repeat; background-size:100%; overflow:hidden; position:relative;}
+	  #mottoArea dl{width:450px; right:290px; top:80px; text-align:right; color:#2d2d2d; position:absolute;}
+	  #mottoArea dl dt{font-size:32px; line-height:60px; text-align:center; letter-spacing:1px;}
+	  #mottoArea dl dd{font-size:40px; font-family:Peignot; margin-top:18px;}
+
+  /*################## container / discount ##################*/
+	  #discount{width:100%;}
+	  #discount h2{font-family:Peignot;}
+	  #discount dl{width:960px; height:500px; margin:0 auto; padding:20px;}
+	  #discount dl em{font-style:normal;}
+	  #discount dt{width:500px; float:left;}
+	  #discount dt img{width:100%;}
+	  #discount dd{width:360px; height:500px; padding:0 50px; float:left;}
+
+	  #discount dd .dd0{width:100%; text-align:center;}
+	  #discount dd .dd0 h2{width:100%; height:50px; line-height:50px;}
+	  #discount dd .dd0 p{width:100%; height:40px; padding:10px 0 20px;}
+
+	  #discount dd .dd1 form{width:100%;}
+	  #discount dd .dd1 fieldset{border:0;}
+	  #discount dd .dd1 legend{display:none;}
+	  #discount dd .dd1 #firstName{width:100%; padding:4px 0; border:0; border-bottom:1px solid #000;}
+	  #discount dd .dd1 #lastName{width:100%; padding:4px 0; border:0; border-bottom:1px solid #000;}
+	  #discount dd .dd1 #emailInput{width:100%; padding:4px 0; border:0; border-bottom:1px solid #000;}
+	  #discount dd .dd1 #signmeup{width:150px; height:26px; border:1px solid #000; font-weight:bold; font-size:16px; background-color:rgba(0,0,0,0); transition:background-color 0.1s linear, color 0.1s linear;}
+
+	  #discount dd .dd1 #signmeup:hover{background-color:#000; color:#fff;}
+
+	  #discount .dd2{width:100%; height:40px; padding:30px 0; text-align:center;}
+	  #discount .dd2 a{text-decoration:underline;}
+
+	/*################## container / popLogin ##################*/
+		#popLogin{width:1200px; height:700px; background-color:#fff; border-radius:35px; padding:50px 50px; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
+		box-shadow:10px 10px 20px rgba(0,0,0,0.4); z-index:70; font-family:"CroissantOne-Regular";}
+		#popLogin a:link, a:visited{text-decoration:none; color:#A9ABD2; font-family:"CroissantOne-Regular";}
+		#popLogin a:hover, a:focus{text-decoration:underline;}
+		#popLogin h2{font-size:36px;}
+		#popLogin h3{font-size:24px;}
+		
+		
+		/*############ close button ############*/
+			.close{width:40px; height:40px; position:absolute; right:50px;; top:55px;}
+			.close img{width:100%}
+
+		/*############ signIn ############*/
+			#signIn, #join{width:598px; height:600px; margin-top:35px; float:left;}
+			#signIn{width:500px; padding-right:98px;}
+			#signIn dl{width:100%; margin-top:20px;}
+			#signIn label{font-size:16px; color:#777;}
+			#signIn input[type="text"], input[type="password"]{width:95%; height:40px; border:1px solid #ccc; text-indent:10px; font-size:20px; border-radius:6px; font-family:"CroissantOne-Regular";}
+			#signIn dt{margin-bottom:3px;}
+			#signIn dd{margin-bottom:30px;}
+			
+			#checkbox{width:20px; height:20px; border-radius:5px; margin-right:5px; float:left;}
+			.checkbox{margin-bottom:4px;}
+			.checkbox label{display:block; height:20px; line-height:20px; font-size:15px;}
+			
+			.submit input{width:95%; height:46px; line-height:46px; color:#F9FAFF; background-color:#313370;  margin:12px 0; border:none; font-weight:700; cursor:pointer; font-family:"CroissantOne-Regular"; font-size:18px; border-radius:80px;}
+			.submit input:hover{text-decoration:underline;}
+
+			.link{height:40px; line-height:40px;}
+
+			.iconArea{width:200px; margin:55px auto 0; height:70px;}
+			.iconArea .icon{width:65px; height:65px; float:left;}
+			.iconArea a{display:block; width:60px; height:60px; margin-left:30px; float:left;}
+			.iconArea img{width:100%;}
+
+			.iconArea a:first-child{margin:0;}
+		
+		/*############ join ############*/
+			#join{width:500px; padding-left:98px; border-left:2px solid rgba(200,200,200,0.5); font-size:18px;}
+			
+			.joinImg{width:500px; padding:24px 0;}
+			.joinImg img{width:100%;border-radius:12px;}
+
+			#join li{color:#777; padding-bottom:24px;}
+
+			.joinNow{width:100%; height:46px; line-height:46px; margin-top:10px; border:2px solid #A9ABD2; border-radius:80px;}
+			.joinNow a{display:block; width:100%; text-align:center; font-weight:700; color:#313370;}
+			.link a{font-size:18px;}
+			.joinNow a:hover{text-decoration:none;}
+		
+		/*############ full ############*/
+			#full{width:100%; height:100%; background-color:rgba(0,0,0,0.5);
+			position:fixed; left:0; top:0;}
+
+  /*################## footer ##################*/
+	  #footer{width:100%;  background-color:#ffdada;}
+	  #footer a{color:#353866; font-family:Franklin Gothic Book;}
+	  #footerInner{width:1500px; height:375px; margin:0 auto; }
+	  /* 실제 : 1440px*475px */
+	  .logo{width:200px; height:305px; padding:70px 90px 0 80px; float:left;}
+	  .logo a{width:100%; height:244px; display:block;}
+	  .logo a img{width:100%;}
+	  .footerDesc{width:1100px; height:100%; float:left;}
+
+	  .footerDesc ul{padding-top:40px;}
+
+	  .footerDesc ul li{width:260px; padding-right:100px; float:left;}
+	  .footerDesc ul li dt{width:100%; height:50px; line-height:50px; font-size:18px; font-family:Franklin Gothic Book; color:#353866; font-weight:bold;}
+	  .footerDesc ul li dd{width:100%; line-height:50px;}
+
+	  .footerDesc .underline a{text-decoration:underline;}
+	  .footerDesc .underline{color:#353866;}
+	  .footerDesc .underline address{float:left;}
+	  .footerDesc .underline .map{width:80px; padding-left:38px; float:left; transform:scale(1) rotate3d(0,0,0,0deg); transition:transform 0.3s linear 0.2s;}
+	  .footerDesc .underline .map a{width:100%; height:100%; display:block;}
+	  .footerDesc .underline .map img{width:100%; border-radius:40px; box-shadow:5px 3px 10px rgba(0,0,0,0.2);}
+
+	  .footerDesc .underline .map:hover{transform:scale(2.5) rotate3d(1,1,1,360deg);}
+
+	  .footerDesc .follow dd{width:auto; height:34px; padding:26px 8px 40px; float:left;}
+	  .footerDesc .follow dd img{width:100%; height:100%;}
+	  .footerDesc .follow form{width:100%; font-family:Franklin Gothic Book; color:#353866;}
+	  .footerDesc .follow fieldset{border:none;}
+	  .footerDesc .follow legend{display:none;}
+	  .footerDesc .follow label{padding-right:170px;}
+	  .footerDesc .follow #NewsletterDesc{width:85%; padding:2px 0; border:0; border-bottom:1px solid #353866; color:#ccc; background:none; margin:16px 0; text-indent:6px;}
+	  .footerDesc .follow #submit{background:none; border:1px solid #353866; color:#353866; transition:background-color 0.1s linear, color 0.1s linear;}
+
+	  .footerDesc .follow #submit:hover{background-color:#353866; color:#fff;}
+	  .footerDesc .follow .copy{width:100%; height:50px; line-height:50px;}
+
+	  .footerDesc ul:after{ content:""; display:block; clear:both;}
+  </style>
+  <script>
+	$(document).ready(function(){
+		$("#popLogin, #full").hide();
+		$(".bar2").click(function(){
+			$("#popLogin, #full").show();
+			return false;
+		});
+		$("#full, .close").click(function(){
+			$("#popLogin, #full").hide();
+		});
+	});
+  </script>
+ </head>
+
+ <body>
+	<div id="wrap">
+		<div id="headerWrap">
+			<header id="header">
+				<nav id="gnbArea">
+					<p class="topMenu"><a href="#" title="tel">+331 43 16 30 30</a></p>
+					<div class="menuBar">
+						<div class="menuIcon">
+							<a href="#" title="menuIcon">
+								<span class="line0"></span>
+								<span class="line1"></span>
+								<span class="line2"></span>
+							</a>
+						</div>
+						<ul class="gnb">
+							<li><a href="" title="giftCard">Carte cadeau</a></li>
+							<li><a href="" title="theBoutique">La Boutique</a></li>
+							<li><a href="" title="gallery">Galerie</a></li>
+							<li><a href="" title="escoffier">L'ÉCOLE RITZ ESCOFFIER</a></li>
+						</ul>
+					</div>
+				</nav>
+				<h1 id="logo">
+					<a href="#" title="reserveLink"><img src="img/logo/logo.png" alt="ritzParis"/></a>
+				</h1>
+			</header>
+			<div id="headerBorder">
+			</div>
+			<div id="bar">
+				<p class="bar0">
+					<a href="#" title="light">
+						<span class="barIcon"><img src="img/main/icon/light.svg" alt="darkmode"/></span>
+						<span class="barText">mode sombre</span>
+					</a>
+				</p>
+				<p class="bar1">
+					<a href="#" title="reservation">
+						<span class="barIcon"><img src="img/main/icon/bed.svg" alt="reservation"/></span>
+						<span class="barText">réserver</span>
+					</a>
+				</p>
+				<p class="bar2">
+					<a href="mailto:events@ritzparis.com" title="emailLInk">
+						<span class="barIcon"><img src="img/main/icon/email.svg" alt="email"/></span>
+						<span class="barText">e-mail</span>
+					</a>
+				</p>
+				
+			</div>
+		</div>
+		<div id="container">
+			<div id="visual">
+				<div id="mainVideo">
+					<video controls autoplay muted loop>
+						<source src="video/ritzParis.mp4" type="video/mp4"/>
+					</video>
+				</div>
+				<div id="reserveArea">
+					<div id="aroundArea"><p><a href="#" title="room">regardez autour de vous</a></p></div>
+					<ul id="quickReserve">
+						<li class="li0">
+							<span><a href="#" title="check_in_out">enregistrement - départ</a></span>
+							<span><a href="#" title="calender"><img src="img/main/icon/calender.svg" alt="calender"/></a></span>
+							<ul>
+								<li>
+									달력이당!
+								</li>
+							</ul>
+						</li>
+						<li class="li1">
+							<select id="guests" title="guests">
+								<option>INVITÉS</option>
+								<option>1</option>
+								<option>2</option>
+								<option>3</option>
+								<option>4</option>
+								<option>5</option>
+								<option>6</option>
+							</select>
+						</li>
+						<li class="li2">
+							<span><input type="text" name="promo" id="promo" title="promo" value="PROMO CODE"/></span>
+						</li>
+						<li class="li3">
+							<span><input id="infoSubmit" type="submit" value="VOIR LES DISPONIBILITÉS"/></span>
+							<p class="arrow"><img src="img/main/icon/arrow_right.png" alt="rightArrow"/></p>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<section id="letterW">
+				<h4>letter</h4>
+				<div id="letter">
+					<p class="gradientTop">gradient</p>
+					<p class="feather">
+						<img src="img/main/icon/feather.svg" alt="feather"/>
+					</p>
+					<p class="letterDesc">
+						<strong class="fontsize">Chers clients, chers amis,</strong><br/><br/>
+						<em>Le Ritz Paris est actuellement ouvert et nos équipes sont présentes à chaque instant pour répondre à vos demandes. Durant votre séjour, vous pourrez bénéficier de la délicieuse carte du room service ainsi que de l’accès à la piscine, sur réservation et dans le respect des normes sanitaires en vigueur.<br/><br/>
+						Envie de vous faire chouchouter ? N’hésitez pas à réserver un soin au Ritz Club ou bien une coupe chez David Mallett, notre coiffeur star. Nos cartes cadeaux sont également disponibles à l’hôtel ou directement en ligne. Faîtes plaisir à vos proches en leur offrant un moment unique au Ritz Paris. Les boutiques Tasaki et TWG sont ouvertes au sein de notre Galerie et seront ravies de vous faire découvrir leurs dernières nouveautés. Nous avons hâte de vous retrouver au sein de nos restaurants et bars, dès que les conditions sanitaires nous le permettront.<br/><br/>
+						Nous vous remercions de votre confiance.<br/><br/>
+						Prenez bien soin de vous,<br/><br/></em>
+						<span class="fontsize">Les équipes du Ritz Paris</span>
+					</p>
+					<p class="gradientBottom">gradient</p>
+				</div>
+			</section>
+			<!--<div id="interview">
+				<ul class="centerArea">
+					<li class="olivier">
+						<dl>
+							<dt><img src="img/main/s4.jpg" alt="employee0"/></dt>
+							<dd class="textBox">
+								<strong>Olivier</strong>
+								<em>
+									Come rain or come shine, Olivier, our Bell Service Manager, always welcomes Ritz Paris guests with a wide smile even before they walk in the door.<br/>
+									His excellent rapport and innate sense of service set the tone for a magnificent, warm and seamless stay.
+								</em>
+							</dd>
+						</dl>
+					</li>
+				</ul>
+				<p class="leftArrow">
+					<a href="#" title="before">
+						<img src="img/main/icon/left_arrow.png" alt="leftArrow"/>
+					</a>
+				</p>
+				<p class="rightArrow">
+					<a href="#" title="before">
+						<img src="img/main/icon/right_arrow.png" alt="rightArrow"/>
+					</a>
+				</p>
+			</div>-->
+			<section id="boxes">
+				<h4>boxes</h4>
+				<ul>
+					<li class="videoArea">
+						<p class="video">
+							<video controls poster="main/s1.jpg" autoplay muted loop>
+								<source src="video/noelRitz.mp4" type="video/mp4"/>
+							</video>
+						</p>
+						<p class="img">
+							<img src="img/main/s1.jpg" alt="noelRitz"/>
+						</p>
+					</li>
+					<li class="textBoxS">
+						<p class="line3">
+							Bar à desserts de Noël Le Petit Comptoir du Ritz Paris
+						</p>
+					</li>
+					<li class="imgBox">
+						<p class="imgBox_text">
+							+33 (01) 43 16 33 74
+						</p>
+						<p class="imgBox_img">
+							<img src="img/main/m31.jpg" alt="imgBox0"/>
+						</p>
+					</li>
+					<li class="textBoxB">
+						<p class="line3">
+							Une touche croustillante sur la galette des rois, par le chef François Perret
+						</p>
+					</li>
+					<li class="textBoxS">
+						<p class="line1">
+							Cartes cadeaux Ritz Paris
+						</p>
+					</li>
+					<li class="imgBox">
+						<p class="imgBox_text">
+							<a href="#" title="gift_card">
+								visite
+							</a>
+						</p>
+						<p class="imgBox_img">
+							<a href="#" title="giftcardLink">
+								<img src="img/main/s2.jpg" alt="imgBox1"/>
+							</a>
+						</p>
+					</li>
+					<li class="textBoxB">
+						<p class="line2">
+							Alors, qu'y a-t-il sur<br/>la carte des desserts?
+						</p>
+					</li>
+					<li class="imgBox">
+						<p class="imgBox_text">
+							<a href="https://www.instagram.com/p/CIiK_Qinchb/" title="instaFood">
+								visite
+							</a>
+						</p>
+						<p class="imgBox_img">
+							<a href="#" title="giftcardLink">
+								<img src="img/main/s0.jpg" alt="imgBox2"/>
+							</a>
+						</p>
+					</li>
+				</ul>
+			</section>
+			<section id="positionAreaW">
+				<div id="positionArea">
+					<div class="room">
+						<h2 class="roomh2"><strong>CHAMBRES ET SUITES</strong></h2>
+						<p class="roomImg"><img src="img/main/s18.jpg" alt="roomImg"/></p>
+						<div class="titleBox0">
+							<h3><em>Un séjour mémorable</em></h3>
+							<p class="subTitle"><a href="#" title="visit">visite</a></p>
+						</div>
+					</div>
+					<div class="food">
+						<h2 class="foodh2"><strong>L'Espadon</strong></h2>
+						<p class="foodImg"><img src="img/main/s31.jpg" alt="foodImg"/></p>
+						<div class="titleBox1">
+							<h3><em>Un avant-goût du Ritz</em></h3>
+							<p class="subTitle"><a href="#" title="discover">découvrir</a></p>
+						</div>
+					</div>
+				</div>
+			</section>
+			<article>
+				<h4>stay</h4>
+				<section id="stay">
+					<div class="stay_text">
+						<h2>
+							<span class="e00">U</span> <span class="e01">N</span><span class="e02">S</span><span class="e03">É</span><span class="e04">J</span><span class="e05">O</span><span class="e06">U</span><span class="e07">R</span><span class="e08">M</span><span class="e09">É</span> <span class="e10">M</span><span class="e11">O</span><span class="e12">R</span><span class="e13">A</span><span class="e14">B</span><span class="e15">L</span><span class="e16">E</span>
+						</h2>
+						<em>
+							Le raffinement de l’art de vivre à la française rencontre l’élégance de la décoration Belle Époque: les chambres et les suites de l’hôtel portent les noms de Coco Chanel, F. Scott Fitzgerald ou Marcel Proust - qui considéraient tous le Ritz comme «une résidence secondaire».
+						</em>
+					</div>
+					<p class="light"><img src="img/main/b0.jpg" alt="light"/></p>
+					<p class="pillow"><img src="img/main/b1.jpg" alt="pillow"/></p>
+				</section>
+			</article>
+			<section id="todayInfo">
+				<div id="clockArea">
+					<ul>
+						<li>
+							<dl>
+								<dt class="clockImg"><img src="img/main/clockImg.jpg" alt="clockImg"/></dt>
+								<dd class="clockShadow"><img src="img/main/clockShadow.png" alt="clockShadow"/></dd>
+								<dd class="clockTitle">NEW YORK</dd>
+							</dl>
+						</li>
+						<li>
+							<dl>
+								<dt class="clockImg"><img src="img/main/clockImg.jpg" alt="clockImg"/></dt>
+								<dd class="clockShadow"><img src="img/main/clockShadow.png" alt="clockShadow"/></dd>
+								<dd class="clockTitle">LONDRES</dd>
+							</dl>
+						</li>
+						<li>
+							<dl>
+								<dt class="clockImg"><img src="img/main/clockImg.jpg" alt="clockImg"/></dt>
+								<dd class="clockShadow"><img src="img/main/clockShadow.png" alt="clockShadow"/></dd>
+								<dd class="clockTitle">SYDNEY</dd>
+							</dl>
+						</li>
+						<li class="parisClock">
+							<dl>
+								<dt class="clockImg"><img src="img/main/clockImg.jpg" alt="clockImg"/></dt>
+								<dd class="clockShadow"><img src="img/main/clockShadow.png" alt="clockShadow"/></dd>
+								<dd class="clockTitle">PARIS</dd>
+							</dl>
+						</li>
+						<li>
+							<dl>
+								<dt class="clockImg"><img src="img/main/clockImg.jpg" alt="clockImg"/></dt>
+								<dd class="clockShadow"><img src="img/main/clockShadow.png" alt="clockShadow"/></dd>
+								<dd class="clockTitle">TORONTO</dd>
+							</dl>
+						</li>
+						<li>
+							<dl>
+								<dt class="clockImg"><img src="img/main/clockImg.jpg" alt="clockImg"/></dt>
+								<dd class="clockShadow"><img src="img/main/clockShadow.png" alt="clockShadow"/></dd>
+								<dd class="clockTitle">SAN PAOLO</dd>
+							</dl>
+						</li>
+						<li>
+							<dl>
+								<dt class="clockImg"><img src="img/main/clockImg.jpg" alt="clockImg"/></dt>
+								<dd class="clockShadow"><img src="img/main/clockShadow.png" alt="clockShadow"/></dd>
+								<dd class="clockTitle">HONG KONG</dd>
+							</dl>
+						</li>
+					</ul>
+				</div>
+				<div id="dateAreaW">
+					<div class="dateArea">
+						<p class="year">2021</p>
+						<p class="today">Dimanche 3 Janvier</p>
+						<p class="line"><img src="img/main/line.png" alt="whiteLine"/></p>
+						<p class="bookNow"><a href="#" title="book">Reserve<br/>maintenant</a></p>
+					</div>
+				</div>
+				<div id="wideArea">
+					<ul class="weather">
+						<li class="w">
+							<p class="w_img"><img src="img/main/icon/w1.png" alt="moderate0"/></p>
+							<h3>modérer</h3>
+						</li>
+						<li class="s">
+							<p class="s_img"><img src="img/main/icon/w3.png" alt="storm"/></p>
+							<h3>strom</h3>
+						</li>
+						<li class="w">
+							<p class="w_img"><img src="img/main/icon/w2.png" alt="moderate1"/></p>
+							<h3>modérer</h3>
+						</li>
+					</ul>
+					<ul class="week">
+						<li class="todayWeather"><a href="#" title="todayWeather">AUJOURD'HUI</a></li>
+						<li><a href="#" title="fridayWeather">VEN</a></li>
+						<li><a href="#" title="saturdayWeather">SAM</a></li>
+						<li><a href="#" title="sundayWeather">DIM</a></li>
+						<li><a href="#" title="mondayWeather">LUN</a></li>
+						<li><a href="#" title="tuesdaydayWeather">MAR</a></li>
+						<li><a href="#" title="wednesdayWeather">MER</a></li>
+					</ul>
+				</div>
+			</section>
+			<section id="motto">
+				<p class="wave"><img src="img/main/pattern.png" alt="waveShape"/></p>
+				<div id="contact">
+					<div id="contactBox">
+						<p class="textArea">
+							Si vous avez des questions, n'hésitez pas à nous contacter!
+						</p>
+						<h2 class="textBoxArea">
+							<a href="#" title="contactLink">
+								<span class="bracket">></span> Nous contacter
+							</a>
+						</h2>
+					</div>
+				</div>
+				<div id="mottoArea">
+					<dl>
+						<dt>"Je rêve d'une maison<br/> que je pourrais fièrement<br/> appeler mon nom"</dt>
+						<dd>CESAR RITZ</dd>
+					</dl>
+				</div>
+			</section>
+			<section id="discount">
+				<dl>
+					<dt><img src="img/gallery/m2.jpg" alt="outside"/></dt>
+					<dd>
+						<div class="dd0">
+							<h2><strong>PRENEZ 10 OFF</strong></h2>
+							<p>
+								<em>
+									Obtenez 10% de réduction sur votre premier séjour en vous inscrivant à notre newsletterDesc pour les curieux. Tarif de la chambre uniquement.
+								</em>
+							</p>
+						</div>
+						<div class="dd1">
+							<form action="#" method="get">
+								<fieldset>
+									<legend>vente</legend>
+									<label for="firstName">Prénom*</label>
+									<input name="firstName" type="text" id="firstName"/>
+									<label for="lastName">Nom de famille*</label>
+									<input name="lastName" type="text" id="lastName"/>
+									<label for="emailInput">Adresse e-mail*</label>
+									<input name="emailInput" type="text" id="emailInput"/>
+									<input type="checkbox" id="chk" title="chk"/>En cochant cette case, vous acceptez de recevoir des mises à jour par e-mail de Birch Community. Vous pouvez vous désinscrire à tout moment et consulter notre politique de confidentialité <a href="#" title="privacyPolicy">ici</a>.
+									<input type="submit" id="signmeup" value="ENREGISTRE-MOI"/>
+								</fieldset>
+							</form>
+						</div>
+						<div class="dd2">
+							Ce site est protégé par reCAPTCHA et la <a href="#" title="privacyPolicy">politique de confidentialité</a> et les <a href="#" title="termsOfServise">conditions d'utilisation</a> de Google s'appliquent.
+						</div>
+					</dd>
+				</dl>
+			</section>
+			<div id="popLogin">
+				<h2>Welcome to Ritz Paris</h2>
+				<a class="close" href="#" title="close"><img src="img/icon/close.png" alt="close"/></a>
+				<section id="signIn">
+					<h3>Connectez-vous à votre compte</h3>
+					<form action="#" method="POST">
+						<fieldset>
+							<legend>Sign in</legend>
+							<dl>
+								<dt>
+									<label for="useremail">Email ou numéro de membre</label>
+								</dt>
+								<dd>
+									<input id="useremail" type="text" name="useremail" title="Please enter your full email or membership number." autofocus autocomplete="off" required/>
+								</dd>
+								<dt>
+									<label for="userpw">Mot de passe</label>
+								</dt>
+								<dd>
+									<input id="userpw" type="password" name="userpw" required/>
+								</dd>
+							</dl>
+							<p class="checkbox">
+								<input id="checkbox" type="checkbox" name="checkbox" checked/><label for="checkbox">Souviens-toi de moi</label>
+							</p>
+							<p class="submit">
+								<input type="submit" title="SIGN IN" value="Souviens-toi de moi"/>
+							</p>
+						</fieldset>
+					</form>
+					<p class="link"><a href="#" title="find pw">Mot de passe oublié</a></p>
+					<p class="link"><a href="#" title="activate">Activer le compte en ligne</a></p>
+					<div class="iconArea">
+						<p class="icon">
+							<a href="#" title="apple"><img src="img/logo/apple.png" alt="apple"/></a>
+						</p>
+						<p class="icon">
+							<a href="#" title="google"><img src="img/logo/google.png" alt="google"/></a>
+						</p>
+						<p class="icon">
+							<a href="#" title="facebook"><img src="img/logo/facebook.png" alt="facebook"/></a>
+						</p>
+					</div>
+				</section>
+				<section id="join">
+					<h3>Rejoignez le Ritz Paris</h3>
+					<p class="joinImg"><img src="img/gallery/m38.jpg" alt="garden"/></p>
+					<ul>
+						<li>● Profitez de nos tarifs les plus bas, tout le temps</li>
+						<li>● Wi-Fi gratuit dans la chambre</li>
+						<li>● Enregistrement mobile et plus</li>
+					</ul>
+					<p class="joinNow"><a href="#" title="joinNow">ADHÉRER MAINTENANT</a></p>
+				</section>
+			</div>
+		</div>
+		<div id="full">
+		</div>
+		<footer id="footer">
+			<div id="footerInner">
+				<p class="logo"><a href="index.html" title="main page"><img src="img/main/logo/ritzLogo.png" alt="ritzLogo"/></a></p>
+				<div class="footerDesc">
+					<ul>
+						<li>
+							<dl>
+								<dt>APPRENDRE A NOUS CONNAITRE</dt>
+								<dd><a href="#" title="aboutRitz">A propos de Ritz Paris</a></dd>
+								<dd><a href="#" title="club">Club Ritz</a></dd>
+								<dd><a href="#" title="boutique">La Boutique</a></dd>
+								<dd><a href="#" title="L'ÉCOLE RITZ ESCOFFIER">L'ÉCOLE RITZ ESCOFFIER</a></dd>
+								<dd><a href="#" title="Privacy Policy">Politique de confidentialité</a></dd>
+							</dl>
+						</li>
+						<li class="underline">
+							<dl>
+								<dt>ENTRER EN CONTACT</dt>
+								<dd><a href="#" title="tel">+33 1 43 16 30 30</a></dd>
+								<dd><a href="#" title="contact">contact</a></dd>
+								<dd>
+									<address>15 place<br/>Vendôme 75001 Paris</address>
+									<a class="map" href="https://goo.gl/maps/XnNDrFo1jMWdv1CW8" title="googleMap"><img src="img/main/map.jpg" alt="map"/></a>
+								</dd>
+							</dl>
+						</li>
+						<li class="follow">
+							<dl>
+								<dt>SUIVEZ NOUS</dt>
+								<dd><a href="#" title="facebook"><img src="img/main/logo/facebook.png" alt="facebook"/></a></dd>
+								<dd><a href="#" title="instagram"><img src="img/main/logo/instagram.png" alt="instagram"/></a></dd>
+								<dd><a href="#" title="twitter"><img src="img/main/logo/twitter.png" alt="twitter"/></a></dd>
+								<dd><a href="#" title="youtube"><img src="img/main/logo/youtube.png" alt="youtube"/></a></dd>
+							</dl>
+							<form action="#" method="get">
+								<fieldset>
+									<legend>NewsletterDesc</legend>
+									<label for="NewsletterDesc">Bulletin:</label>
+									<input name="NewsletterDesc" type="text" id="NewsletterDesc" value="Entrer votre Email"/>
+									<input type="submit" id="submit" value="OK"/>
+								</fieldset>
+							</form>
+							<p class="copy"><a href="mailto:work2357@naver.com" title="copyrwriter">&copy; JEEHAE, 2021</a></p>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</footer>
+	</div>
+ </body>
+</html>
+<!--
+	[header]
+		https://elmodernehotel.com/en/
+	[discount]
+		https://www.birchcommunity.com/
+-->

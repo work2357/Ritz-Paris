@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <title>boutique</title>
+  <meta charset="utf-8"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <style>
+	/*###################### 초기화 / 공통작업 ######################*/
+		*{margin:0; padding:0;}
+		body, header, section,footer, nav, p, ul, ul li,ol, ol li, h1, h2{margin:0; padding:0; font-family:"os";}
+		header, section, footer{display:block; margin:0; padding:0;}
+		a:link, a:visited{text-decoration:none; color:#000;}
+		li{list-style:none;}
+		fieldset{border:none;}
+		legend{display:none;}
+		h5{position:absolute; left:-9999px; width:1px; height:1px; font-size:1px; line-height:0; overflow:hidden;}
+		@font-face{
+			font-family:"Oswald", "Bell MT";
+			src:url("font/Oswald.woff"),url("font/Bell MT.ttf");
+		}
+
+	/*###################### wrap ######################*/
+		#wrap{width:100%;}
+
+	/*###################### header ######################*/
+		#header{width:100%; height:140px; text-transform:uppercase; position:fixed; z-index:50;}
+		#header a{color:#B2B2B2;}
+
+		/*###################### infoHeader ######################*/
+			#infoHeaderW{width:100%; height:80px; font-size:18px; background-color:#323270;}
+			#infoHeader{width:1440px; height:100%; margin:0 auto;}
+
+			h1{width:120px; padding-top:10px; padding-right:30px; float:left;}
+			h1 a{width:100%; display:block;}
+			h1 a img{width:100%;}
+
+			#leftHeader{width:386px; height:100%; line-height:80px; float:left;}
+			#leftHeader li{display:inline; padding-right:25px;}
+			#leftHeader li img{width:25px; padding-right:6px;}
+			.icon{vertical-align:middle;}
+
+			#rightHeader{width:400px; height:100%; margin-left:304px; line-height:80px; float:left;}
+			#rightHeader li{display:inline; padding-right:25px;}
+			#rightHeader li img{height:25px; padding-right:6px;}
+			
+			form{width:200px; height:100%; float:left; position:relative;}
+			#search{width:160px; height:26px; border:2px solid #ccc; border-radius:15px; text-indent:10px; position:absolute; left:0; top:27px;}
+			#submit{width:30px; height:30px; border:none; background-color:rgba(0,0,0,0); position:absolute; right:0; top:25px;}
+			#submit img{width:100%; cursor:pointer;}
+
+		/*###################### nav ######################*/
+			#navW{width:100%; height:60px; background-image:linear-gradient(to top, rgba(248,250,255,0.1), rgba(248,250,255,0.6)); transition:background-color 0.2s linear; z-index:10;}
+			#navBorder{width:100%; height:6px; background-image:linear-gradient(to top, rgba(248,250,255,0.6), rgba(255,255,255,0.1)); transition:background-color 0.2s linear;}
+			#nav{width:1440px; height:100%; margin:0 auto;}
+			#gnb{width:100%; height:100%; line-height:60px;}
+			#gnb li{display:inline; padding:0 30px;}
+			#gnb li a{letter-spacing:1px; color:#323270;}
+
+		/*###################### subNav ######################*/
+			#subNav{position:relative; width:100%; height:400px; background-color:#f8faff;}
+			#subNav0, #subNav1, #subNav2, #subNav3{width:100%; height:100%; position:absolute;}
+			#subNavInner{width:1440px; height:100%; position:absolute; left:50%; top:0; margin-left:-720px;}
+			#subNavInner a{color:#323270;}
+
+			#subNavInner h2{font-family:Bell MT; font-style:italic; font-size:40px; font-weight:400; padding:50px 0 20px 200px;}
+			#subNavInner ul{padding-left:200px;}
+			#subNavInner ul .title{font-weight:700; font-size:20px; padding-top:10px;}
+			#subNavInner ul .sub{text-indent:10px;}
+			#subNavInner ul .sub a{color:#aac;}
+			#subNavInner .image{height:300px; position:absolute; right:200px; top:50px;}
+			#subNavInner .image img{height:100%;}
+
+	/*###################### container ######################*/
+		#container{width:100%;}
+
+		/*###################### recent ######################*/
+			#recent{width:120px; background-color:rgba(255,255,255,0.5); position:fixed; right:0; top:300px; border-radius:10px 0 0 10px; box-shadow:5px 5px 10px rgba(0,0,0,0.3);}
+			#recent h2{width:90%; padding:0 5% 5%; font-size:20px; color:#323270; text-shadow:2px 2px 5px rgba(50,50,112,0.3);}
+			#recent ul{width:100%;}
+			#recent ul li{width:100px; height:80px; padding:0 10px 12px;}
+			#recent ul li a{width:100%; height:100%; display:block; border-radius:12px; box-shadow:5px 5px 5px rgba(0,0,0,0.2); overflow:hidden;}
+			#recent ul li a img{width:140px; position:relative; left:-20px; top:-5px;}
+
+		/*###################### visual ######################*/
+			#visual{width:100%; height:920px;}
+			#slider{width:400%; position:relative;}
+			#slider .img{width:25%; height:920px;  float:left;  z-index:-1; background-color:#f8faff;}
+
+			#slider .img img{width:100%;}
+			/*
+				문제점) animation_img 예제처럼 겹쳐서 opacity 변경하는 애니메이션을 주고 싶었는데, 처음에 잘 나왔다가 늦게 나오고 불규칙합니다. (수업 후 이것만 고민했어요 ㅠㅠ)
+			*/
+
+			#slider:after{content:""; display:block; clear:both;}
+			@keyframes img1{
+				0%{opacity:1;}
+				50%{opacity:0;}
+				100%{opacity:0;}
+			}
+
+			.img2{animation-name:img2;}
+			@keyframes img2{
+				0%{opacity:0;}
+				50%{opacity:1;}
+				100%{opacity:0;}
+			}
+
+			.img3{animation-name:img3;}
+			@keyframes img3{
+				0%{opacity:0;}
+				50%{opacity:0;}
+				100%{opacity:1;}
+			}
+		/*###################### homeArea ######################*/
+			#homeArea{width:100%;}
+			h2{width:100%; margin:0 auto; text-align:center; padding:50px 0 30px;}
+			#home{width:1320px; margin:0 auto;}
+			#home li{width:620px; height:650px; overflow:hidden; float:left;}
+			#home li dl{width:100%; height:100%;}
+			#home li dt{width:600px; height:500px; overflow:hidden; border-radius:20px; box-shadow:8px 8px 10px rgba(0,0,0,0.3);}
+			#home li dt a{display:block; width:100%;}
+			#home li dt img{width:600px; height:600px; transform:translatey(-10%);}
+			#home .odd{margin-right:80px;}
+			/*이미지 너비 : 600px*/
+
+			.mainTitle{width:100%; height:45px; line-height:40px; font-size:26px; margin-top:20px; text-align:center;}
+			.mainTitle a:hover{text-decoration:underline;}
+			.mainPrice{text-align:center; font-size:20px; color:#456;}
+
+		/*###################### slideArea ######################*/
+			#slideArea{width:100%; height:450px; background-color:#F7F7F7;}
+			#screen{width:1600px; margin:0 auto; background-color:#F7F7F7;}
+			#film{width:3600px; transition:5s linear; animation:slide 3s infinite normal linear;}
+			#film li{float:left;}
+			.even{margin-top:150px;}
+			#film li img{width:400px;}
+			@keyframes slide{
+				100%{transform:translatex(-300px);}
+			}
+  </style>
+  <script>
+	$(document).ready(function(){
+		$("#subNav").hide();
+		$("#gnb li a:eq(0)").mouseenter(function(){
+			$(this).css({"color":"#323270"});
+			$("#navW").css({"backgroundColor":"#f8faff"});
+			$("#subNav").stop().slideDown(500,"swing");
+			$("#subNav1, #subNav2, #subNav3").hide();
+		});
+		$("#subNav").mouseleave(function(){
+			$(this).stop().slideUp(500,"swing");
+			$("#gnb li a:eq(0)").css({"color":"#b2b2b2"});
+			$("#navW").css({"":""});
+		});
+
+		$("#film").prepend( $(".scene:last") );
+		$("#film").css({"marginLeft":"-300px"});
+		
+
+	});
+  </script>
+ </head>
+
+ <body>
+	<div id="wrap">
+		<header id="header">
+			<div id="infoHeaderW">
+				<div id="infoHeader">
+					<h1>
+						<a href="main.html" title="main page">
+							<img src="img//logo/logo.png" alt="ritzParis"/>
+						</a>
+					</h1>
+					<ul id="leftHeader">
+						<li class="hotel">
+							<a href="main.html" title="hotel main link">
+								<span class="icon">
+									<img src="img/boutique/icon/hotel.png" alt="hotel"/>
+								</span>
+								<span class="label">The Hotel</span>
+							</a>
+						</li>
+						<li class="contact">
+							<a href="#" title="contact link">
+								<span class="icon">
+									<img src="img/boutique/icon/contact.png" alt="contact"/>
+								</span>
+								<span class="label">Contact</span>
+							</a>
+						</li>
+					</ul>
+					<ul id="rightHeader">
+						<li>
+							<a href="login.html" title="login link">
+								<span class="icon">
+									<img src="img/boutique/icon/account.png" alt="account"/>
+								</span>
+								<span class="label">my account</span>
+							</a>
+						</li>
+						<li>
+							<a href="#" title="wishlist link">
+								<span class="icon">
+									<img src="img/boutique/icon/wishlist.png" alt="wishlist"/>
+								</span>
+								<span class="label">my wishlist</span>
+							</a>
+						</li>
+						<li>
+							<a href="#" title="basket">
+								<span class="basketIcon"></span>
+								<span class="label">$0.00</span>
+							</a>
+						</li>
+					</ul>
+					<form action="https://www.ritzparisboutique.com/en/catalogsearch/result/" method="GET">
+						<fieldset>
+							<legend>search</legend>
+							<input id="search" type="text" name="q" title="Enter a keyword" maxlength="128" placeholder="Enter a keyword" autocomplete="off"/>
+							<button id="submit" type="submit" title="Search"><img src="img/boutique/icon/search.png" alt="search"/></button>
+						</fieldset>
+					</form>
+				</div>
+			</div>
+			<div id="navW">
+				<nav id="nav">
+					<ul id="gnb">
+						<li>
+							<a href="#" title="liftstyle">
+								liftstyle
+							</a>
+						</li>
+						<li>
+							<a href="#" title="a night at the ritz">
+								a night at the ritz
+							</a>
+						</li>
+						<li>
+							<a href="#" title="the ritz paris essentials">
+								the ritz paris essentials
+							</a>
+						</li>
+						<li>
+							<a href="#" title="ritz paris gourmet">
+								ritz paris gourmet
+							</a>
+						</li>
+						<li>
+							<a href="#" title="ritz paris by tasaki">
+								ritz paris by tasaki
+							</a>
+						</li>
+						<li>
+							<a href="#" title="gift card">
+								gift card
+							</a>
+						</li>
+					</ul>
+				</nav>
+				<div id="subNav">
+					<section id="subNav0">
+						<div id="subNavInner">
+							<h2><a href="#none" title="lifestyle">lifestyle</a></h2>
+							<ul>
+								<li class="title">
+									<a href="#none" title="home fragrances">home fragrances</a>
+								</li>
+								<li class="title">
+									<a href="#none" title="tableware">tableware</a>
+								</li>
+								<li class="sub">
+									<a href="#none" title="IMPÉRIAL">IMPÉRIAL</a>
+								</li>
+								<li class="sub">
+									<a href="#none" title="MARTHE">MARTHE</a>
+								</li>
+								<li class="sub">
+									<a href="#none" title="ART OF TEA">ART OF TEA</a>
+								</li>
+								<li class="sub">
+									<a href="#none" title="MUGS ET TASSES">MUGS ET TASSES</a>
+								</li>
+								<li class="title">
+									<a href="#none" title="HOME SELECTION">HOME SELECTION</a>
+								</li>
+								<li class="sub">
+									<a href="#none" title="HOME ACCESSORIES">HOME ACCESSORIES</a>
+								</li>
+								<li class="sub">
+									<a href="#none" title="CHANGE TRAY">CHANGE TRAY</a>
+								</li>
+							</ul>
+							<p class="image">
+								<img src="img/boutique/lifestyle/m.jpg" alt="lifestyle"/>
+							<p>
+						</div>
+					</section>
+					<section id="subNav1">
+						<div id="subNavInner">
+							<h2><a href="#none" title="a night at the ritz">a night at the ritz</a></h2>
+							<ul>
+								<li class="title">
+									<a href="#none" title="bath linen">bath linen</a>
+								</li>
+								<li class="title">
+									<a href="#none" title="the bedding">the bedding</a>
+								</li>
+								<li class="sub">
+									<a href="#none" title="VENDÔME">VENDÔME</a>
+								</li>
+								<li class="sub">
+									<a href="#none" title="ERICA">ERICA</a>
+								</li>
+								<li class="title">
+									<a href="#none" title="YACHTING">YACHTING</a>
+								</li>
+								<li class="title">
+									<a href="#none" title="BEDDING">BEDDING</a>
+								</li>
+							</ul>
+							<p class="image">
+								<img src="img/boutique/night/m.jpg" alt="night"/>
+							</p>
+						</div>
+					</section>
+					<section id="subNav2">
+						<div id="subNavInner">
+							<h2><a href="#none" title="THE RITZ PARIS ESSENTIALS">THE RITZ PARIS ESSENTIALS</a></h2>
+							<ul>
+								<li class="title">
+									<a href="#none" title="CACHEMERE & SILK">CACHEMERE & SILK</a>
+								</li>
+								<li class="title">
+									<a href="#none" title="BOOKS & STATIONERY">BOOKS & STATIONERY</a>
+								</li>
+								<li class="title">
+									<a href="#none" title="GIFTS">GIFTS</a>
+								</li>
+								<li class="title">
+									<a href="#none" title="HEMINGWAY BAR">HEMINGWAY BAR</a>
+								</li>
+								<li class="title">
+									<a href="#none" title="TEDDY BEARS">TEDDY BEARS</a>
+								</li>
+							</ul>
+							<p class="image">
+								<img src="img/boutique/essential/m.jpg" alt="essential"/>
+							</p>
+						</div>
+					</section>
+					<section id="subNav3">
+						<div id="subNavInner">
+							<h2><a href="#none" title="RITZ PARIS GOURMET">RITZ PARIS GOURMET</a></h2>
+							<ul>
+								<li class="title">
+									<a href="#none" title="THE CELLAR">THE CELLAR</a>
+								</li>
+								<li class="title">
+									<a href="#none" title="SEASONINGS">SEASONINGS</a>
+								</li>
+								<li class="title">
+									<a href="#none" title="CONDIMENTS">CONDIMENTS</a>
+								</li>
+								<li class="title">
+									<a href="#none" title="UN MATIN AU RITZ PARIS">UN MATIN AU RITZ PARIS</a>
+								</li>
+								<li class="title">
+									<a href="#none" title="ECOLE RITZ ESCOFFIER">ECOLE RITZ ESCOFFIER</a>
+								</li>
+							</ul>
+							<p class="image">
+								<img src="img/boutique/gourmet/m.jpg" alt="gourmet"/>
+							</p>
+						</div>
+					</section>
+				</div>
+			</div>
+			<div id="navBorder">
+			</div>
+		</header>
+		<div id="container">
+			<section id="recent">
+				<h2>Recently Viewed Items</h2>
+				<ul>
+					<li><a href="#" title="recent"><img src="img/boutique/lifestyle/tableware/imperial/plate2.jpg" alt="plate"/></a></li>
+					<li><a href="#" title="recent"><img src="img/boutique/lifestyle/tableware/imperial/breakfastCupsGiftset.jpg" alt="cupSet"/></a></li>
+					<li><a href="#" title="recent"><img src="img/boutique/night/theBedding/bedding7.jpg" alt="bedding"/></a></li>
+				</ul>
+			</section>
+			<div id="visual">
+				<ul id="slider">
+					<li class="img">
+						<img src="img/boutique/m0.jpg" alt="sliding0"/>		
+					</li>
+					<li class="img">
+						<img src="img/boutique/m1.jpg" alt="sliding1"/>
+					</li>
+					<li class="img">
+						<img src="img/boutique/m2.jpg" alt="sliding2"/>
+					</li>
+				</ul>
+			</div>
+			<section id="homeArea">
+				<h2><img src="img/boutique/home.jpg" alt="Ritz Paris at Home"/></h2>
+				<ul id="home">
+					<li class="odd">
+						<dl>
+							<dt>
+								<a href="#none" title="Set of Erica Sheets">
+									<img src="img/boutique/s0.jpg" alt="Set of Erica Sheets"/>
+								</a>
+							</dt>
+							<dd class="mainTitle">
+								<a href="#none" title="Set of Erica Sheets">SET OF ERICA SHEETS, IVOIRY</a>
+							</dd>
+							<dd class="mainPrice">€225.00</dd>
+						</dl>
+					</li>
+					<li>
+						<dl>
+							<dt>
+								<a href="#none" title="Peach Bathrobe">
+									<img src="img/boutique/s1.jpg" alt="Peach Bathrobe"/>
+								</a>
+							</dt>
+							<dd class="mainTitle">
+								<a href="#none" title="Peach Bathrobe">Men/Women's peach bathrobe</a>
+							</dd>
+							<dd class="mainPrice">€200.00</dd>
+						</dl>
+					</li>
+					<li class="odd">
+						<dl>
+							<dt>
+								<a href="#none" title="Ritz Paris Pillow">
+									<img src="img/boutique/s2.jpg" alt="Ritz Paris Pillow"/>
+								</a>
+							</dt>
+							<dd class="mainTitle">
+								<a href="#none" title="Ritz Paris Pillow">Alliance microfiber Ritz Paris pillow</a>
+							</dd>
+							<dd class="mainPrice">€85.00</dd>
+						</dl>
+					</li>
+					<li>
+						<dl>
+							<dt>
+								<a href="#none" title="Porcelain Candle">
+									<img src="img/boutique/s3.jpg" alt="Porcelain Candle"/>
+								</a>
+							</dt>
+							<dd class="mainTitle">
+								<a href="#none" title="Porcelain Candle">L'Ambre Ritz XL porcelain candle</a>
+							</dd>
+							<dd class="mainPrice">€150.00</dd>
+						</dl>
+					</li>
+				</ul>
+			</section>
+			<section id="slideArea">
+				<div id="screen">
+					<ul id="film">
+						<li>
+							<img src="img/boutique/lifestyle/tableware/imperial/sugarBowl.jpg" alt="img0"/>		
+						</li>
+						<li class="even">
+							<img src="img/boutique/lifestyle/fragrance/largeCandle0.jpg" alt="img1"/>
+						</li>
+						<li>
+							<img src="img/boutique/lifestyle/fragrance/spray0.jpg" alt="img2"/>
+						</li>
+						<li class="even">
+							<img src="img/boutique/night/yachting/yachting11.jpg" alt="img3"/>
+						</li>
+						<li>
+							<img src="img/boutique/night/theBedding/bedding0.jpg" alt="img4"/>
+						</li>
+						<li class="even">
+							<img src="img/boutique/night/bedding/bedding1.jpg" alt="img5"/>
+						</li>
+						<li>
+							<img src="img/boutique/night/bathLinen/bath3.jpg" alt="img6"/>
+						</li>
+						<li class="even">
+							<img src="img/boutique/night/yachting/yachting0.jpg" alt="img7"/>
+						</li>
+						<li>
+							<img src="img/boutique/lifestyle/fragrance/candle1.jpg" alt="img7"/>
+						</li>
+					</ul>
+				</div>
+			</section>
+		</div>
+		<footer id="footer">
+		</footer>
+	</div>
+ </body>
+</html>

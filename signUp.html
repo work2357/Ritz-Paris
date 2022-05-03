@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+  <title>signUp</title>
+  <meta charset="utf-8"/>
+  <style>
+	/*############### 초기화 ###############*/
+		*{margin:0; padding:0;}
+		body{margin:0; padding:0; background-color:#F9FAFF; color:#343434; font-family:Oswald;}
+		li{list-style:none;}
+		fieldset{border:none;}
+		legend{display:none;}
+		a:link, a:visited{color:#343434; text-decoration:none;}
+		@font-face{
+			font-family:"Oswald", "Bell MT";
+			src:url("font/Oswald.woff"),url("font/Bell MT.ttf");
+		}
+
+	/*############### wrap ###############*/
+		#wrap{width:100%}
+
+	/*################## header ##################*/
+	  #headerWrap{width:100%; height:86px; left:0; top:0; position:fixed; background-image:linear-gradient(to top, rgba(248,250,255,0.1), rgba(248,250,255,0.6)); transition:background-color 0.2s linear; z-index:10; font-family:Bell MT;}
+	  #header{width:1440px; height:80px; margin:0 auto;}
+	  #headerBorder{width:100%; height:6px; background-image:linear-gradient(to top, rgba(248,250,255,0.6), rgba(255,255,255,0.1)); transition:background-color 0.2s linear;}
+
+	  #headerWrap:hover{background-color:#f8faff;}
+	  #headerWrap:hover #headerBorder{background-color:#f8faff;}
+
+	  #gnbArea{width:1270px; height:100%; float:left;}
+
+	  .menuBar{width:1270px; height:80px; line-height:80px;}
+	  .menuIcon{width:150px; height:50px; margin-top:18px; float:left;}
+	  .menuIcon a{width:80%; height:46px; display:block;}
+	  .menuIcon a span{width:35px; height:2px; background-color:#353866; border-radius:2px; box-shadow:1px 1px 2px rgba(0,0,0,0.5); display:block; transform:translatex(0); transition:transform 0.2s linear;}
+	  .menuIcon a .line0{margin-left:60px; margin-top:9px;}
+	  .menuIcon a .line1{margin-left:70px; margin-top:9px;}
+	  .menuIcon a .line2{margin-left:50px; margin-top:9px;}
+ 
+	  .menuIcon:hover .line1{transform:translatex(-10px);}
+	  .menuIcon:hover .line2{transform:translatex(10px);}
+
+	  .gnb{width:1120px; height:60px; float:left;}
+	  .gnb li{line-height:60px; padding:0 20px; font-size:18px; display:inline;}
+	  .gnb li a{color:#353866;}
+
+	  .gnb li a:hover{color:#777;}
+
+	  #logo{width:120px; padding-top:10px; float:left; position:relative;}
+	  #logo img{width:100%;}
+
+	  .boutique{display:none;}
+	  
+	  /* side bar */
+		  #bar{width:140px; height:182px; right:0; top:300px; position:fixed;}
+		  #bar p{width:100%; height:60px; left:0; top:0; position:absolute; transform:translatex(78px); transition:transform 0.2s ease-out; border-radius:8px 0 0 8px; box-shadow:5px 5px 7px rgba(0,0,0,0.4);}
+		  #bar .bar0{width:189px; background-color:rgba(202,228,219,0.8); color:#fff; font-size:24px; cursor:pointer;}
+		  #bar .bar1{width:125px; top:65px; background-color:rgba(205,172,129,0.8);}
+		  #bar .bar2{top:130px; background-color:rgba(0,48,63,0.8);}
+		  #bar p a{width:100%; height:100%; display:block; color:#fff; font-size:24px;}
+		  
+		  #bar p .barIcon{width:50px; height:40px; padding-top:5px; padding-left:6px; display:block; float:left;}
+		  #bar p .barIcon img{width:100%;}
+
+		  #bar p .barText{width:66px; height:100%; padding-left:8px; line-height:60px; font-family:"Oswald"; display:block; float:left;}
+		  #bar .bar0 .barText{width:114px;}
+		  #bar .bar0 .lightMode{width:120px; width:66px; height:100%; padding-left:8px; line-height:60px; font-family:"Oswald"; display:none; float:left; font-size:24px;}
+		  #bar .bar1 a .barText{width:49px;}
+
+		  #bar .bar0:hover{transform:translatex(-30px);}
+		  #bar .bar1:hover{transform:translatex(17px);}
+		  #bar .bar2:hover{transform:translatex(15px);}
+		  
+		  #bar:after{content:""; display:block; clear:both;}
+
+	/*############### signUpArea ###############*/
+		#signUpArea{width:800px; margin:100px auto 0;}
+
+	/*############### h2, em ###############*/
+		h2{font-size:50px;}
+		em{font-style:normal; font-size:24px;}
+  </style>
+ </head>
+
+ <body>
+	<div id="wrap">
+		<div id="headerWrap">
+				<header id="header">
+					<nav id="gnbArea">
+						<div class="menuBar">
+							<div class="menuIcon">
+								<a href="#" title="menuIcon">
+									<span class="line0"></span>
+									<span class="line1"></span>
+									<span class="line2"></span>
+								</a>
+							</div>
+							<ul class="gnb">
+								<li><a href="" title="giftCard">GIFT CARD</a></li>
+								<li><a href="" title="theBoutique">THE BOUTIQUE</a></li>
+								<li><a href="" title="gallery">GALLERY</a></li>
+								<li><a href="" title="escoffier">L'ÉCOLE RITZ ESCOFFIER</a></li>
+							</ul>
+						</div>
+					</nav>
+					<h1 id="logo">
+						<a href="#" title="reserveLink"><img src="img/logo/logo.png" alt="ritzParis"/></a>
+					</h1>
+					<p class="boutique">
+						<a href="boutique.html" title="boutique">
+							boutique
+						</a>
+					</p>
+				</header>
+				<div id="headerBorder">
+				</div>
+				<div id="bar">
+					<p class="bar0">
+						<span class="barIcon"><img src="img/main/icon/light.svg" alt="darkmode"/></span>
+						<span class="barText">dark mode</span>
+						<span class="lightMode">light mode</span>
+					</p>
+					<p class="bar1">
+						<a href="#" title="reservation">
+							<span class="barIcon"><img src="img/main/icon/bed.svg" alt="reservation"/></span>
+							<span class="barText">book</span>
+						</a>
+					</p>
+					<p class="bar2">
+						<a href="login.html" title="loginLInk" style="fill:#fff">
+							<span class="barIcon"><img src="img/icon/login.svg" alt="login"/></span>
+							<span class="barText">login</span>
+						</a>
+					</p>
+					
+				</div>
+			</div>
+		<section id="signUpArea">
+			<h2><strong>SIGN UP</strong></h2>
+			<em>Welcome to Ritz Paris</em>
+			<form action="#none" method="POST">
+				<fieldset>
+					<legend>sign up</legend>
+					<ul>
+						<li>
+							<label for="userid">ID</label>
+							<input id="userid" type="text" name="userid" placeholder="Enter 3~15 alphanumeric characters in combination" title="Enter 3~15 alphanumeric characters in combination" min="3" max="15" required autofocus autocomplete="off"/>
+						</li>
+						<li>
+							<label for="userpw">PASSWORD</label>
+							<input id="userpw" type="password" name="userpw" placeholder="Enter a combination of 8-16 alphanumeric characters" title="Enter a combination of 8-16 alphanumeric characters" min="8" max="16" required/>
+						</li>
+						<li>
+							<label for="conUserpw">CONFIRM PASSWORD</label>
+							<input id="conUserpw" type="password" name="conUserpw" title="Please mature to match your password." min="8" max="16" required/>
+						</li>
+						<li>
+							<label for="username">NAME</label>
+							<input id="username" type="text" name="username" placeholder="It can be up to 30 characters." title="It can be up to 30 characters." required autocomplete="off"/>
+						</li>
+						<li>
+							<label for="useremail">E-MAIL</label>
+							<input id="useremail" type="email" name="useremail" placeholder="ritzcalton@ritzparis.com" title="Please Enter Your Full E-mail." required autocomplete="off"/>
+						</li>
+						<li>
+							<label for="userphone">PHONE</label>
+							<input id="userphone" type="tel" name="userphone" placeholder="010-1234-5678" pattern="\d{3}-\d{3,4}-\d{4}" title="Please add '-'." required autocomplete="off"/>
+						</li>
+						<li>
+							<input id="chk0" type="checkbox" name="chk0" title="checkbox"/>
+							<i>Receive email notifications when coupons/benefits/events occur (optional)</i>
+						</li>
+						<li>
+							<input id="chk1" type="checkbox" name="chk1" title="checkbox"/>
+							<i>Receive sns notifications when coupons/benefits/events occur (optional)</i>
+						</li>
+					</ul>
+					<div>
+						<input id="reset" type="reset" name="reset" title="reset" value="RESET"/>
+						<input id="signUp" type="submit" name="signUp" title="signUp" value="SIGN UP"/>
+					</div>
+				</fieldset>
+			</form>
+		</section>
+	</div>
+ </body>
+</html>

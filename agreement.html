@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+  <title>agreement</title>
+  <meta charset="utf-8"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <style>
+	/*############### 초기화 ###############*/
+		*{margin:0; padding:0;}
+		body{margin:0; padding:0; background-color:#F9FAFF; color:#343434;}
+		li{list-style:none;}
+		fieldset{border:none;}
+		legend{display:none;}
+		a:link, a:visited{color:#343434; text-decoration:none;}
+
+	/*############### wrap ###############*/
+		#wrap{width:625px; margin:10px auto 0;}
+	
+	/*############### signUp ###############*/
+		#signUp{width:100%;}
+		#lang{width:80px; height:30px; color:#aac; border:2px solid rgba(170,170,204,0.5); border-radius:8px; background-color:rgba(0,0,0,0); float:right;}
+		h1{width:200px; margin-left:212px; padding-top:30px;}
+		h1 a{display:block; width:100%;}
+		h1 a img{width:100%;}
+		 
+		form{width:100%; margin:20px auto 0;}
+		input[type="checkbox"]{margin-right:6px; background-color:#aac; border:none;}
+
+		#underline{text-decoration:underline;}
+
+		#agreementAll{padding-bottom:12px;}
+		b{font-weight:700; font-size:17px; padding-bottom:5px;}
+		span{padding-left:5px;}
+		.required{color:#aac;}
+		.optional{color:#999;}
+
+		textarea{width:100%; height:80px; margin-top:5px; margin-bottom:12px; font-family:arial; color:#777;}
+
+		.info{font-size:15px;}
+		
+		.btnArea{width:575px; height:70px; padding:17px 25px 0 25px;}
+		.btnArea p{width:270px; height:45px; border-radius:30px; background-color:#aac; float:left;}
+		.btn{margin-right:32px;}
+		.btnArea p a{width:100%; height:100%; line-height:45px; text-align:center; font-size:18px; font-weight:700; color:#fff; display:block;}
+		.btnArea p a input{width:100%; height:100%; background-color:rgba(0,0,0,0); border:none; cursor:pointer; font-size:18px; text-transform:uppercase; font-weight:700; color:#fff;}
+
+	/*############### footer ###############*/
+		#footer{width:100%;}
+		ul{width:100%;}
+		li{display:inline;}
+		li a{padding-right:2px; padding-left:2px; font-size:11.5px;}
+		li i{font-style:normal; font-size:11.5px; color:#aac;}
+
+		#corp{width:100%; height:28px; line-height:28px; text-align:center; font-size:13px;}
+
+  </style>
+  <script>
+	function chk0(){
+		var chk0 = document.getElementById("chk");
+		var required0 = document.getElementById("required0");
+		var required1 = document.getElementById("required1");
+		var optional0 = document.getElementById("optional0");
+		var optional1 = document.getElementById("optional1");
+		// console.log(chk0);
+
+		if(chk0.checked == true){
+			required0.checked=true;
+			required1.checked=true;
+			optional0.checked=true;
+			optional1.checked=true;
+		}
+		else{
+			required0.checked=false;
+			required1.checked=false;
+			optional0.checked=false;
+			optional1.checked=false;
+		}
+	}
+	
+	
+	function clk(){
+		var clk = document.getElementById("underline");
+		console.log(clk);
+		var required0 = document.getElementById("required0");
+		var required1 = document.getElementById("required1");
+		var optional0 = document.getElementById("optional0");
+		var optional1 = document.getElementById("optional1");
+		
+		var chk0 = document.getElementById("chk");
+
+		if(chk.checked==true){
+		required0.checked=false;
+		required1.checked=true;
+		optional0.checked=true;
+		optional1.checked=true;
+		}
+	}
+	
+  </script>
+ </head>
+
+ <body>
+	<div id="wrap">
+		<section id="signUp">
+			<select id="lang" title="language">
+				<option value="English" selected="selected">English</option>
+				<option value="Français">Français</option>
+			</select>
+			<h1>
+				<a href="main.html" title="Ritz Paris">
+					<img src="img/logo/logo.png" alt="Ritz Paris"/>
+				</a>
+			</h1>
+			<form action="#none" method="POST">
+				<fieldset>
+					<legend>sign up</legend>
+					<div id="agreementAll">
+						<input id="chk" title="chk" name="chk" type="checkbox" onclick="chk0();"/>
+						<a id="underline" href="#none" title="agreement all" onclick="clk();">
+							I agree to the Ritz Paris Terms of Use, the collection and use of personal information, the terms of use of location information (optional), and the reception of promotional information (optional).
+						</a>
+					</div>
+					<ul>
+						<li>
+							<input id="required0" title="required" name="required0" type="checkbox" required/><b>Agree to the Ritz Paris terms and conditions</b><span class="required">(required)</span>
+							<textarea>
+We welcome you.
+Thank you for using Ritz Paris services and products (hereinafter referred to as ‘Services’). These Terms and Conditions describe the relationship between the Ritz Paris Co., Ltd. (hereinafter referred to as'Ritz Paris'), which provides Ritz Paris services in connection with the use of various Ritz Paris services, and the Ritz Paris service member (hereinafter referred to as'member') or non-member using the same, It also contains useful information that can help you use the Ritz Paris service.
+
+If you use the Ritz Paris service or sign up as a Ritz Paris service member, you will confirm or agree to these Terms and Conditions and related operating policies, so please take a moment to review them carefully.
+
+Enjoy a variety of Ritz Paris services.
+Ritz Paris is a website and application programs (applications, apps) of the Ritz Paris domain including www.naver.com that can add convenience to your life, such as searching for information, communicating with other users, providing content, and shopping for goods. We provide a variety of services.
+You can freely use a variety of Ritz Paris services through various terminals that can use the Internet, such as PCs and mobile phones. ') You can easily check it in the help, etc.
+
+Ritz Paris basically offers the same content for all of you. However, according to related laws such as the'Youth Protection Act' or other special needs in the provision of individual services, users are classified based on age or a certain level, and the contents of the services provided, the time of use, the number of times of use, etc. are different. It may be limited. Detailed information can also be found in the information on each service, announcements, and customer center help.
+
+Basically, these terms and conditions apply to the Ritz Paris service, but in the process of providing a variety of services by Ritz Paris, there are cases inevitably applying separate terms and operating policies other than these terms (e.g., Ritz Paris Pay, V LIVE, etc.). . In addition, for certain services provided by Ritz Paris affiliates (eg, LINE, SNOW, etc.), unique terms and conditions and operating policies set by the operating company may apply. Please check these details on the initial screen of each service.
+
+If you sign up as a member, you can use the Ritz Paris service more conveniently.
+You can apply for membership after reading and agreeing to these terms and conditions, and Ritz Paris completes the membership registration process by accepting this and grants you an account for using the Ritz Paris service (hereinafter referred to as'account'). Account is a member identification unit set to manage the history of various services used by members after logging in to the Ritz Paris service for each member. Members can use more convenient Ritz Paris services through their account. For more information on this, please check the account management policy and how to sign up for a Ritz Paris member in the customer center.
+
+Ritz Paris also provides group member accounts so that multiple members of the group can use the Ritz Paris service together with a common account. Group member members share one account and ID (ID), but each user enters their individually set password to log in to the account and use various services. Group members are composed of administrators and members, and administrators are delegated authority from all members to represent group members and operate group member accounts.
+Therefore, the administrator can agree to separate terms or amendments to the existing terms and conditions through the group member account, or withdraw from the group member, and manage the use of Ritz Paris services, such as how members log in to the group member account and post posts through it You can. In principle, the matters stipulated in these terms and conditions apply to all members, and each member bears joint responsibility for the use of services through other members' group member accounts and IDs.
+
+Please check the account management policy and the Ritz Paris Group Member (Group ID) introduction in the Customer Center for information on the authority and (joint) responsibilities of administrators and members in the use of group member accounts.
+
+We will take care of the content you provide.
+Ritz Paris hopes that your posts will be delivered to other users through the Ritz Paris service to enrich our lives. Posts refer to the content itself or files consisting of signs, texts, voices, sounds, pictures, photos, videos, links, etc. posted on the Ritz Paris service for the purpose of viewing by others or for yourself.
+
+Ritz Paris promises to cherish the content that expresses your thoughts and feelings. Of course, you have the rights, such as intellectual property rights, to the posts you create and post.
+
+On the other hand, in order to legally provide the posts you posted through the Ritz Paris service, the right to use the contents such as storage, reproduction, modification, public transmission, exhibition, distribution, and creation of secondary works (but only for translation), etc. There are no deadlines and regional restrictions, and a license with no additional payment) is required.
+By posting a post you give the Ritz Paris such rights, so you should have the necessary rights.
+
+Ritz Paris complies with legal obligations such as exposure within the Ritz Paris service, utilization for service promotion, research for service operation, improvement and new service development, web accessibility, etc., as stipulated by relevant laws such as the Copyright Act. , We will exercise limited exercise only to allow search, collection and linking from external sites.
+If you inevitably want to use your content for other purposes, we will explain to you in advance and obtain your consent.
+
+In addition, the valuable content provided by you can be used by Ritz Paris and Ritz Paris affiliates for research and development purposes such as artificial intelligence technology to improve Ritz Paris services and provide new Ritz Paris services. Ritz Paris will do its best to provide you with more convenient and useful services through continuous research and development.
+
+Ritz Paris strives to provide a variety of means to make it easier for you to manage the use or access of Ritz Paris or other users to the content you provide. You can directly control the use or access of others through the management function such as content deletion or privacy in the Ritz Paris service, and request actions such as deletion, privacy, and excluding search results through the customer center. can.
+However, in the case of some Ritz Paris services, it may be difficult to process such as deletion or non-disclosure, so please check the information on each service, announcements, customer center help, etc.
+
+We carefully protect your personal information.
+Ritz Paris collects and uses personal information only within the purpose and scope agreed by the member for the smooth provision of services, and manages it safely in accordance with the laws and regulations related to personal information protection. Efforts and other details that Ritz Paris makes to safely process relevant personal information for users and members can be found in the Privacy Policy.
+
+Ritz Paris may destroy or segregate your information if you do not have a record of logging in or accessing the service for a certain period of time in order to use the service, after notifying you in advance through e-mail, in-service notification or other appropriate electronic means. , If necessary information for the provision of services becomes insufficient due to this, the related service use contract may inevitably be terminated.
+
+Please respect the rights of others.
+Posts posted by you inadvertently may infringe on the copyright of others or infringe on the rights such as defamation. In order to solve this problem, Ritz Paris stopped posting posts at the request of the claimant of rights infringement based on the'Act on Promotion of Information and Communications Network Utilization and Information Protection, etc.' and'Copyright Act', and posting the post according to the original publisher's objection We are operating a post interruption request service with contents such as resumption. For more detailed information and procedures, please refer to the introduction of the post interruption request service in the customer center.
+
+On the other hand, using the content of another person through the Ritz Paris service does not mean that you will have intellectual property rights in the content. In order for you to use the content freely, special attention is required because the use of the content is within the range permitted under applicable laws such as the copyright law, or you must obtain separate permission from the intellectual property rights holder of the content.
+
+Ritz Paris grants you access to the use of related software accompanying the Ritz Paris service in order to give you full access to the Ritz Paris service. Please note that in this case, your free use is permitted only within the scope of the terms and conditions set forth by Ritz Paris, these rights are non-transferable, and non-exclusive conditions and legal notices apply.
+
+Take advantage of the various points offered by Ritz Paris.
+Ritz Paris gives you points so that you can use the Ritz Paris service efficiently. Points refer to virtual data on the service with a certain unit of calculation that is arbitrarily determined or adjusted by Ritz Paris in connection with your regular Ritz Paris service use. Points cannot be refunded or converted for money because they have no property value, but the number of points may affect your use of the Ritz Paris service, so please use them appropriately in some cases.
+
+Ritz Paris may inevitably adjust some or all of the points after providing information to you in advance if necessary to support the efficient use of the Ritz Paris service or to improve the service operation. In addition, points may expire periodically depending on the period set by the Ritz Paris, so please be careful when using the Ritz Paris service where points are granted.
+							</textarea>
+						</li>
+						<li>
+							<input id="required1" title="required" name="required1" type="checkbox" required/><b>Personal Information Collection and Usage Agreement</b><span class="required">(required)</span>
+							<textarea>
+In accordance with the Personal Information Protection Act, we will inform you of the items of personal information collected to those who apply for membership in Ritz Paris, the purpose of collecting and using personal information, the retention and use period of personal information, the right to refuse consent, and the disadvantages of refusing consent. Please read carefully and agree.
+
+1. Personal information to be collected
+Users can use most of the Ritz Paris services in the same way as members, such as searching for information and viewing news without registering as a member. When a user signs up to use personalized or membership services such as mail, calendar, cafe, blog, etc., Ritz Paris collects the minimum amount of personal information necessary to use the service.
+
+The personal information Ritz Paris collects from users at the time of membership registration is as follows.
+-When registering as a member,'ID, password, name, date of birth, gender, and mobile phone number' are collected as required items. If the date of birth entered by the user is a child under the age of 14, the legal representative information (name, date of birth, gender, duplicate registration confirmation information (DI), mobile phone number) is additionally collected. We also collect email address and profile information as optional items.
+-When signing up with a group ID, the group ID, password, group name, email address, and mobile phone number are collected as required items. In addition, the name of the representative of the group is collected as an optional item.
+The personal information collected from users in the process of using the service is as follows.
+In the process of using individual services within NAVER, applying for events, and applying for prizes, additional personal information may be collected only for users of the service. In the case of additional personal information collection, at the time of collection of the personal information, the user is informed of'the items of personal information to be collected, the purpose of collection and use of personal information, and the period of storage of personal information' and obtains consent.
+
+In the process of using the service, IP address, cookies, service use records, device information, and location information may be created and collected. Also, images or voices may be collected from search services using images and voices.
+Specifically, 1) information about users is created in an automated way during the service use process and stored (collected), or
+2) The unique information of the user's device is safely converted and collected so that the original value cannot be verified. Location information may be collected in the process of using the service,
+The location-based services provided by Ritz Paris are stipulated in detail in the'Ritz Paris Location Information Terms of Use'.
+The information collected in this way may or may not correspond to personal information depending on whether or not it is linked to personal information.
+
+2. Use of collected personal information
+Personal information is used only for the following purposes, such as member management of Ritz Paris and Ritz Paris related services (including mobile web/apps), service development, provision and improvement, and establishment of a safe Internet use environment.
+
+-Personal information is used for member management, such as confirmation of membership registration, age verification and legal representative consent, identification of users and legal representatives, user identification, and confirmation of membership withdrawal.
+-In addition to providing existing services such as content (including advertisements), new service elements such as demographic analysis, analysis of service visits and usage records, formation of relationships between users based on personal information and interests, and provision of customized services based on acquaintances and interests Personal information is used to discover and improve existing services.
+-Notification of restrictions on use of members who violate the laws and the Ritz Paris Terms of Use, prevention and sanctions against acts that interfere with the smooth operation of the service, including fraudulent use, prevention of account theft and fraudulent transactions, revision of the terms and conditions, etc. Personal information is used for user protection and service operation, such as delivering matters, preserving records for dispute settlement, and handling civil complaints.
+-Personal information is used for identification, purchase and payment, and delivery of goods and services in accordance with the provision of paid services.
+-Personal information is used for marketing and promotion purposes such as providing event information, participation opportunities, and advertising information.
+-Personal information is used for analysis of service usage records and frequency of access, statistics on service use, service analysis and provision of customized services according to statistics, and advertisements.
+-In terms of security, privacy, and safety, personal information is used to build a service environment that users can use with confidence.
+3. Retention period of personal information
+In principle, the company destroys user's personal information without delay upon withdrawal from membership.
+However, if a separate consent is obtained from the user for the storage period of personal information, or if the law imposes an obligation to store information for a certain period of time, personal information is kept safely for that period.
+
+The following are cases when consent is obtained from the user at the time of membership registration or service subscription for the period of personal information storage.
+-Prevent illegal subscription and use
+Subscription authentication mobile phone number or DI (legal representative DI in the case of under 14 years old): Stored for 6 months from the time of collection
+Mobile phone number of the user who has withdrawn (one-way encryption (hash processing) that cannot be decrypted): Stored for 6 months from the date of withdrawal
+-Response to QR code recovery request
+QR code registration information: Stored for 6 months from the time of deletion
+-Smart Place dispute settlement and customer inquiry response
+Mobile phone number: Up to 1 year from the time of request for registration/modification/deletion
+-Prevention of overlapping benefits of Ritz Paris Plus membership service
+Encrypted (hash-processed) DI: Stored for 6 months from the end of benefit provision
+The following are cases in which information is stored for a certain period of time in laws such as the Consumer Protection Act in Electronic Commerce, Electronic Financial Transactions Act, and Communication Secret Protection Act. Ritz Paris retains personal data during this period in accordance with the provisions of the law and never uses this information for any other purpose.
+-Act on consumer protection in e-commerce, etc.
+Records on contract or subscription withdrawal: 5 years
+Records on payment and supply of goods: 5 years
+Records on consumer complaints or dispute settlement: 3 years
+-Electronic Financial Transactions Act
+Records on electronic finance: 5 years
+-Communication Secret Protection Act
+Login history: 3 months
+
+For reference, Ritz Paris separately stores and manages personal information of members who have not used the service for one year in accordance with the'personal information expiration date'.
+
+4. Right to refuse consent to collection and use of personal information
+Users have the right to refuse to consent to the collection and use of personal information. Membership registration may be difficult if you refuse to consent to the collection and use of the minimum personal information collected during membership, that is, required items.
+							</textarea>
+						</li>
+						<li>
+							<input id="optional0" title="optional" name="optional0" type="checkbox"/><b>Agree to the terms of use of location information</b><span class="optional">(optional)</span>
+							<textarea>
+If you agree to the terms of use of location information, you can use Ritz Paris location-based services, including receiving advertising information using location.
+
+Article 1 [Purpose)
+These terms and conditions are intended to stipulate the rights, obligations and responsibilities of the company and the personal location information subject, and other necessary matters in relation to the location information business or location-based service business provided by Ritz Paris Co., Ltd. Do it.
+
+Article 2 (rules other than the terms and conditions)
+Matters not specified in these terms and conditions include the Act on the Protection and Use of Location Information, the Act on Promotion of Information and Communication Network Utilization and Information Protection, etc. In accordance with the guidelines set separately by the company.
+
+Article 3 (Service Contents and Fees)
+① The company directly collects location information or receives location information from a mobile communication company that is a location information service provider and provides location-based services as follows.
+1.Geo Tagging Service: The location information of the personal location information subject or mobile device included in the post is stored with the post.
+2. Service for providing search results using location information: When requesting information search or providing location information of personal location information subjects or mobile devices, search results and surrounding results using this location information (at restaurants, neighboring companies, transportation, etc.) ).
+3. Finding friends and making friends using location information: Uses your current location to find a friend or recommend a friend.
+4. Exchange contacts: You can exchange contacts with friends using location information.
+5. Provision of advertising information using user location: In the process of using search results or other services, the location of the personal location information subject or mobile device is used to present advertising material.
+6. Protection of users and prevention of illegal use: By using the location of the personal location information subject or mobile device, unauthorized attempts to use the service are blocked.
+7. Location information sharing: The location information of the personal location information subject or mobile device is shared with an acquaintance or a third party designated by the personal location information subject for the purpose of returning home safely.
+8. Provision of convenient services such as directions: It provides the best route such as traffic information and directions as a map, and provides various driving and life convenience services such as finding nearby facilities, life information such as news/weather, and emergency rescue services.
+② Section 1 location-based service is free of charge.
+Article 4 (rights of personal location information subject)
+① The subject of personal location information may withhold consent to the scope of collection of personal location information and part of the terms and conditions of use, the purpose of use and provision of personal location information, the scope of the recipient and part of the location-based service.
+② The subject of personal location information may withdraw all or part of the consent to the collection, use, and provision of personal location information.
+③ The subject of personal location information may request a temporary suspension of the collection, use, and provision of personal location information at any time. In this case, the company does not reject the request and has technical means for this.
+④ The subject of personal location information may request the company to view or notify the following data, and if there is an error in the data, it may request correction. In this case, the company will not reject the request without justifiable reason.
+1. Data confirming the collection, use, and provision of location information for the subject of personal location information
+2. The reason and content of the personal location information of the subject of personal location information provided to a third party pursuant to the Protection and Use of Location Information Act or other laws and regulations
+⑤ If the subject of personal location information withdraws all or part of the consent, the company destroys the collected personal location information and data confirming the collection, use, and provision of location information without delay. However, if a part of the consent is withdrawn, it is limited to the data confirming the collection, use, and provision of personal location information and location information for the part to be withdrawn.
+⑥ The subject of personal location information may request the company by using the contact information in Article 13 of these Terms and Conditions for the exercise of rights under paragraphs 1 to 4.
+Article 5 (rights of legal representative)
+① When the company intends to collect, use or provide personal location information from children under the age of 14, it must obtain the consent of the child under the age of 14 and their legal representative.
+② If the legal representative agrees to the collection, use, and provision of personal location information of children under the age of 14, he/she may exercise the right to retain consent, withdrawal of consent and the right to temporarily suspend, and the right to read and request notification.
+Article 6 (Basis for retention and retention period of data confirming the use and provision of location information)
+In accordance with Article 16, Paragraph 2 of the Act on the Protection and Use of Location Information, the company automatically records data confirming the collection, use, and provision of location information for the subject of personal location information in the location information system, and keeps it for more than 6 months. Do it.
+
+Article 7 (change and suspension of service)
+① If the company cannot maintain the service due to various circumstances of the company or legal obstacles, such as a change in the policy of the location information provider, the company may limit, change or suspend all or part of the service.
+② In case of service interruption pursuant to Paragraph 1, the Company shall notify the subject of personal location information or notify the Internet or the like in advance.
+Article 8 (immediately notified when personal location information is provided to a third party)
+① The company does not provide the personal location information of the personal location information subject to a third party without the consent of the personal location information subject. Notify the subject and obtain consent.
+② If the company provides personal location information to a third party designated by the personal location information subject, the person who receives the personal location information and the purpose of providing the personal location information to the personal location information subject immediately I will notify you.
+③ However, in the following cases, the subject of personal location information is specified in advance and notified to the designated communication terminal device or e-mail address.
+1. When the communication terminal device that collected personal location information does not have the function of receiving text, audio or video
+2. In case the subject of personal location information has requested in advance to notify it to a communication terminal device or e-mail address other than the communication terminal device in which the personal location information was collected.
+Article 9 (rights of persons obligated to protect children under the age of 8, etc.)
+① The company agrees to the use or provision of personal location information for the protection of the lives or bodies of children under the age of 8 by the person who is obligated to protect the person falling under the following cases In this case, it is assumed that you have your consent.
+1. Children under the age of 8
+2. Incompetent
+3. Persons with mental disabilities pursuant to Article 2 (2) 2 of the Welfare of Persons with Disabilities Act, and persons with severe disabilities pursuant to Article 2 (2) of the Employment Promotion and Vocational Rehabilitation Act Limited to those who have registered)
+② A protection officer who wishes to consent to the use or provision of personal location information for the protection of the life or body of a child under the age of 8 must submit a written consent form to the company with a document certifying that it is the person responsible for protection.
+③ If the person responsible for protection agrees to the use or provision of personal location information for children under the age of 8, they can exercise all of the rights of the subject of personal location information.
+Article 10 (Compensation for Damage)
+The subject of personal location information may claim damages from the company in the event of damage caused by violating Articles 15 to 26 of the Act on the Protection and Use of the Company's Location Information. In this case, the company cannot escape responsibility unless it proves that there is no intention or negligence.
+							</textarea>
+						</li>
+						<li>
+							<input id="optional1" title="optional" name="optional1" type="checkbox"/><b>Consent to receive promotional information</b><span class="optional">(optional)</span>
+							<p class="info">
+								You can receive various information such as events/benefits provided by Ritz Paris by mobile phone (notification or text message in Ritz Paris app) or email. In the case of some services (operated by a separate membership system or services that are used by additional subscriptions after joining Ritz Paris), you may receive a separate consent to receive individual services, and at this time, you may separately inform and receive consent for receiving consent.
+							</p>
+						</li>
+					</ul>
+					<div class="btnArea">
+						<p class="btn">
+							<a href="main.html" title="CANCEL">CANCEL</a>
+						</p>
+						<p>
+							<a href="#signUp.html" title="OK">
+								<input id="submit" type="submit" name="submit" title="OK" value="OK"/>
+							</a>
+						</p>
+					</div>
+				</fieldset>
+			</form>
+		</section>
+		<footer id="footer">
+			<ul>
+				<li>
+					<a href="#none" title="Terms of service">Terms of service</a>
+					<i>|</i>
+				</li>
+				<li>
+					<a href="#none" title="Privacy Policy">Privacy Policy</a>
+					<i>|</i> 
+				</li>
+				<li>
+					<a href="#none" title="Limitation of Liability and Legal Notice">Limitation of Liability and Legal Notice</a>
+					<i>|</i>
+				</li>
+				<li>
+					<a href="#none" title="Member Information Customer Center">Member Information Customer Center</a>
+				</li>
+			</ul>
+			<div id="corp">
+				&copy; Jeehae. All Rights Reserved.
+			</div>
+		</footer>
+	</div>
+ </body>
+</html>

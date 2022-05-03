@@ -1,0 +1,130 @@
+#mainArea .boutique > a > .title > em {font-family: "Oswald", sans-serif; font-weight: 400;}
+/*########### skipNav ###########*/
+#skipNav, #skipNav p{width:100%;}
+#skipNav{position:absolute; left:0; top:-30px;}
+
+#skipNav p a{display:block; width:100%; background-color:rgba(255,217,218,0.5);
+text-align:center; line-height:30px; color:#F9FAFF; position:absolute;}
+
+#skipNav p a:focus{top:30px; color:#32336c; font-family:Bell MT; font-size:18px;}
+
+  /*########### 사이즈 작업 ###########*/
+  #wrap{width:100%;}
+  #container{width:100%;}
+  #content{width:1440px; margin:0 auto;}
+
+  /*########### 공통 ###########*/
+	  strong{font-family:"os"; font-weight:600;}
+
+  /*########### h1 ###########*/
+  h1{width:125px; margin:0 auto; padding-top:35px;}
+  h1 a{display:block; width:100%;}
+  h1 a img{width:100%;}
+
+  /*########### mainArea ###########*/
+	  #mainArea{width:100%; height:400px; margin:70px auto 0;}
+	  #mainArea a{display:block; width:100%; height:100%; color:#32336C; position:relative;}
+	  #mainArea a span{display:block; position:absolute;}
+	  #mainArea a .img{width:580px; height:400px; overflow:hidden; left:0; top:0; background-color:#F9FAFF; border-radius:50px 5px; box-shadow:7px 7px 25px rgba(0,0,0,0.4);}
+	  #mainArea a .img img{height:100%; overflow:hidden; transform:scale(1.06); transition:all 0.3s ease-in-out;}
+	  #mainArea .hotel a .img img{margin-left:-65px;}
+	  #mainArea a .colorBox0{width:140px; height:30px; background-color:rgba(255,217,218,0.7); left:220px; top:250px;}
+	  #mainArea a .title{left:0; top:100px; width:580px; height:200px; color:#32336C;}
+	  #mainArea a .title strong{display:block; font-size:100px; text-align:center; letter-spacing:5px;}
+	  #mainArea a .title em{display:block; font-family:Bell MT; font-size:30px; text-align:center;}
+
+	  #mainArea p a:hover img{transform:scale(1);}
+
+  /*########### mainArea / hotel ###########*/
+	.hotel{width:580px; height:400px; margin-left:5%; float:left;}
+
+  /*########### mainArea / boutique ###########*/
+  #mainArea .boutique{width:580px; height:400px; margin-right:5%; float:right;}
+  #mainArea .boutique a .img img{margin-left:-120px;}
+  #mainArea a .colorBox1{width:180px; height:34px; background-color:rgba(255,217,218,0.7); left:200px; top:250px;}
+  #mainArea .boutique .title strong{color:#F9FAFF;}
+  #mainArea .boutique .title em{color:#F9FAFF;}
+
+  /*########### mainArea / languageArea ###########*/
+  #languageArea{width:1200px; height:63px; line-height:63px; margin:80px auto 0; text-align:center;}
+  #languageArea li{display:inline;}
+  #languageArea li a{padding:0 36px; color:#32336C; font-size:17px;}
+  #languageArea li i{font-style:normal; color:#aaa;}
+
+  #languageArea li a:hover, #languageArea li a:focus{text-decoration:underline; color:#313370;}
+
+  /*################### mediaQuery / 스마트폰 세로 ###################*/
+		@media all and (min-width:320px) and (max-width:480px){
+			/*########### 사이즈 작업 ###########*/
+			  #content{width:320px; margin:0 auto;}
+
+			/*########### h1 ###########*/
+			  h1{width:90px; padding-top:27px;}
+
+		    /*########### mainArea ###########*/
+			  #mainArea{height:320px; margin:35px auto 0;}
+			  #mainArea p{width:310px; height:250px; margin:0 auto 25px;; float:none;}
+			  #mainArea a .img{width:310px; height:250px; border-radius:30px 5px; box-shadow:5px 5px 20px rgba(0,0,0,0.4);}
+			  #mainArea a .colorBox0{width:96px; height:25px; left:160px; top:147px; margin-left:-50px;}
+			  #mainArea a .title{left:0; top:70px; width:310px; height:120px;}
+			  #mainArea a .title strong{font-size:50px; letter-spacing:2px;}
+			  #mainArea a .title em{font-size:22px;}
+
+	  	    /*########### mainArea / boutique ###########*/
+			  #mainArea .boutique{width:310px; height:250px; margin:0 auto 20px;; float:none;}
+			  #mainArea .boutique a .img img{margin-left:-95px;}
+			  #mainArea a .colorBox1{width:118px; height:25px; left:158px; top:145px; margin-left:-60px;}
+
+			/*########### mainArea / languageArea ###########*/
+			  #languageArea{width:320px; margin:0 auto;}
+		}
+	/*################### mediaQuery / 스마트폰 가로 ###################*/
+		@media all and (min-width:481px) and (max-width:767px){
+			/*########### 사이즈 작업 ###########*/
+			  #content{width:481px;}
+
+			/*########### h1 ###########*/
+			  h1{width:100px; padding-top:27px;}
+
+		    /*########### mainArea ###########*/
+			  #mainArea{height:880px; margin:35px auto 0;}
+			  #mainArea p{width:470px; height:410px; margin:0 auto 25px;; float:none;}
+			  #mainArea a .img{width:470px; height:410px; border-radius:37px 5px; box-shadow:5px 5px 20px rgba(0,0,0,0.4);}
+			  #mainArea a .colorBox0{width:115px; height:35px; left:235px; top:240px; margin-left:-54px;}
+			  #mainArea a .title{left:0; top:120px; width:470px; height:150px;}
+			  #mainArea a .title strong{font-size:80px; letter-spacing:3px;}
+			  #mainArea a .title em{font-size:30px;}
+
+	  	    /*########### mainArea / boutique ###########*/
+			  #mainArea .boutique{width:470px; height:410px; margin:0 auto 20px;; float:none;}
+			  #mainArea .boutique a .img img{margin-left:-180px;}
+			  #mainArea a .colorBox1{width:155px; height:35px; left:235px; top:240px; margin-left:-75px;}
+
+			/*########### mainArea / languageArea ###########*/
+			  #languageArea{width:470px; margin:0 auto;}
+		}
+	/*################### mediaQuery / 태블릿 PC  ###################*/
+		@media all and (min-width:768px) and (max-width:1024px){
+			/*########### 사이즈 작업 ###########*/
+			  #content{width:768px;}
+
+			/*########### h1 ###########*/
+			  h1{width:125px; padding-top:27px;}
+
+		    /*########### mainArea ###########*/
+			  #mainArea{height:1350px; margin:35px auto 0;}
+			  #mainArea p{width:700px; height:640px; margin:0 auto 30px;; float:none;}
+			  #mainArea a .img{width:700px; height:640px; border-radius:50px 5px; box-shadow:6px 6px 25px rgba(0,0,0,0.4);}
+			  #mainArea a .colorBox0{width:132px; height:35px; left:255px; top:278px; margin-left:-54px;}
+			  #mainArea a .title{left:20px; top:138px; width:500px; height:200px;}
+			  #mainArea a .title strong{font-size:92px; letter-spacing:4px;}
+			  #mainArea a .title em{font-size:30px;}
+
+	  	    /*########### mainArea / boutique ###########*/
+			  #mainArea .boutique{width:700px; height:640px; margin:0 auto 20px;; float:none;}
+			  #mainArea .boutique a .img img{margin-left:-180px;}
+			  #mainArea a .colorBox1{width:170px; height:35px; left:254px; top:278px; margin-left:-75px;}
+
+			/*########### mainArea / languageArea ###########*/
+			  #languageArea{width:470px; margin:0 auto;}
+		}

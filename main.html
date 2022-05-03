@@ -1,0 +1,1766 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <title>ritzParis</title>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script>
+	$(document).ready(function(){
+		$(".bar0").click(function(){
+			$(".bar0 .lightMode").css({"display":"block","width ":"125px"});
+			$(".bar0 .barText").css({"display":"none"});
+		});
+		
+		$(".sMenu").hide();
+		$(".menu li:eq(0)").click(function(){
+			$(".sMenu").slideUp(400,"swing");
+			$(this).children(".sMenu").slideDown(400,"swing");
+			$(this).children(".aBtn").css({"overflow":"visible","border-bottom":"none"});
+		});
+		$(".menu li:eq(1)").click(function(){
+			$(".sMenu").slideUp(400,"swing");
+			$(this).children(".sMenu").slideDown(400,"swing");
+			$(this).children(".aBtn").css({"overflow":"visible","border-bottom":"none"});
+		});
+		$(".menu li:eq(2)").click(function(){
+			$(".sMenu").slideUp(400,"swing");
+			$(this).children(".sMenu").slideDown(400,"swing");
+			$(this).children(".aBtn").css({"overflow":"visible","border-bottom":"none"});
+		});
+
+		$("#popLogin, #full").hide();
+		$(".bar2").click(function(){
+			$("#popLogin, #full").show();
+
+			$("body").css({"overflow-y":"hidden"});
+			return false;
+		});
+		$("#full, .close").click(function(){
+			$("#popLogin, #full").hide();
+			$("body").css({"overflow-y":"visible"});
+		});
+	});
+  </script>
+  
+  <style>
+  /*################## 초기화 ##################*/
+	  *{margin:0; padding:0;}
+	  li{list-style-type:none;}
+	  a:link, a:visited{text-decoration:none; color:#27374d;}
+	  body{font-family:Bell MT;}
+	  img{border:none;}
+	  /* 목차 생성용 */
+	  h4{position:absolute; left:-9999px; width:1px; height:1px; font-size:1px; line-height:0; overflow:hidden;}
+	  @font-face{
+		  font-family:"Oswald", "Bell MT";
+		  src:url("font/Oswald.woff"),url("font/Bell MT.ttf");
+		}
+	  fieldset{border:none;}
+	  legend{display:none;}
+
+	/*########### skipNav ###########*/
+		#skipNav, #skipNav p{width:100%; z-index:20;}
+		#skipNav{position:absolute; left:0; top:-30px;}
+
+		#skipNav p a{display:block; width:100%; background-color:rgba(255,217,218,0.5);
+		text-align:center; line-height:30px; color:#F9FAFF; position:absolute;}
+
+		#skipNav p a:focus{top:30px; color:#32336c; font-family:Bell MT; font-size:18px;}
+
+  /*################## wrap ##################*/
+	#wrap{width:100%;}
+
+  /*################## header ##################*/
+	  #headerWrap{width:100%; height:86px; left:0; top:0; position:fixed; background-image:linear-gradient(to top, rgba(248,250,255,0.1), rgba(248,250,255,0.6)); transition:background-color 0.2s linear; z-index:10;}
+	  #header{width:1440px; height:80px; margin:0 auto;}
+	  #headerBorder{width:100%; height:6px; background-image:linear-gradient(to top, rgba(248,250,255,0.6), rgba(255,255,255,0.1)); transition:background-color 0.2s linear;}
+
+	  #headerWrap:hover{background-color:#f8faff;}
+	  #headerWrap:hover #headerBorder{background-color:#f8faff;}
+
+	  #gnbArea{width:1270px; height:100%; float:left;}
+
+	  .menuBar{width:1270px; height:80px; line-height:80px;}
+	  .menuIcon{width:150px; height:50px; margin-top:18px; float:left;}
+	  .menuIcon a{width:80%; height:46px; display:block;}
+	  .menuIcon a span{width:35px; height:2px; background-color:#353866; border-radius:2px; box-shadow:1px 1px 2px rgba(0,0,0,0.5); display:block; transform:translatex(0); transition:transform 0.2s linear;}
+	  .menuIcon a .line0{margin-left:60px; margin-top:9px;}
+	  .menuIcon a .line1{margin-left:70px; margin-top:9px;}
+	  .menuIcon a .line2{margin-left:50px; margin-top:9px;}
+ 
+	  .menuIcon:hover .line1{transform:translatex(-10px);}
+	  .menuIcon:hover .line2{transform:translatex(10px);}
+
+	  .gnb{width:1120px; height:60px; float:left;}
+	  .gnb li{line-height:60px; padding:0 20px; font-size:18px; display:inline;}
+	  .gnb li a{color:#353866;}
+
+	  .gnb li a:hover{color:#777;}
+
+	  #logo{width:120px; padding-top:10px; float:left; position:relative;}
+	  #logo img{width:100%;}
+
+	  .boutique{display:none;}
+	  
+	  /* side bar */
+		  #bar{width:140px; height:182px; right:0; top:300px; position:fixed;}
+		  #bar p{width:100%; height:60px; left:0; top:0; position:absolute; transform:translatex(78px); transition:transform 0.2s ease-out; border-radius:8px 0 0 8px; box-shadow:5px 5px 7px rgba(0,0,0,0.4);}
+		  #bar .bar0{width:189px; background-color:rgba(202,228,219,0.8); color:#fff; font-size:24px; cursor:pointer;}
+		  #bar .bar1{width:125px; top:65px; background-color:rgba(205,172,129,0.8);}
+		  #bar .bar2{top:130px; background-color:rgba(0,48,63,0.8);}
+		  #bar p a{width:100%; height:100%; display:block; color:#fff; font-size:24px;}
+		  
+		  #bar p .barIcon{width:50px; height:40px; padding-top:5px; padding-left:6px; display:block; float:left;}
+		  #bar p .barIcon img{width:100%;}
+
+		  #bar p .barText{width:66px; height:100%; padding-left:8px; line-height:60px; font-family:"Oswald"; display:block; float:left;}
+		  #bar .bar0 .barText{width:114px;}
+		  #bar .bar0 .lightMode{width:120px; width:66px; height:100%; padding-left:8px; line-height:60px; font-family:"Oswald"; display:none; float:left; font-size:24px;}
+		  #bar .bar1 a .barText{width:49px;}
+
+		  #bar .bar0:hover{transform:translatex(-30px);}
+		  #bar .bar1:hover{transform:translatex(17px);}
+		  #bar .bar2:hover{transform:translatex(15px);}
+		  
+		  #bar:after{content:""; display:block; clear:both;}
+
+  /*################## container ##################*/
+	#container{width:100%;}
+
+  /*################## container / visual ##################*/
+	  #visual{width:100%; height:100%; overflow:hidden; position:relative;}
+
+	  #mainVideo{width:100%; height:100%;}
+	  #mainVideo video{width:100%; height:100%;}
+
+	  #reserveArea{width:1000px; height:100px;  font-size:22px; position:absolute; left:50%; margin-left:-500px; bottom:50px;}
+	  #aroundArea{width:100%; height:40px;}
+	  #aroundArea p{width:399px; height:100%; line-height:40px; margin-left:601px; text-align:center; border-radius:50px 0px 0 0; box-shadow:5px 5px 15px rgba(0,0,0,0.5); background-color:rgba(0,47,168,0.3);}
+	  #aroundArea p a{text-decoration:underline; color:#fff;}
+	  #quickReserve{width:100%; height:60px; background-color:#fff;  box-shadow:5px 5px 10px rgba(0,0,0,0.5);}
+	  #quickReserve li{width:180px; height:100%; line-height:60px; text-indent:14px; float:left;}
+	  #quickReserve li a{font-size:16px; text-transform:uppercase;}
+	  #quickReserve .li0{width:258px; height:100%; border-right:2px solid #ccc;}
+	  #quickReserve .li0 img{width:35px; padding:0 8px; vertical-align:middle;}
+	  #quickReserve .li0 ul{display:none;}
+	  #quickReserve .li0:hover li{display:block;}/*가상객체써서 다시 해보기*/
+	  #quickReserve .li1{width:128px; border-right:2px solid #ccc;}
+	  #quickReserve .li1 select{padding-right:16px; border:none; font-family:Bell MT; font-size:16px;}
+	  #quickReserve .li2{width:250px; border:0; text-align:center; text-indent:0;}
+	  #quickReserve .li2 input{width:160px; border:none; font-family:Bell MT; font-size:16px; color:#aaa; text-align:center;}
+	  #quickReserve .li3{width:360px; text-indent:60px; background-color:#353866; position:relative;}
+	  #quickReserve .li3 #infoSubmit{border:none; background-color:rgba(0,0,0,0); color:#fff; font-family:Bell MT; font-size:16px;}
+	  #quickReserve .li3 .arrow{width:20px; position:absolute; right:100px; top:10px;}
+	  #quickReserve .li3 .arrow img{width:100%;}
+
+	  #reserveMobile{display:none;}
+
+  /*################## container / letter ##################*/
+	  /* feather 이미지 크기 : 668px * 668px */
+	  #letterW{width:100%; height:820px; overflow:hidden;}
+
+	  #letter{width:1440px; height:100%; margin:0 auto; position:relative;}
+	  #letter .feather{width:680px; height:668px; background-image:url('img/main/feather_out.jpg'); background-attachment:fixed; background-repeat:no-repeat; background-size:auto 1000px; background-position:right center; float:left;}
+
+	  #letter .letterDesc{width:670px; margin-top:63px; margin-left:70px; text-align:center; font-size:24px; float:left; line-height:40px; color:#353866; transition:margin-top 10s ease-in;}
+	  #letter .letterDesc .fontsize{font-size:50px; font-style:italic;}
+	  .gradientTop{width:100%; height:60px; left:0; top:0; position:absolute; background-image:linear-gradient(to top, rgba(255,255,255,0), rgba(255,255,255,1)); text-indent:-9999px;}
+	  .gradientBottom{width:100%; height:50px; left:0; bottom:0; position:absolute; background-image:linear-gradient(to top, rgba(255,255,255,1), rgba(255,255,255,0)); text-indent:-9999px;}
+
+	  #letter:hover .letterDesc{margin-top:-320px;}
+	  .letterDesc:after{content:""; display:block; clear:both;}
+
+	/*############### container / interview ###############*/
+	  #interview{width:100%; height:800px; margin:0 auto; position:relative; background-color:#aea;}
+	  #interview .centerArea{width:1150px; height:750px;; margin:50px auto 0;}
+	  #interview .centerArea dt{width:600px; height:600px; border:50px solid #9ddfd3; margin-left:150px;}
+	  #interview .centerArea dt img{width:100%;}
+	  #interview .centerArea .textBox{width:600px; height:300px; background-color:#ffdada; left:695px; top:300px; position:absolute;}
+	  #interview .centerArea .textBox dt{font-size:50px; color:#9ddfd3; text-align:center; line-height:84px; color:#353866;}
+	  #interview .centerArea .textBox dd{width:94%; padding:0 3%; font-family:"Oswald"; font-size:20px; line-height:36px; padding-top:10px; text-align:center;}
+	  #interview .leftArrow{width:60px; left:20px; top:369px; position:absolute;}
+	  #interview .leftArrow a{width:100%; display:block;}
+	  #interview .leftArrow a img{width:100%;}
+	  #interview .rightArrow{width:60px; right:20px; top:369px; position:absolute;}
+	  #interview .rightArrow a{width:100%; display:block;}
+	  #interview .rightArrow a img{width:100%;}
+
+  /*################## container / boxes ##################*/
+	  #boxes{width:100%; height:900px; padding-top:100px; border:1px solid #f0efe7; background-color:#f8faff;}
+	  #boxes ul{width:1440px; height:720px; margin:0 auto; padding-top:40px;}
+	  #boxes ul li{width:25%; height:50%; float:left; color:#f8faff; font-size:32px; text-align:center; line-height:360px; overflow:hidden;}
+	  #boxes ul li a{width:100%; display:block; color:#fff;}
+	  #boxes ul li img{width:100%;}
+	  
+	  #boxes ul .imgBox{position:relative;}
+	  #boxes ul .imgBox .imgBox_text{width:100%; height:100%; color:#fff; background-color:rgba(0,0,0,0.4); opacity:0; transition:opacity 0.3s linear; left:0; top:0; position:absolute; z-index:1;}
+	  #boxes ul .imgBox_img img{transition:transform 0.2s linear;}
+	  #boxes ul .imgBox:hover .imgBox_text{opacity:1;}
+	  #boxes ul .imgBox:hover .imgBox_img img{transform:scale(1.1);}
+
+	  #boxes ul .videoArea{width:25%; height:50%; position:relative;}
+	  #boxes ul .videoArea .video{width:100%; height:100%; left:0; top:-100px; position:absolute;}
+	  #boxes ul .videoArea .video video{width:100%;}
+	  #boxes ul .videoArea .img{width:100%; height:100%; left:0; top:0; position:absolute;}
+	  #boxes ul .videoArea:hover .video{z-index:2;}
+
+	  #boxes ul .textBoxS{width:350px; padding:0 5px; background-color:#4d8fc9;}
+	  #boxes ul .textBoxB{width:350px; padding:0 5px; background-color:#c8b08d;}
+
+	  #boxes ul li .line1{line-height:360px;}
+	  #boxes ul li .line2{width:100%; height:90px; line-height:45px; padding-top:135px;}
+	  #boxes ul li .line3{width:100%; height:130px; line-height:45px; padding-top:115px;}
+
+  /*################## container / positionArea ##################*/
+	  /* 공통작업 */
+	  #positionAreaW{width:100%; height:1400px; background-color:#FBF4EF;}
+	  #positionArea{width:1320px; height:100%; margin:0 auto; position:relative;}
+	  #positionArea h2{width:600px; height:70px; line-height:70px; text-align:center; color:#fff; font-size:40px; font-family:"Oswald"; background-color:#B4DCD8; position:absolute; z-index:1;}
+	  #positionArea img{width:100%;}
+	  #positionArea h3{width:100%; height:80px; line-height:80px; padding-top:70px; text-align:center;}
+	  #positionArea h3 em{font-style:normal; color:#B4DCD8; font-size:40px; font-weight:400; letter-spacing:3px;}
+	  #positionArea .subTitle{width:100%; height:80px; line-height:80px; text-align:center; font-family:"Oswald"; color:#e0bb6d; font-weight:400; font-size:26px; text-transform:uppercase; text-decoration:underline;}
+	  #positionArea .subTitle a{color:#ffdada;}
+	  .rightArrow{display:none;}
+
+	  /* 개별작업 - room */
+	  .roomh2{right:20px; top:100px; padding-left:350px;}
+	  .room .roomImg{width:600px; height:400px; left:20px; top:60px; position:absolute;}
+	  .titleBox0{width:600px; height:300px; right:20px; top:180px; position:absolute;}
+
+	  /* 개별작업 - food */
+	  .foodh2{left:20px; bottom:80px; padding-right:350px;}
+	  .food .foodImg{width:600px; right:20px; bottom:20px; position:absolute;}
+	  .titleBox1{width:600px; height:300px; left:20px; bottom:180px; position:absolute;}
+	  
+  /*################## container / article ##################*/
+	article{width:100%; height:400px; overflow:hidden;}
+	#stay{width:1330px; height:100%; margin:0 auto; position:relative;}
+
+	.stay_text{width:80%; height:100%; margin:0 auto;}
+	.stay_text h2{width:100%; height:100px; line-height:180px; text-align:center; font-size:40px; text-transform:uppercase;}
+	.stay_text h2 span{display:inline-block; transform:translatey(-110px); position:absolute;}
+	.stay_text em{width:100%; height:200px; padding-top:100px; text-align:center; font-style:normal; font-size:20px; display:block;}
+	
+	.e00{left:305px; transition:transform 0.5s linear;}
+	.e01{left:390px; transition:transform 0.2s ease-in;}
+	.e02{left:450px; transition:transform 0.5s ease;}
+	.e03{left:500px; transition:transform 0.5s ease-out;}
+	.e04{left:560px; transition:transform 0.1s ease-in-out;}
+	.e05{left:610px; transition:transform 0.5s ease-in;}
+	.e06{left:660px; transition:transform 0.6s linear;}
+	.e07{left:710px; transition:transform 0.2s ease;}
+	.e08{left:750px; transition:transform 0.5s ease-out;}
+	.e09{left:790px; transition:transform 0.3s ease-in-out;}
+	.e10{left:870px; transition:transform 0.3s linear;}
+	.e11{left:910px; transition:transform 0.4s ease-out;}
+	.e12{left:950px; transition:transform 0.1s linear;}
+	.e13{left:990px; transition:transform 0.2s ease-in;}
+
+	article:hover span{transform:translatey(0);}
+
+	#stay p{width:350px; position:absolute; z-index:-1;}
+	#stay p img{width:100%;}
+	.light{left:10px; top:0;}
+	.pillow{right:10px; bottom:0;}
+
+  /*################## container / todayInfo ##################*/
+	  #todayInfo{width:100%; height:950px; background-color:#f8faff;}
+	  #clockArea{width:1440px; height:250px; padding-top:100px; margin:0 auto;}
+	  #clockArea ul{width:1166px; height:100%; margin:0 auto;}
+	  #clockArea li{width:138px; height:200px; padding:0 10px; float:left;}
+	  #clockArea .parisClock{padding:0 40px;}
+	  #clockArea .clockTitle{width:138px; padding-top:20px; font-size:20px; font-family:"Oswald"; color:#9ddfd3; text-align:center;}
+	  #clockArea .parisClock .clockTitle{color:#ffdada;}
+
+	  #dateAreaW{width:100%; height:300px; background-color:#aaabd3;}
+	 
+	  #todayInfo .dateArea{width:1440px; height:100%; margin:0 auto; position:relative;}
+	  #todayInfo .dateArea .year{width:264px; height:114px; font-size:120px; color:#fff; font-family:Times New Roman; letter-spacing:6px; left:460px; top:50px; position:absolute;}
+	  #todayInfo .dateArea .today{width:420px; height:90px; line-height:90px; text-align:center; font-size:50px; color:#ffdada; left:630px; top:132px; position:absolute;}
+	  #todayInfo .dateArea .line{right:0; top:0; position:absolute;}
+	  #todayInfo .bookNow{width:160px; height:100px; line-height:50px; text-align:center; right:28px; top:100px; font-size:40px; position:absolute;}
+	  #todayInfo .bookNow a{color:#fff;}
+	  
+	  #wideArea{width:800px; height:300px; margin:0 auto; overflow:hidden;}
+	  /* weather에 margin-top때문에 부모가 열려서 부모(wideArea)에 overflow:hidden 걸어둠 */
+	  .weather{width:470px; height:150px; margin:50px auto 0;}
+	  .weather li{width:90px; margin-left:100px; float:left;}
+	  .weather li:first-child{margin-left:0;}
+
+	  /* .w 이미지 크기 : 70 * 30 */
+	  .weather li .w_img{width:70px; margin:0 auto; padding:15px 0;}
+	  /* .s img보다 높이가 30px 낮기 때문에 padding 위 아래 15px씩 줘서 높이값 맞춰줌 */
+	  .weather li .w_img img{width:100%;}
+
+	  /* .s 이미지 크기 : 60 * 60 */
+	  .weather li .s_img{width:60px; margin:0 auto;}
+	  .weather li .s_img img{width:100%;}
+	  .weather li h3{width:100%; height:20px; line-height:20px; color:#9ddfd3; font-size:20px; text-align:center; padding-top:35px;}
+
+	  .week{width:770px; margin:0 auto; padding-top:30px;}
+	  .week li{width:108px; height:100%; line-height:40px; border-right:2px solid #f8faff; background-color:#aaabd3; text-align:center;float:left; transition:background-color 0.1s linear;}
+	  .week li a{display:block; width:100%; color:#fff; font-family:"Oswald"; transition:color 0.1s linear;}
+	  .week .todayWeather{background-color:#cba6c3;}
+	  .week .todayWeather a{color:#fff;}
+
+	  .week li:hover{background-color:#FED9DA;}
+	  .week li a:hover{color:#323270;}
+
+	  .week:after{content:""; display:block; clear:both;}
+
+  /*################## container / motto ##################*/
+	  #motto{width:100%; height:700px; position:relative;}
+	  #motto .wave{width:1000px; right:0; top:0; position:absolute; z-index:1;}
+	  #motto .wave img{width:100%;}
+	  
+	  #motto #contact{width:100%; height:300px; margin:0 auto; background-color:#2d2d2d; position:relative;}
+	  
+	  #contactBox{width:460px; position:absolute; left:50%; top:50%; margin-left:-225px; margin-top:-145px;}
+
+	  .textArea{width:100%; height:150px; padding:20px 0;  color:#fff; font-size:40px; line-height:70px;}
+	  .textBoxArea{width:450px; height:66px; border:2px solid #aaabd3; margin:0 auto; text-align:center; font-size:26px; line-height:66px; transition:border 0.2s linear;}
+	  .textBoxArea a{color:#aaabd3; display:block; width:446px; height:62px; padding-top:2px; padding-left:2px; font-family:"Oswald"; letter-spacing:4px; transition:letter-spacing 0.2s ease-in; z-index:1; position:relative;}
+	  .textBoxArea a .bracket{margin-right:15px; transition:margin-right 0.2s ease-in;}
+	  .textBoxArea a:hover{letter-spacing:0;}
+	  .textBoxArea a:hover .bracket{margin-right:0;}
+	  .textBoxArea:hover{border:none;}
+
+	  #mottoArea{width:100%; height:400px; margin:0 auto; background-image:url('img/main/s30.jpg'); background-attachment:fixed; background-repeat:no-repeat; background-size:100%; overflow:hidden; position:relative;}
+	  #mottoArea dl{width:450px; right:290px; top:80px; text-align:right; color:#2d2d2d; position:absolute;}
+	  #mottoArea dl dt{font-size:32px; line-height:60px; text-align:center; letter-spacing:1px;}
+	  #mottoArea dl dd{font-size:40px; font-family:"Oswald"; margin-top:18px;}
+
+  /*################## container / discount ##################*/
+	  #discount{width:100%;}
+	  #discount h2{font-family:"Oswald";}
+	  #discount dl{width:960px; height:500px; margin:0 auto; padding:18px;}
+	  #discount dl em{font-style:normal;}
+	  #discount dt{width:500px; float:left;}
+	  #discount dt img{width:100%;}
+	  #discount dd{width:360px; height:500px; padding:0 50px; float:left;}
+
+	  #discount dd .dd0{width:100%; text-align:center;}
+	  #discount dd .dd0 h2{width:100%; height:50px; line-height:50px;}
+	  #discount dd .dd0 p{width:100%; height:40px; padding:10px 0 2px;}
+
+	  #discount dd .dd1 form{width:100%;}
+	  #discount dd .dd1 fieldset{border:none;}
+	  #discount dd .dd1 legend{display:none;}
+	  #discount dd .dd1 input{text-indent:10px;}
+	  #discount dd .dd1 .formLabel{width:65%; text-align:center; margin:15px auto 5px;}
+	  #discount dd .dd1 .formInput{width:65%; margin:0 auto;}
+	  
+	  #discount dd .dd1 #firstName{width:100%; padding:5px 0; border:0; border-bottom:1px solid #000;}
+	  #discount dd .dd1 #lastName{width:100%; padding:5px 0; border:0; border-bottom:1px solid #000;}
+	  #discount dd .dd1 #emailInput{width:100%; padding:5px 0; border:0; border-bottom:1px solid #000;}
+
+	  #discount dd .dd1 .formChk{width:65%; padding-top:15px; margin:0 auto;}
+	  #discount dd .dd1 #chk{width:5%; margin-right:2%; float:left;}
+	  #discount dd .dd1 .formText{width:64%; float:left;}
+
+	  #discount dd .dd1 .formSubmit{width:120px; height:26px; margin:100px auto 0;}
+	  #discount dd .dd1 #submit{width:100%; height:100%; border:1px solid #000; font-weight:bold; font-size:16px; background-color:rgba(0,0,0,0); transition:background-color 0.1s linear, color 0.1s linear;}
+
+	  #discount dd .dd1 #submit:hover{background-color:#000; color:#fff;}
+
+	  #discount .dd2{width:100%; height:40px; padding:15px 0; text-align:center;}
+	  #discount .dd2 a{text-decoration:underline;}
+
+  /*################## container / popLogin ##################*/
+	#popLogin{width:1200px; height:700px; background-color:#fff; border-radius:35px; padding:50px 50px; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
+	box-shadow:10px 10px 20px rgba(0,0,0,0.4); z-index:70; font-family:Oswald;}
+	#popLogin a:link, a:visited{text-decoration:none; color:#A9ABD2; font-family:Oswald;}
+	#popLogin a:hover, a:focus{text-decoration:underline;}
+	#popLogin h2{font-size:36px;}
+	#popLogin h3{font-size:24px;}
+	
+	
+	/*############ close button ############*/
+		.close{width:40px; height:40px; position:absolute; right:50px;; top:55px;}
+		.close img{width:100%}
+
+	/*############ signIn ############*/
+		#signIn, #join{width:598px; height:600px; margin-top:35px; float:left;}
+		#signIn{width:500px; padding-right:98px;}
+		#signIn dl{width:100%; margin-top:20px;}
+		#signIn label{font-size:16px; color:#777;}
+		#signIn input[type="text"], input[type="password"]{width:95%; height:40px; border:1px solid #ccc; text-indent:10px; font-size:20px; border-radius:6px; font-family:Oswald;}
+		#signIn dt{margin-bottom:3px;}
+		#signIn dd{margin-bottom:30px;}
+		
+		#checkbox{width:20px; height:20px; border-radius:5px; margin-right:5px; float:left;}
+		.checkbox{margin-bottom:4px;}
+		.checkbox label{display:block; height:20px; line-height:20px; font-size:15px;}
+		
+		.submit input{width:95%; height:46px; line-height:46px; color:#F9FAFF; background-color:#313370;  margin:12px 0; border:none; font-weight:700; cursor:pointer; font-family:Oswald; font-size:18px; border-radius:80px;}
+		.submit input:hover{text-decoration:underline;}
+
+		.link{height:40px; line-height:40px;}
+
+		.iconArea{width:200px; margin:55px auto 0; height:70px;}
+		.iconArea .icon{width:65px; height:65px; float:left;}
+		.iconArea a{display:block; width:60px; height:60px; margin-left:30px; float:left;}
+		.iconArea img{width:100%;}
+
+		.iconArea a:first-child{margin:0;}
+	
+	/*############ join ############*/
+		#join{width:500px; padding-left:98px; border-left:2px solid rgba(200,200,200,0.5); font-size:18px;}
+		
+		.joinImg{width:500px; padding:24px 0;}
+		.joinImg img{width:100%;border-radius:12px;}
+
+		#join li{color:#777; padding-bottom:24px;}
+
+		.joinNow{width:100%; height:46px; line-height:46px; margin-top:10px; border:2px solid #A9ABD2; border-radius:80px;}
+		.joinNow a{display:block; width:100%; text-align:center; font-weight:700; color:#313370;}
+		.link a{font-size:18px;}
+		.joinNow a:hover{text-decoration:none;}
+	
+	/*############ full ############*/
+		#full{width:100%; height:100%; background-color:rgba(0,0,0,0.5);
+		position:fixed; left:0; top:0;}
+
+  /*################## footer ##################*/
+	  #footer{width:100%;  background-color:#ffdada;}
+	  #footer a{color:#353866; font-family:Franklin Gothic Book;}
+	  #footerInner{width:1420px; height:375px; margin:0 auto; }
+	  /* 실제 : 1440px*475px */
+	  .logo{width:200px; height:305px; padding:70px 90px 0 80px; float:left;}
+	  .logo a{width:100%; height:244px; display:block;}
+	  .logo a img{width:100%;}
+	  .footerDesc{width:1050px; height:100%; float:left;}
+
+	  .footerDesc ul{padding-top:40px;}
+
+	  .footerDesc ul li{width:250px; padding-right:100px; float:left;}
+	  .footerDesc ul li dt{width:100%; height:50px; line-height:50px; font-size:18px; font-family:Franklin Gothic Book; color:#353866; font-weight:bold;}
+	  .footerDesc ul li dd{width:100%; line-height:50px;}
+
+	  .footerDesc .underline a{text-decoration:underline;}
+	  .footerDesc .underline{color:#353866;}
+	  .footerDesc .underline address{float:left;}
+	  .footerDesc .underline .map{width:80px; padding-left:38px; float:left; transform:scale(1) rotate3d(0,0,0,0deg); transition:transform 0.3s linear 0.2s;}
+	  .footerDesc .underline .map a{width:100%; height:100%; display:block;}
+	  .footerDesc .underline .map img{width:100%; border-radius:40px; box-shadow:5px 3px 10px rgba(0,0,0,0.2);}
+
+	  .footerDesc .underline .map:hover{transform:scale(2.5) rotate3d(1,1,1,360deg);}
+
+	  .footerDesc .follow dd{width:auto; height:34px; padding:26px 8px 40px; float:left;}
+	  .footerDesc .follow dd img{width:100%; height:100%;}
+	  .footerDesc .follow form{width:100%; font-family:Franklin Gothic Book; color:#353866;}
+	  .footerDesc .follow fieldset{border:none;}
+	  .footerDesc .follow legend{display:none;}
+	  .footerDesc .follow label{padding-right:170px;}
+	  .footerDesc .follow #NewsletterDesc{width:85%; padding:2px 0; border:0; border-bottom:1px solid #353866; color:#ccc; background:none; margin:16px 0; text-indent:6px;}
+	  .footerDesc .follow #emailSubmit{background:none; border:1px solid #353866; color:#353866; transition:background-color 0.1s linear, color 0.1s linear;}
+
+	  .footerDesc .follow #emailSubmit:hover{background-color:#353866; color:#fff;}
+	  .footerDesc .follow .copy{width:100%; height:50px; line-height:50px;}
+
+	  .footerDesc ul:after{ content:""; display:block; clear:both;}
+
+	  #mobFooter{display:none;}
+
+	/*################### mediaQuery / 스마트폰 세로 ###################*/
+		@media all and (min-width:320px) and (max-width:480px){
+			/*################## header ##################*/
+			  #header{width:100%; position:relative;}
+
+			  #gnbArea{width:100%;}
+
+			  .menuBar{width:100%;}
+
+			  .menuIcon{width:65px; margin-left:5px;}
+			  .menuIcon a{width:100%;}
+			  .menuIcon a span{width:30px;}
+			  .menuIcon a .line0{margin-left:15px;}
+			  .menuIcon a .line1{margin-left:25px;}
+			  .menuIcon a .line2{margin-left:5px;}
+
+			  .gnb{display:none;}
+
+			  #logo{width:100px; float:none; position:absolute; top:50%; right:50%; margin-right:-50px; margin-top:-30px;}
+			  #logo img{width:100%;}
+
+			  .boutique{font-family:sans-serif; font-size:18px; text-transform:uppercase; display:block; position:absolute; right:10px; top:26px; font-family:"Oswald"; }
+			  
+			  /* side bar */
+				  #bar{width:140px; height:162px;}
+				  #bar p{width:100%; height:50px; transform:translatex(90px);}
+				  #bar .bar0{width:148px;}
+				  #bar .bar1{width:105px; top:55px;}
+				  #bar .bar2{top:110px;}
+				  
+				  #bar p .barIcon{width:42px; height:38px; padding-top:5px;}
+
+				  #bar p .barText{width:66px; height:100%; padding-left:8px; line-height:50px; font-size:18px; display:block; float:left;}
+				  #bar .bar0 .barText{width:84px;}
+				  #bar .bar1 a .barText{width:49px;}
+
+				  #bar .bar0:hover{transform:translatex(5px);}
+				  #bar .bar1:hover{transform:translatex(42px);}
+				  #bar .bar2:hover{transform:translatex(40px);}
+			
+			/*################## container / visual ##################*/
+			  #visual{width:100%; height:600px; overflow:visible; position:relative;}
+
+			  #mainVideo{width:320px; height:100%; position:absolute; left:0; top:0; overflow:hidden;}
+			  
+			  #mainVideo video{width:300%; margin-left:-100%;}
+			  
+			  #reserveArea{display:none;}
+
+			  #reserveMobile{display:block; background-color:#353866; position:absolute; left:50%; bottom:-25px; margin-left:-100px; width:200px; height:50px; z-index:2; border-radius:5px; box-shadow:5px 5px 17px rgba(53,56,102,0.4);}
+
+			  #reserveMobile a{display:block; width:100%; height:100%; color:#f8faff; text-align:center; line-height:50px; text-transform:uppercase; font-family:"Oswald"; letter-spacing:1px;}
+
+			/*################## container / letter ##################*/
+			  /* feather 이미지 크기 : 668px * 668px */
+			  #letterW{width:100%; height:320px; position:relative;}
+
+			  #letter{width:100%; height:100%; margin:0; position:absolute; left:0; top:0;}
+			  #letter .feather{width:100%; height:100%;}
+
+			  #letter .letterDesc{width:98%; margin:0; text-align:center; font-size:20px; float:none; line-height:30px; position:absolute; left:0; top:45px; transition:margin-top 30s ease-in; padding-right:1%; padding-right:1%;}
+			  #letter .letterDesc .fontsize{font-size:30px; line-height:40px;}
+			  .gradientTop{height:50px; z-index:1;}
+			  .gradientBottom{width:100%; height:50px; left:0; bottom:0; position:absolute; background-image:linear-gradient(to top, rgba(255,255,255,1), rgba(255,255,255,0)); text-indent:-9999px;}
+
+			  #letter:hover .letterDesc{margin-top:-950px;}
+
+			/*################## container / boxes ##################*/
+			  #boxes{width:100%; height:640px; padding-top:0; border:none; border-top:1px solid #f0efe7; border-bottom:3px solid #f0efe7;}
+			  #boxes ul{width:100%; height:100%; padding-top:0;}
+			  #boxes ul li{width:50%; height:25%; float:left; color:#f8faff; font-size:16px; text-align:center; line-height:16px; overflow:hidden;}
+			  #boxes ul li a{width:100%; height:100%; display:block; color:#fff;}
+			  #boxes ul li img{width:100%; height:auto;}
+			  
+			  #boxes ul .imgBox{position:relative;}
+			  #boxes ul .imgBox .imgBox_text{width:100%; height:100%; line-height:160px;}
+			  #boxes ul .imgBox:hover .imgBox_text{opacity:1;}
+
+			  #boxes ul .videoArea{width:50%; height:25%; position:relative;}
+			  #boxes ul .videoArea .video{width:100%; height:100%; left:0; top:0px; position:absolute;}
+			  #boxes ul .videoArea .video video{width:100%;}
+			  #boxes ul .videoArea .img{width:100%; height:100%; left:0; top:0; position:absolute;}
+			  .videoArea .img img{width:100%;}
+			  #boxes ul .videoArea:hover .video{z-index:2;}
+
+			  #boxes ul .textBoxS{width:50%; padding:0;}
+			  #boxes ul .textBoxB{width:50%; padding:0;}
+
+			  #boxes ul li .line1{line-height:160px;}
+			  #boxes ul li .line2{width:100%; height:90px; line-height:30px; padding-top:50px;}
+			  #boxes ul li .line3{width:98%; height:auto; line-height:30px; padding:2%; margin-top:18%;}
+
+			/*################## container / positionArea ##################*/
+			  /* 공통작업 */
+			  #positionAreaW{width:100%; height:1260px; background-color:#f9f7cf;}
+			  #positionArea{width:320px; margin:0 auto;}
+			  #positionArea h2{width:100%; height:65px; line-height:65px; color:#9ddae3; font-size:36px; background-color:#fff;}
+			  #positionArea h3{width:100%; height:50px; line-height:50px; padding-top:0; text-align:left; position:absolute;}
+			  #positionArea h3 em{font-style:normal; color:#000; font-size:26px; letter-spacing:1px; text-shadow:1px 1px 3px rgba(0,0,0,0.4);}
+			  #positionArea .subTitle{display:none;}
+			  .rightArrow{width:100px; top:60px; left:0; display:block; position:absolute;}
+			  .rightArrow img{width:100%;}
+
+			  /* 개별작업 - room */
+			  .roomh2{right:0; top:440px; padding-left:0;}
+			  .room .roomImg{width:280px; height:400px; left:20px; top:20px; position:absolute; box-shadow:5px 5px 5px rgba(0,0,0,0.5);}
+			  .titleBox0{width:280px; height:85px; right:20px; top:510px; position:absolute;}
+
+			  /* 개별작업 - food */
+			  .foodh2{left:0; bottom:140px; padding-right:0;}
+			  .food .foodImg{width:280px; height:388px; box-shadow:5px 5px 5px rgba(0,0,0,0.5); right:20px; bottom:230px;}
+			  .titleBox1{width:280px; height:85px; left:20px; bottom:45px; position:absolute;}
+
+			  /*################## container / article ##################*/
+				article{width:100%; height:350px;}
+				#stay{width:320px; height:100%; margin:0 auto; position:relative;}
+
+				.stay_text{width:80%; height:100%; margin:0 auto;}
+				.stay_text h2{width:100%; height:100px; line-height:180px; text-align:center; font-size:20px; text-transform:uppercase;}
+				.stay_text h2 span{display:inline-block; transform:translatey(-110px); position:absolute;}
+				.stay_text em{width:100%; height:200px; padding-top:50px; text-align:center; font-style:normal; font-size:18px; display:block;}
+				
+				.e00{left:43px;}
+				.e01{left:69px;}
+				.e02{left:90px;}
+				.e03{left:105px;}
+				.e04{left:125px;}
+				.e05{left:141px;}
+				.e06{left:156px;}
+				.e07{left:170px;}
+				.e08{left:184px;}
+				.e09{left:197px;}
+				.e10{left:222px;}
+				.e11{left:234px;}
+				.e12{left:248px;}
+				.e13{left:260px;}
+
+				article:hover span{transform:translatey(0);}
+
+				#stay p{width:220px; position:absolute;}
+				.pillow{right:0px; bottom:0;}
+				.light{left:10px; top:0;}
+			
+			/*################## container / todayInfo ##################*/
+			  #todayInfo{height:700px;}
+			  #clockArea{width:320px; padding-top:0;}
+			  #clockArea ul{width:100%; margin:0;  position:relative;}
+			  #clockArea li{width:80px; height:80px; padding:0; float:none; position:absolute; display:none;}
+			  #clockArea li dl{width:100%; height:100%;}
+			  #clockArea li dl dt{width:100%; height:100%;}
+			  #clockArea li dl dt img{width:100%; height:100%;}
+
+			  #clockArea li:first-child{left:7px; top:65px; display:block;}
+			  #clockArea li:last-child{right:7px; top:65px; display:block;}
+			  #clockArea .parisClock{width:100px; height:100px; left:110px; top:45px; padding:0; display:block;}
+			  #clockArea .clockShadow{width:100%;}
+			  #clockArea .clockShadow img{width:100%;}
+			  #clockArea .clockTitle{width:100%; padding-top:10px; font-size:17px;}
+			  #clockArea .parisClock .clockTitle{font-size:26px; padding-top:4px;}
+			  
+			  #dateAreaW{height:180px;}
+			  #todayInfo .dateArea{width:320px;}
+			  #todayInfo .dateArea .year{width:132px; height:70px; font-size:60px;left:40px; top:40px;}
+			  #todayInfo .dateArea .today{width:200px; height:60px; line-height:60px; font-size:28px; left:90px; top:84px;}
+			  #todayInfo .dateArea .line{display:none;}
+			  #todayInfo .bookNow{display:none;}
+			  
+			  #wideArea{width:100%; margin:0;}
+			  .weather{width:316px; margin:45px auto 0;}
+			  .weather li{width:80px; margin-left:38px	; float:left;}
+			  .weather li:first-child{margin-left:0;}
+
+			  .weather li .w_img{width:60px;}
+			  .weather li .w_img img{width:100%;}
+
+			  .weather li .s_img{width:55px; margin:0 auto;}
+			  .weather li .s_img img{width:100%;}
+			  .weather li h3{padding-top:30px;}
+
+			  .week{width:313px; margin:0 auto; padding-top:0;}
+			  .week li{width:43px;}
+			  .week li:last-child{border-right:none;}
+
+			/*################## container / motto ##################*/
+			  #motto{height:300px;}
+			  #motto .wave{width:380px;}
+			  
+			  #motto #contact{width:100%; height:160px; padding-bottom:16px; margin:0; position:relative;}
+			  
+			  #contactBox{width:320px; height:100%; left:50%; top:0; margin-left:-160px; margin-top:0;}
+
+			  .textArea{width:96%; height:88px; padding:8px 2% 0; color:#fff; font-size:24px; line-height:45px;}
+			  .textBoxArea{width:200px; height:40px; border:2px solid #aaabd3; margin-top:14px;}
+			  .textBoxArea a{color:#aaabd3; display:block; width:100%; height:100%; line-height:36px; letter-spacing:4px; text-transform:uppercase; font-size:16px;}
+
+			  #mottoArea{height:130px; background-image:url('img/main/s30.jpg'); background-attachment:fixed; background-repeat:no-repeat; background-size:auto 100%; background-position:-265px top; overflow:hidden; position:relative;}
+			  #mottoArea dl{width:320px; right:0; top:25px; text-align:right; color:#fff; position:absolute; text-shadow:2px 2px 5px rgba(0,0,0,0.5);}
+			  #mottoArea dl dt{font-size:18px; line-height:18px; text-align:center; letter-spacing:1;}
+			  #mottoArea dl dd{font-size:26px; font-family:"Oswald"; margin-top:0; right:10px; top:50px; position:absolute;}
+
+			/*################## container / discount ##################*/
+			  #discount dl{width:284px; height:835px; padding:18px;}
+			  #discount dt{width:284px; height:284px; float:none;}
+			  #discount dd{width:100%; height:500px; padding:0; float:none;}
+
+			  #discount dd .dd0 p{padding:10px 0;}
+
+			  #discount dd .dd1 .formChk{width:65%; padding-top:15px; margin:0 auto;}
+
+			  #discount dd .dd1 .formSubmit{width:120px; height:26px; margin:135px auto 0;}
+
+			/*################## footer ##################*/
+			  #footer{display:none;}
+			  #mobFooter{display:block; min-width:320px; max-width:480px;}
+			  .menu{width:100%; font-family:"Oswald"; background-color:rgb(0,48,63); overflow:hidden;}
+			  .aBtn{display:block; padding:16px 20px; width:100%; height:20px; line-height:20px; background-color:#9cf; font-size:18px; position:relative; border-bottom:1px solid #fff; overflow:hidden;}
+			  .aBtn:last-child{border-bottom:none;}
+			  .aBtn i{display:inline-block; width:20px; padding-right:12px;}
+			  i img{width:100%; }
+
+			  .sMenu{background-color:rgb(0,48,63);}
+			  .sMenu a{display:block; padding:16px 20px; font-size:16px; margin:4px 0; position:relative; border-bottom:1px solid #f8faff; text-align:center; line-height:25px;}
+			  .sMenu a img{height:25px; padding-right:12px; vertical-align:middle;}
+			  .sMenu a:last-child{border-bottom:none;}
+
+			  .menu li a{color:#f8faff;}
+			  
+			  .aBtn:before{
+				content:""; position:absolute; width:14px; height:14px; background-color:#9cf; left:20px; bottom:-7px; transform:rotate(45deg);
+			  }
+
+			  .sMenu a:before{content:""; position:absolute; width:6px; height:100%; background:#9cf; left:0; top:0; transition:0.3s; opacity:0;}
+			  .sMenu a:hover:before{opacity:1;}
+
+			  .menu:after{content:""; display:block; clear:both;}
+
+		}
+	/*################### mediaQuery / 스마트폰 가로 ###################*/
+		@media all and (min-width:481px) and (max-width:767px){
+			/*################## header ##################*/
+			  #header{width:100%; position:relative;}
+
+			  #gnbArea{width:100%;}
+
+			  .menuBar{width:100%;}
+
+			  .menuIcon{width:65px; margin-left:5px;}
+			  .menuIcon a{width:100%;}
+			  .menuIcon a span{width:30px;}
+			  .menuIcon a .line0{margin-left:15px;}
+			  .menuIcon a .line1{margin-left:25px;}
+			  .menuIcon a .line2{margin-left:5px;}
+
+			  .gnb{display:none;}
+
+			  #logo{width:100px; float:none; position:absolute; top:50%; right:50%; margin-right:-50px; margin-top:-30px;}
+			  #logo img{width:100%;}
+
+			  .boutique{font-family:sans-serif; font-size:18px; text-transform:uppercase; display:block; position:absolute; right:10px; top:26px; font-family:"Oswald"; }
+			  
+			  /* side bar */
+				  #bar{width:140px; height:162px;}
+				  #bar p{width:100%; height:50px; transform:translatex(90px);}
+				  #bar .bar0{width:148px;}
+				  #bar .bar1{width:105px; top:55px;}
+				  #bar .bar2{top:110px;}
+				  
+				  #bar p .barIcon{width:42px; height:38px; padding-top:5px;}
+
+				  #bar p .barText{width:66px; height:100%; padding-left:8px; line-height:50px; font-size:18px; display:block; float:left;}
+				  #bar .bar0 .barText{width:84px;}
+				  #bar .bar1 a .barText{width:49px;}
+
+				  #bar .bar0:hover{transform:translatex(5px);}
+				  #bar .bar1:hover{transform:translatex(42px);}
+				  #bar .bar2:hover{transform:translatex(40px);}
+			
+			/*################## container / visual ##################*/
+			  #visual{width:481px; height:400px; overflow:visible; position:relative; margin:0 auto;}
+
+			  #mainVideo{width:100%; height:100%; position:absolute; left:0; top:0; overflow:hidden;}
+			  
+			  #mainVideo video{width:100%;}
+			  
+			  #reserveArea{display:none;}
+
+			  #reserveMobile{display:block; background-color:#353866; position:absolute; left:50%; bottom:-25px; margin-left:-100px; width:200px; height:50px; z-index:2; border-radius:5px; box-shadow:5px 5px 17px rgba(53,56,102,0.4);}
+
+			  #reserveMobile a{display:block; width:100%; height:100%; color:#f8faff; text-align:center; line-height:50px; text-transform:uppercase; font-family:"Oswald"; letter-spacing:1px;}
+
+			/*################## container / letter ##################*/
+			  /* feather 이미지 크기 : 668px * 668px */
+			  #letterW{width:100%; height:320px; position:relative;}
+
+			  #letter{width:100%; height:100%; margin:0; position:absolute; left:0; top:0;}
+			  #letter .feather{width:100%; height:100%;}
+
+			  #letter .letterDesc{width:98%; margin:0; text-align:center; font-size:20px; float:none; line-height:30px; position:absolute; left:0; top:45px; transition:margin-top 30s ease-in; padding-right:1%; padding-right:1%;}
+			  #letter .letterDesc .fontsize{font-size:30px; line-height:40px;}
+			  .gradientTop{height:50px; z-index:1;}
+			  .gradientBottom{width:100%; height:50px; left:0; bottom:0; position:absolute; background-image:linear-gradient(to top, rgba(255,255,255,1), rgba(255,255,255,0)); text-indent:-9999px;}
+
+			  #letter:hover .letterDesc{margin-top:-950px;}
+
+			/*################## container / boxes ##################*/
+			  #boxes{width:100%; height:962px; padding-top:0; border:none; border-top:1px solid #f0efe7; border-bottom:3px solid #f0efe7;}
+			  #boxes ul{width:100%; height:100%; padding-top:0;}
+			  #boxes ul li{width:50%; height:25%; float:left; color:#f8faff; font-size:22px; text-align:center; line-height:240px; overflow:hidden;}
+			  #boxes ul li a{width:100%; height:100%; display:block; color:#fff;}
+			  #boxes ul li img{width:100%; height:auto;}
+			  
+			  #boxes ul .imgBox{position:relative;}
+			  #boxes ul .imgBox .imgBox_text{width:100%; height:100%; line-height:240px;}
+			  #boxes ul .imgBox:hover .imgBox_text{opacity:1;}
+
+			  #boxes ul .videoArea{width:50%; height:25%; position:relative;}
+			  #boxes ul .videoArea .video{width:100%; height:100%; left:0; top:0px; position:absolute;}
+			  #boxes ul .videoArea .video video{width:100%;}
+			  #boxes ul .videoArea .img{width:100%; height:100%; left:0; top:0; position:absolute;}
+			  .videoArea .img img{width:100%;}
+			  #boxes ul .videoArea:hover .video{z-index:2;}
+
+			  #boxes ul .textBoxS{width:50%; padding:0;}
+			  #boxes ul .textBoxB{width:50%; padding:0;}
+
+			  #boxes ul li .line1{line-height:240px;}
+			  #boxes ul li .line2{width:100%; height:90px; line-height:35px; padding-top:85px;}
+			  #boxes ul li .line3{width:98%; height:auto; line-height:35px; padding:2%; margin-top:25%;}
+
+			/*################## container / positionArea ##################*/
+			  /* 공통작업 */
+			  #positionAreaW{width:100%; height:1770px; background-color:#f9f7cf;}
+			  #positionArea{width:481px; margin:0 auto;}
+			  #positionArea h2{width:100%; height:65px; line-height:65px; color:#9ddae3; font-size:40px; background-color:#fff;}
+			  #positionArea h3{width:100%; height:50px; line-height:50px; padding-top:0; text-align:left; position:absolute;}
+			  #positionArea h3 em{font-style:normal; color:#000; font-size:30px; letter-spacing:1px; text-shadow:1px 1px 3px rgba(0,0,0,0.4);}
+			  #positionArea .subTitle{display:none;}
+			  .rightArrow{width:100px; top:60px; left:0; display:block; position:absolute;}
+			  .rightArrow img{width:100%;}
+
+			  /* 개별작업 - room */
+			  .room{width:100%; height:100%;}
+			  .roomh2{right:0; top:680px; padding-left:0;}
+			  .room .roomImg{width:440px; height:628px; left:18px; top:20px; position:absolute; box-shadow:5px 5px 5px rgba(0,0,0,0.5);}
+			  .titleBox0{width:440px; height:85px; right:20px; top:780px; position:absolute;}
+
+			  /* 개별작업 - food */
+			  .foodh2{left:0; bottom:140px; padding-right:0;}
+			  .food .foodImg{width:440px; height:610px; box-shadow:5px 5px 5px rgba(0,0,0,0.5); right:20px; bottom:230px;}
+			  .titleBox1{width:280px; height:85px; left:20px; bottom:45px; position:absolute;}
+
+			  /*################## container / article ##################*/
+				article{width:100%; height:250px;}
+				#stay{width:481px; height:100%; margin:0 auto; position:relative;}
+
+				.stay_text{width:80%; height:100%; margin:0 auto;}
+				.stay_text h2{width:100%; height:100px; line-height:120px; text-align:center; font-size:22px; text-transform:uppercase;}
+				.stay_text h2 span{display:inline-block; transform:translatey(-100px); position:absolute;}
+				.stay_text em{width:100%; height:200px; padding-top:0; text-align:center; font-style:normal; font-size:19px; display:block;}
+				
+				.e00{left:110px;}
+				.e01{left:140px;}
+				.e02{left:162px;}
+				.e03{left:178px;}
+				.e04{left:200px;}
+				.e05{left:218px;}
+				.e06{left:235px;}
+				.e07{left:252px;}
+				.e08{left:267px;}
+				.e09{left:282px;}
+				.e10{left:312px;}
+				.e11{left:324px;}
+				.e12{left:340px;}
+				.e13{left:354px;}
+
+				article:hover span{transform:translatey(0);}
+
+				#stay p{width:220px; position:absolute;}
+				.pillow{right:0px; bottom:0;}
+				.light{left:10px; top:0;}
+			
+			/*################## container / todayInfo ##################*/
+			  #todayInfo{height:700px;}
+			  #clockArea{width:481px; padding-top:0;}
+			  #clockArea ul{width:100%; margin:0;  position:relative;}
+			  #clockArea li{width:120px; height:120px; padding:0; float:none; position:absolute; display:none;}
+			  #clockArea li dl{width:100%; height:100%;}
+			  #clockArea li dl dt{width:100%; height:100%;}
+			  #clockArea li dl dt img{width:100%; height:100%;}
+
+			  #clockArea li:first-child{left:14px; top:50px; display:block;}
+			  #clockArea li:last-child{right:14px; top:50px; display:block;}
+			  #clockArea .parisClock{width:140px; height:140px; left:173px; top:30px; padding:0; display:block;}
+			  #clockArea .clockShadow{width:100%;}
+			  #clockArea .clockShadow img{width:100%;}
+			  #clockArea .clockTitle{width:100%; padding-top:10px; font-size:20px;}
+			  #clockArea .parisClock .clockTitle{font-size:28px; padding-top:4px;}
+			  
+			  #dateAreaW{height:180px;}
+			  #todayInfo .dateArea{width:481px;}
+			  #todayInfo .dateArea .year{width:142px; height:80px; font-size:70px; left:115px; top:38px;}
+			  #todayInfo .dateArea .today{width:220px; height:70px; line-height:70px; font-size:32px; left:175px; top:84px;}
+			  #todayInfo .dateArea .line{display:none;}
+			  #todayInfo .bookNow{display:none;}
+			  
+			  #wideArea{width:100%; margin:0;}
+			  .weather{width:316px; margin:45px auto 0;}
+			  .weather li{width:80px; margin-left:38px	; float:left;}
+			  .weather li:first-child{margin-left:0;}
+
+			  .weather li .w_img{width:60px;}
+			  .weather li .w_img img{width:100%;}
+
+			  .weather li .s_img{width:55px; margin:0 auto;}
+			  .weather li .s_img img{width:100%;}
+			  .weather li h3{padding-top:30px;}
+
+			  .week{width:433px; margin:0 auto; padding-top:0;}
+			  .week li{width:60px;}
+			  .week li a{font-size:18px;}
+			  .week li:last-child{border-right:none;}
+
+			/*################## container / motto ##################*/
+			  #motto{height:400px;}
+			  #motto .wave{width:500px;}
+			  
+			  #motto #contact{width:100%; height:160px; padding-bottom:16px; margin:0; position:relative;}
+			  
+			  #contactBox{width:320px; height:100%; left:50%; top:0; margin-left:-160px; margin-top:0;}
+
+			  .textArea{width:96%; height:88px; padding:8px 2% 0; color:#fff; font-size:24px; line-height:45px;}
+			  .textBoxArea{width:200px; height:40px; border:2px solid #aaabd3; margin-top:14px;}
+			  .textBoxArea a{color:#aaabd3; display:block; width:100%; height:100%; line-height:36px; letter-spacing:4px; text-transform:uppercase; font-size:16px;}
+
+			  #mottoArea{height:230px; background-image:url('img/main/s30.jpg'); background-repeat:no-repeat; background-size:auto 100%; background-position:-265px top; overflow:hidden; position:relative;}
+			  #mottoArea dl{width:481px; right:0; top:65px; text-align:right; color:#fff; position:absolute; text-shadow:2px 2px 5px rgba(0,0,0,0.5);}
+			  #mottoArea dl dt{font-size:22px; line-height:26px; text-align:center; letter-spacing:1;}
+			  #mottoArea dl dd{font-size:30px; font-family:"Oswald"; margin-top:0; right:85px; top:58px; position:absolute;}
+
+			/*################## container / discount ##################*/
+			  #discount dl{width:445px; height:925px; padding:18px;}
+			  #discount dt{width:445px; height:445px; float:none;}
+			  #discount dd{width:100%; height:500px; padding:0; float:none;}
+
+			  #discount dd .dd0 p{padding:10px 0;}
+
+			  #discount dd .dd1 .formChk{width:65%; padding-top:15px; margin:0 auto;}
+
+			  #discount dd .dd1 .formSubmit{width:120px; height:26px; margin:86px auto 0;}
+
+			/*################## footer ##################*/
+			  #footer{display:none;}
+			  #mobFooter{display:block; min-width:481px; max-width:767px;}
+			  .menu{width:100%; font-family:"Oswald"; background-color:rgb(0,48,63); overflow:hidden;}
+			  .aBtn{display:block; padding:16px 20px; width:100%; height:22px; line-height:22px; background-color:#9cf; font-size:20px; position:relative; border-bottom:1px solid #fff; overflow:hidden;}
+			  .aBtn:last-child{border-bottom:none;}
+			  .aBtn i{display:inline-block; width:22px; padding-right:12px;}
+			  i img{width:100%; }
+
+			  .sMenu{background-color:rgb(0,48,63);}
+			  .sMenu a{display:block; padding:16px 20px; font-size:18px; margin:4px 0; position:relative; border-bottom:1px solid #f8faff; text-align:center; line-height:25px;}
+			  .sMenu a img{height:25px; padding-right:12px; vertical-align:middle;}
+			  .sMenu a:last-child{border-bottom:none;}
+
+			  .menu li a{color:#f8faff;}
+			  
+			  .aBtn:before{
+				content:""; position:absolute; width:14px; height:14px; background-color:#9cf; left:20px; bottom:-7px; transform:rotate(45deg);
+			  }
+
+			  .sMenu a:before{content:""; position:absolute; width:6px; height:100%; background:#9cf; left:0; top:0; transition:0.3s; opacity:0;}
+			  .sMenu a:hover:before{opacity:1;}
+
+			  .menu:after{content:""; display:block; clear:both;}
+
+		}
+
+		/*################### mediaQuery / 태블릿 pc ###################*/
+		@media all and (min-width:768px) and (max-width:1024px){
+			/*################## header ##################*/
+			  #header{width:100%; position:relative;}
+
+			  #gnbArea{width:100%;}
+
+			  .menuBar{width:100%;}
+
+			  .menuIcon{width:70px; margin-left:20px;}
+			  .menuIcon a{width:100%;}
+			  .menuIcon a span{width:35px;}
+			  .menuIcon a .line0{margin-left:15px;}
+			  .menuIcon a .line1{margin-left:25px;}
+			  .menuIcon a .line2{margin-left:5px;}
+
+			  .gnb{display:none;}
+
+			  #logo{width:110px; float:none; position:absolute; top:50%; right:50%; margin-right:-60px; margin-top:-26px;}
+			  #logo img{width:100%;}
+
+			  .boutique{font-family:sans-serif; font-size:18px; text-transform:uppercase; display:block; position:absolute; right:20px; top:26px; font-family:"Oswald"; }
+			  
+			  /* side bar */
+				  #bar{width:140px; height:162px;}
+				  #bar p{width:100%; height:50px; transform:translatex(90px);}
+				  #bar .bar0{width:158px;}
+				  #bar .bar1{width:105px; top:55px;}
+				  #bar .bar2{top:110px;}
+				  
+				  #bar p .barIcon{width:42px; height:38px; padding-top:5px;}
+
+				  #bar p .barText{width:66px; height:100%; padding-left:8px; line-height:50px; font-size:18px; display:block; float:left;}
+				  #bar .bar0 .barText{width:111px;}
+				  #bar .bar1 a .barText{width:49px;}
+
+				  #bar .bar0:hover{transform:translatex(5px);}
+				  #bar .bar1:hover{transform:translatex(42px);}
+				  #bar .bar2:hover{transform:translatex(40px);}
+			
+			/*################## container / visual ##################*/
+			  #visual{width:781px; height:400px; overflow:visible; position:relative; margin:0 auto;}
+
+			  #mainVideo{width:100%; height:100%; position:absolute; left:0; top:0; overflow:hidden;}
+			  
+			  #mainVideo video{width:100%; margin-top:50px;}
+			  
+			  #reserveArea{display:none;}
+
+			  #reserveMobile{display:block; background-color:#353866; position:absolute; left:50%; bottom:-25px; margin-left:-100px; width:200px; height:50px; z-index:2; border-radius:5px; box-shadow:5px 5px 17px rgba(53,56,102,0.4);}
+
+			  #reserveMobile a{display:block; width:100%; height:100%; color:#f8faff; text-align:center; line-height:50px; text-transform:uppercase; font-family:"Oswald"; letter-spacing:1px;}
+
+			/*################## container / letter ##################*/
+			  /* feather 이미지 크기 : 668px * 668px */
+			  #letterW{width:100%; height:400px; position:relative;}
+
+			  #letter{width:100%; height:100%; margin:0; position:absolute; left:0; top:0;}
+			  #letter .feather{width:100%; height:100%;}
+
+			  #letter .letterDesc{width:98%; margin:0; text-align:center; font-size:20px; float:none; line-height:30px; position:absolute; left:0; top:45px; transition:margin-top 30s ease-in; padding-right:1%; padding-right:1%;}
+			  #letter .letterDesc .fontsize{font-size:30px; line-height:40px;}
+			  .gradientTop{height:50px; z-index:1;}
+			  .gradientBottom{width:100%; height:50px; left:0; bottom:0; position:absolute; background-image:linear-gradient(to top, rgba(255,255,255,1), rgba(255,255,255,0)); text-indent:-9999px;}
+
+			  #letter:hover .letterDesc{margin-top:-950px;}
+
+			/*################## container / boxes ##################*/
+			  #boxes{width:100%; height:1562px; padding-top:0; border:none; border-top:1px solid #f0efe7; border-bottom:3px solid #f0efe7;}
+			  #boxes ul{width:100%; height:100%; padding-top:0;}
+			  #boxes ul li{width:50%; height:25%; float:left; color:#f8faff; font-size:30px; text-align:center; line-height:240px; overflow:hidden;}
+			  #boxes ul li a{width:100%; height:100%; display:block; color:#fff;}
+			  #boxes ul li img{width:100%; height:auto;}
+			  
+			  #boxes ul .imgBox{position:relative;}
+			  #boxes ul .imgBox .imgBox_text{width:100%; height:100%; line-height:240px;}
+			  #boxes ul .imgBox:hover .imgBox_text{opacity:1;}
+
+			  #boxes ul .videoArea{width:50%; height:25%; position:relative;}
+			  #boxes ul .videoArea .video{width:100%; height:100%; left:0; top:-90px; position:absolute;}
+			  #boxes ul .videoArea .video video{width:100%;}
+			  #boxes ul .videoArea .img{width:100%; height:100%; left:0; top:0; position:absolute;}
+			  .videoArea .img img{width:100%;}
+			  #boxes ul .videoArea:hover .video{z-index:2;}
+
+			  #boxes ul .textBoxS{width:50%; padding:0;}
+			  #boxes ul .textBoxB{width:50%; padding:0;}
+
+			  #boxes ul li .line1{line-height:390px;}
+			  #boxes ul li .line2{width:100%; height:90px; line-height:55px; padding-top:132px;}
+			  #boxes ul li .line3{width:98%; height:auto; line-height:55px; padding:2%; margin-top:32%;}
+
+			/*################## container / positionArea ##################*/
+			  /* 공통작업 */
+			  #positionAreaW{width:100%; height:1250px; background-color:#f9f7cf;}
+			  #positionArea{width:781px; margin:0 auto;}
+			  #positionArea h2{width:100%; height:70px; line-height:70px; color:#9ddae3; font-size:42px; background-color:#fff; text-align:left; text-indent:80px;}
+			  #positionArea h3{width:100%; height:50px; line-height:50px; padding-top:0; text-align:left; position:absolute;}
+			  #positionArea h3 em{font-style:normal; color:#000; font-size:32px; letter-spacing:1px; text-shadow:2px 2px 3px rgba(0,0,0,0.4);}
+			  #positionArea .subTitle{display:none;}
+			  .rightArrow{width:100px; top:60px; left:0; display:block; position:absolute;}
+			  .rightArrow img{width:100%;}
+
+			  /* 개별작업 - room */
+			  .room{width:100%; height:100%;}
+			  .roomh2{right:0; top:525px; padding-left:0;}
+			  .room .roomImg{width:440px; height:628px; left:18px; top:20px; position:absolute; box-shadow:5px 5px 5px rgba(0,0,0,0.5);}
+			  .titleBox0{width:285px; height:85px; right:0; top:400px; position:absolute;}
+
+			  /* 개별작업 - food */
+			  .foodh2{left:0; bottom:80px;}
+			  .foodh2 strong{text-align:right; display:block; padding-right:165px;}
+			  .food .foodImg{width:440px; height:610px; box-shadow:5px 5px 5px rgba(0,0,0,0.5); right:20px; bottom:25px;}
+			  .titleBox1{width:280px; height:85px; left:20px; bottom:200px; position:absolute;}
+
+			  /*################## container / article ##################*/
+				article{width:100%; height:250px;}
+				#stay{width:781px; height:100%; margin:0 auto; position:relative;}
+
+				.stay_text{width:80%; height:100%; margin:0 auto; background-color:#ccd;}
+				.stay_text h2{width:100%; height:120px; line-height:160px; text-align:center; font-size:30px; text-transform:uppercase;}
+				.stay_text h2 span{display:inline-block; transform:translatey(-100px); position:absolute;}
+				.stay_text em{width:100%; height:200px; padding-top:15px; text-align:center; font-style:normal; font-size:20px; display:block;}
+				
+				.e00{left:110px;}
+				.e01{left:140px;}
+				.e02{left:162px;}
+				.e03{left:178px;}
+				.e04{left:200px;}
+				.e05{left:218px;}
+				.e06{left:235px;}
+				.e07{left:252px;}
+				.e08{left:267px;}
+				.e09{left:282px;}
+				.e10{left:312px;}
+				.e11{left:324px;}
+				.e12{left:340px;}
+				.e13{left:550px;}
+
+				article:hover span{transform:translatey(0);}
+
+				#stay p{width:220px; position:absolute;}
+				.pillow{right:0px; bottom:0;}
+				.light{left:10px; top:0;}
+			
+			/*################## container / todayInfo ##################*/
+			  #todayInfo{height:700px;}
+			  #clockArea{width:481px; padding-top:0;}
+			  #clockArea ul{width:100%; margin:0;  position:relative;}
+			  #clockArea li{width:120px; height:120px; padding:0; float:none; position:absolute; display:none;}
+			  #clockArea li dl{width:100%; height:100%;}
+			  #clockArea li dl dt{width:100%; height:100%;}
+			  #clockArea li dl dt img{width:100%; height:100%;}
+
+			  #clockArea li:first-child{left:14px; top:50px; display:block;}
+			  #clockArea li:last-child{right:14px; top:50px; display:block;}
+			  #clockArea .parisClock{width:140px; height:140px; left:173px; top:30px; padding:0; display:block;}
+			  #clockArea .clockShadow{width:100%;}
+			  #clockArea .clockShadow img{width:100%;}
+			  #clockArea .clockTitle{width:100%; padding-top:10px; font-size:20px;}
+			  #clockArea .parisClock .clockTitle{font-size:28px; padding-top:4px;}
+			  
+			  #dateAreaW{height:180px;}
+			  #todayInfo .dateArea{width:481px;}
+			  #todayInfo .dateArea .year{width:142px; height:80px; font-size:70px; left:115px; top:38px;}
+			  #todayInfo .dateArea .today{width:220px; height:70px; line-height:70px; font-size:32px; left:175px; top:84px;}
+			  #todayInfo .dateArea .line{display:none;}
+			  #todayInfo .bookNow{display:none;}
+			  
+			  #wideArea{width:100%; margin:0;}
+			  .weather{width:316px; margin:45px auto 0;}
+			  .weather li{width:80px; margin-left:38px	; float:left;}
+			  .weather li:first-child{margin-left:0;}
+
+			  .weather li .w_img{width:60px;}
+			  .weather li .w_img img{width:100%;}
+
+			  .weather li .s_img{width:55px; margin:0 auto;}
+			  .weather li .s_img img{width:100%;}
+			  .weather li h3{padding-top:30px;}
+
+			  .week{width:433px; margin:0 auto; padding-top:0;}
+			  .week li{width:60px;}
+			  .week li a{font-size:18px;}
+			  .week li:last-child{border-right:none;}
+
+			/*################## container / motto ##################*/
+			  #motto{height:400px;}
+			  #motto .wave{width:500px;}
+			  
+			  #motto #contact{width:100%; height:160px; padding-bottom:16px; margin:0; position:relative;}
+			  
+			  #contactBox{width:320px; height:100%; left:50%; top:0; margin-left:-160px; margin-top:0;}
+
+			  .textArea{width:96%; height:88px; padding:8px 2% 0; color:#fff; font-size:24px; line-height:45px;}
+			  .textBoxArea{width:200px; height:40px; border:2px solid #aaabd3; margin-top:14px;}
+			  .textBoxArea a{color:#aaabd3; display:block; width:100%; height:100%; line-height:36px; letter-spacing:4px; text-transform:uppercase; font-size:16px;}
+
+			  #mottoArea{height:230px; background-image:url('img/main/s30.jpg'); background-repeat:no-repeat; background-size:auto 100%; background-position:-265px top; overflow:hidden; position:relative;}
+			  #mottoArea dl{width:481px; right:0; top:65px; text-align:right; color:#fff; position:absolute; text-shadow:2px 2px 5px rgba(0,0,0,0.5);}
+			  #mottoArea dl dt{font-size:22px; line-height:26px; text-align:center; letter-spacing:1;}
+			  #mottoArea dl dd{font-size:30px; font-family:"Oswald"; margin-top:0; right:85px; top:58px; position:absolute;}
+
+			/*################## container / discount ##################*/
+			  #discount dl{width:445px; height:925px; padding:18px;}
+			  #discount dt{width:445px; height:445px; float:none;}
+			  #discount dd{width:100%; height:500px; padding:0; float:none;}
+
+			  #discount dd .dd0 p{padding:10px 0;}
+
+			  #discount dd .dd1 .formChk{width:65%; padding-top:15px; margin:0 auto;}
+
+			  #discount dd .dd1 .formSubmit{width:120px; height:26px; margin:86px auto 0;}
+
+			/*################## footer ##################*/
+			  #footer{display:none;}
+			  #mobFooter{display:block; min-width:481px; max-width:767px;}
+			  .menu{width:100%; font-family:"Oswald"; background-color:rgb(0,48,63); overflow:hidden;}
+			  .aBtn{display:block; padding:16px 20px; width:100%; height:22px; line-height:22px; background-color:#9cf; font-size:20px; position:relative; border-bottom:1px solid #fff; overflow:hidden;}
+			  .aBtn:last-child{border-bottom:none;}
+			  .aBtn i{display:inline-block; width:22px; padding-right:12px;}
+			  i img{width:100%; }
+
+			  .sMenu{background-color:rgb(0,48,63);}
+			  .sMenu a{display:block; padding:16px 20px; font-size:18px; margin:4px 0; position:relative; border-bottom:1px solid #f8faff; text-align:center; line-height:25px;}
+			  .sMenu a img{height:25px; padding-right:12px; vertical-align:middle;}
+			  .sMenu a:last-child{border-bottom:none;}
+
+			  .menu li a{color:#f8faff;}
+			  
+			  .aBtn:before{
+				content:""; position:absolute; width:14px; height:14px; background-color:#9cf; left:20px; bottom:-7px; transform:rotate(45deg);
+			  }
+
+			  .sMenu a:before{content:""; position:absolute; width:6px; height:100%; background:#9cf; left:0; top:0; transition:0.3s; opacity:0;}
+			  .sMenu a:hover:before{opacity:1;}
+
+			  .menu:after{content:""; display:block; clear:both;}
+
+		}
+  </style>
+ </head>
+
+ <body>
+	<div id="skipNav">
+		<div class="skip">
+			<p class="headerNav"><a href="#headerWrap" title="header">Go to Header</a></p>
+			<p class="videoNav"><a href="#visual" title="visual area">Go to Video Area</a></p>
+			<p class="letterNav"><a href="#letterW" title="letter area">Go to Letter Area</a></p>
+			<p class="boxesNav"><a href="#boxes" title="boxes area">Go to Boxes Area</a></p>
+			<p class="positionNav"><a href="#positionAreaW" title="position area">Go to Room and Food Info Area</a></p>
+			<p class="translateNav"><a href="#translateArea" title="translate area">Go to Memorable Area</a></p>
+			<p class="todayNav"><a href="#todayInfo" title="today info area">Go to Today Info Area</a></p>
+			<p class="mottoNav"><a href="#motto" title="motto area">Go to Ritz's Motto Area</a></p>
+			<p class="discountNav"><a href="#discount" title="discount code area">Go to Discount Code Area</a></p>
+			<p class="footerNav"><a href="#footer" title="footer">Go to Footer</a></p>
+		</div>
+	</div>
+	<div id="wrap">
+		<div id="headerWrap">
+			<header id="header">
+				<nav id="gnbArea">
+					<div class="menuBar">
+						<div class="menuIcon">
+							<a href="#" title="menuIcon">
+								<span class="line0"></span>
+								<span class="line1"></span>
+								<span class="line2"></span>
+							</a>
+						</div>
+						<ul class="gnb">
+							<li><a href="#none" title="giftCard">GIFT CARD</a></li>
+							<li><a href="boutique.html" title="theBoutique">THE BOUTIQUE</a></li>
+							<li><a href="#none" title="gallery">GALLERY</a></li>
+							<li><a href="#none" title="escoffier">L'ÉCOLE RITZ ESCOFFIER</a></li>
+						</ul>
+					</div>
+				</nav>
+				<h1 id="logo">
+					<a href="#" title="reserveLink"><img src="img/logo/logo.png" alt="ritzParis"/></a>
+				</h1>
+				<p class="boutique">
+					<a href="boutique.html" title="boutique">
+						boutique
+					</a>
+				</p>
+			</header>
+			<div id="headerBorder">
+			</div>
+			<div id="bar">
+				<p class="bar0">
+					<span class="barIcon"><img src="img/main/icon/light.svg" alt="darkmode"/></span>
+					<span class="barText">dark mode</span>
+					<span class="lightMode">light mode</span>
+				</p>
+				<p class="bar1">
+					<a href="#" title="reservation">
+						<span class="barIcon"><img src="img/main/icon/bed.svg" alt="reservation"/></span>
+						<span class="barText">book</span>
+					</a>
+				</p>
+				<p class="bar2">
+					<a href="login.html" title="loginLInk" style="fill:#fff">
+						<span class="barIcon"><img src="img/icon/login.svg" alt="login"/></span>
+						<span class="barText">login</span>
+					</a>
+				</p>
+				
+			</div>
+		</div>
+		<div id="container">
+			<div id="visual">
+				<div id="mainVideo">
+					<video controls autoplay muted loop>
+						<source src="video/ritzParis.mp4" type="video/mp4"/>
+					</video>
+				</div>
+				<div id="reserveArea">
+					<div id="aroundArea"><p><a href="#" title="room">look around the room</a></p></div>
+					<ul id="quickReserve">
+						<li class="li0">
+							<span><a href="#" title="check_in_out">check in - check out</a></span>
+							<span><a href="#" title="calender"><img src="img/main/icon/calender.svg" alt="calender"/></a></span>
+							<ul>
+								<li>
+									달력이당!
+								</li>
+							</ul>
+						</li>
+						<li class="li1">
+							<select id="guests" title="guests">
+								<option>GUESTS</option>
+								<option>1</option>
+								<option>2</option>
+								<option>3</option>
+								<option>4</option>
+								<option>5</option>
+								<option>6</option>
+							</select>
+						</li>
+						<li class="li2">
+							<span><input type="text" name="promo" id="promo" title="promo" value="PROMO CODE"/></span>
+						</li>
+						<li class="li3">
+							<span><input id="infoSubmit" type="submit" value="CHECK AVAILABILITY"/></span>
+							<p class="arrow"><img src="img/main/icon/arrow_right.png" alt="rightArrow"/></p>
+						</li>
+					</ul>
+				</div>
+				<div id="reserveMobile">
+					<a href="#" title="reserve">
+						check availability
+					</a>
+				</div>
+			</div>
+			<section id="letterW">
+				<h4>letter</h4>
+				<div id="letter">
+					<p class="gradientTop">gradient</p>
+					<p class="feather">
+						<img src="img/main/icon/feather.svg" alt="feather"/>
+					</p>
+					<p class="letterDesc">
+						<strong class="fontsize">Dear Guests, Dear Friends,</strong><br/><br/>
+						<em>The Ritz Paris is open and, as always, our teams are on hand to respond to your inquiries. During your stay, you may take full advantage of our delicious room service menu as well as access to the pool by reservation and in keeping with current health guidelines.<br/><br/>
+						Need a little pampering? Don’t hesitate to book a treatment at the Ritz Club or an appointment with our star hairstylist, David Mallett. Gift cards are also available at the hotel or online, so you can surprise and delight loved ones by offering them a unique moment at the Ritz Paris. The Tasaki and TWG boutiques in our shopping gallery are open and pleased to welcome<br/><br/>guests wishing to stop by to see what’s new for the holidays, as well as our Concept Store which will welcome you every day from 11am to 6pm, until December 24th. We look forward to welcoming you once again to our bars an d restaurants in January 2021, as soon as health and safety regulations permit.<br/><br/>
+						Most of all, we thank you for your confidence and wish you a happy and healthy holiday season.<br/><br/>
+						Take good care,<br/><br/>
+						<span class="fontsize">The teams at the Ritz Paris</span></em>
+					</p>
+					<p class="gradientBottom">gradient</p>
+				</div>
+			</section>
+			<!--<div id="interview">
+				<ul class="centerArea">
+					<li class="olivier">
+						<dl>
+							<dt><img src="img/main/s4.jpg" alt="employee0"/></dt>
+							<dd class="textBox">
+								<strong>Olivier</strong>
+								<em>
+									Come rain or come shine, Olivier, our Bell Service Manager, always welcomes Ritz Paris guests with a wide smile even before they walk in the door.<br/>
+									His excellent rapport and innate sense of service set the tone for a magnificent, warm and seamless stay.
+								</em>
+							</dd>
+						</dl>
+					</li>
+				</ul>
+				<p class="leftArrow">
+					<a href="#" title="before">
+						<img src="img/main/icon/left_arrow.png" alt="leftArrow"/>
+					</a>
+				</p>
+				<p class="rightArrow">
+					<a href="#" title="before">
+						<img src="img/main/icon/right_arrow.png" alt="rightArrow"/>
+					</a>
+				</p>
+			</div>-->
+			<section id="boxes">
+				<h4>boxes</h4>
+				<ul>
+					<li class="videoArea">
+						<p class="video">
+							<video controls poster="main/s1.jpg" autoplay muted loop>
+								<source src="video/noelRitz.mp4" type="video/mp4"/>
+							</video>
+						</p>
+						<p class="img">
+							<img src="img/main/s1.jpg" alt="noelRitz"/>
+						</p>
+					</li>
+					<li class="textBoxS">
+						<p class="line3">
+							Le Petit Comptoir Christmas dessert bar at the Ritz Paris
+						</p>
+					</li>
+					<li class="imgBox">
+						<p class="imgBox_text">
+							+33 (01) 43 16 33 74
+						</p>
+						<p class="imgBox_img">
+							<img src="img/main/m31.jpg" alt="imgBox0"/>
+						</p>
+					</li>
+					<li class="textBoxB">
+						<p class="line3">
+							A crisp twist on the galette des rois, by Chef François Perret
+						</p>
+					</li>
+					<li class="textBoxS">
+						<p class="line1">
+							Ritz Paris gift cards
+						</p>
+					</li>
+					<li class="imgBox">
+						<p class="imgBox_text">
+							<a href="#" title="gift_card">
+								visit
+							</a>
+						</p>
+						<p class="imgBox_img">
+							<a href="#" title="giftcardLink">
+								<img src="img/main/s2.jpg" alt="imgBox1"/>
+							</a>
+						</p>
+					</li>
+					<li class="textBoxB">
+						<p class="line2">
+							So what's on<br/>the dessert menu?
+						</p>
+					</li>
+					<li class="imgBox">
+						<p class="imgBox_text">
+							<a href="https://www.instagram.com/p/CIiK_Qinchb/" title="instaFood">
+								visit
+							</a>
+						</p>
+						<p class="imgBox_img">
+							<a href="#" title="giftcardLink">
+								<img src="img/main/s0.jpg" alt="imgBox2"/>
+							</a>
+						</p>
+					</li>
+				</ul>
+			</section>
+			<section id="positionAreaW">
+				<div id="positionArea">
+					<div class="room">
+						<h2 class="roomh2"><strong>ROOMS AND SUITES</strong></h2>
+						<p class="roomImg"><img src="img/main/s18.jpg" alt="roomImg"/></p>
+						<div class="titleBox0">
+							<h3><em>A memorable stay</em></h3>
+							<p class="subTitle"><a href="#" title="visit">visit</a></p>
+							<p class="rightArrow"><a href="#" title="visit"><img src="img/icon/rightArrow.png" alt="right arrow"/></a></p>
+						</div>
+					</div>
+					<div class="food">
+						<h2 class="foodh2"><strong>L'Espadon</strong></h2>
+						<p class="foodImg"><img src="img/main/s31.jpg" alt="foodImg"/></p>
+						<div class="titleBox1">
+							<h3><em>A taste of the Ritz</em></h3>
+							<p class="subTitle"><a href="#" title="discover">discover</a></p>
+							<p class="rightArrow"><a href="#" title="visit"><img src="img/icon/rightArrow.png" alt="right arrow"/></a></p>
+						</div>
+					</div>
+				</div>
+			</section>
+			<article id="translateArea">
+				<h4>stay</h4>
+				<section id="stay">
+					<div class="stay_text">
+						<h2>
+							<span class="e00">A</span> <span class="e01">m</span><span class="e02">e</span><span class="e03">m</span><span class="e04">o</span><span class="e05">r</span><span class="e06">a</span><span class="e07">b</span><span class="e08">l</span><span class="e09">e</span> <span class="e10">s</span><span class="e11">t</span><span class="e12">a</span><span class="e13">y</span>
+						</h2>
+						<em>
+							The refinement of the French art de vivre meets the elegance of Belle Époque décor: the hotel’s rooms and suites bear the names of Coco Chanel, F. Scott Fitzgerald or Marcel Proust — all of whom considered the Ritz “like a second home”.
+						</em>
+					</div>
+					<p class="light"><img src="img/main/b0.jpg" alt="light"/></p>
+					<p class="pillow"><img src="img/main/b1.jpg" alt="pillow"/></p>
+				</section>
+			</article>
+			<section id="todayInfo">
+				<div id="clockArea">
+					<ul>
+						<li class="clock_li0">
+							<dl>
+								<dt class="clockImg"><img src="img/main/clockImg.jpg" alt="clockImg"/></dt>
+								<dd class="clockShadow"><img src="img/main/clockShadow.png" alt="clockShadow"/></dd>
+								<dd class="clockTitle">NEW YORK</dd>
+							</dl>
+						</li>
+						<li class="clock_li1">
+							<dl>
+								<dt class="clockImg"><img src="img/main/clockImg.jpg" alt="clockImg"/></dt>
+								<dd class="clockShadow"><img src="img/main/clockShadow.png" alt="clockShadow"/></dd>
+								<dd class="clockTitle">LONDON</dd>
+							</dl>
+						</li>
+						<li class="clock_li2">
+							<dl>
+								<dt class="clockImg"><img src="img/main/clockImg.jpg" alt="clockImg"/></dt>
+								<dd class="clockShadow"><img src="img/main/clockShadow.png" alt="clockShadow"/></dd>
+								<dd class="clockTitle">SYDNEY</dd>
+							</dl>
+						</li>
+						<li class="parisClock">
+							<dl>
+								<dt class="clockImg"><img src="img/main/clockImg.jpg" alt="clockImg"/></dt>
+								<dd class="clockShadow"><img src="img/main/clockShadow.png" alt="clockShadow"/></dd>
+								<dd class="clockTitle">PARIS</dd>
+							</dl>
+						</li>
+						<li class="clock_li3">
+							<dl>
+								<dt class="clockImg"><img src="img/main/clockImg.jpg" alt="clockImg"/></dt>
+								<dd class="clockShadow"><img src="img/main/clockShadow.png" alt="clockShadow"/></dd>
+								<dd class="clockTitle">TORONTO</dd>
+							</dl>
+						</li>
+						<li class="clock_li4">
+							<dl>
+								<dt class="clockImg"><img src="img/main/clockImg.jpg" alt="clockImg"/></dt>
+								<dd class="clockShadow"><img src="img/main/clockShadow.png" alt="clockShadow"/></dd>
+								<dd class="clockTitle">SAN PAOLO</dd>
+							</dl>
+						</li>
+						<li class="clock_li5">
+							<dl>
+								<dt class="clockImg"><img src="img/main/clockImg.jpg" alt="clockImg"/></dt>
+								<dd class="clockShadow"><img src="img/main/clockShadow.png" alt="clockShadow"/></dd>
+								<dd class="clockTitle">HONG KONG</dd>
+							</dl>
+						</li>
+					</ul>
+				</div>
+				<div id="dateAreaW">
+					<div class="dateArea">
+						<p class="year">2021</p>
+						<p class="today">Sun 3rd January</p>
+						<p class="line"><img src="img/main/line.png" alt="whiteLine"/></p>
+						<p class="bookNow"><a href="#" title="book">book<br/>now</a></p>
+					</div>
+				</div>
+				<div id="wideArea">
+					<ul class="weather">
+						<li class="w">
+							<p class="w_img"><img src="img/main/icon/w1.png" alt="moderate0"/></p>
+							<h3>moderate</h3>
+						</li>
+						<li class="s">
+							<p class="s_img"><img src="img/main/icon/w3.png" alt="storm"/></p>
+							<h3>strom</h3>
+						</li>
+						<li class="w">
+							<p class="w_img"><img src="img/main/icon/w2.png" alt="moderate1"/></p>
+							<h3>moderate</h3>
+						</li>
+					</ul>
+					<ul class="week">
+						<li class="todayWeather"><a href="#" title="todayWeather">TODAY</a></li>
+						<li><a href="#" title="fridayWeather">FRI</a></li>
+						<li><a href="#" title="saturdayWeather">SAT</a></li>
+						<li><a href="#" title="sundayWeather">SUN</a></li>
+						<li><a href="#" title="mondayWeather">MON</a></li>
+						<li><a href="#" title="tuesdaydayWeather">TUE</a></li>
+						<li><a href="#" title="wednesdayWeather">WED</a></li>
+					</ul>
+				</div>
+			</section>
+			<section id="motto">
+				<p class="wave"><img src="img/main/pattern.png" alt="waveShape"/></p>
+				<div id="contact">
+					<div id="contactBox">
+						<p class="textArea">
+							If you have any questions feel free to contact us!
+						</p>
+						<h2 class="textBoxArea">
+							<a href="#" title="contactLink">
+								<span class="bracket">></span> contact us
+							</a>
+						</h2>
+					</div>
+				</div>
+				<div id="mottoArea">
+					<dl>
+						<dt>"I dream of a home that I could<br/>proudly call my name"</dt>
+						<dd>CESAR RITZ</dd>
+					</dl>
+				</div>
+			</section>
+			<section id="discount">
+				<dl>
+					<dt><img src="img/gallery/m2.jpg" alt="outside"/></dt>
+					<dd>
+						<div class="dd0">
+							<h2><strong>TAKE 10 OFF</strong></h2>
+							<p>
+								<em>
+									Get 10% off your first stay when you sign up to our newsletterDesc for the curious. Room rate only.
+								</em>
+							</p>
+						</div>
+						<div class="dd1">
+							<form action="#" method="POST">
+								<fieldset>
+									<legend>sale</legend>
+									<p class="formLabel">
+										<label for="firstName">First Name*</label>
+									<p>
+									<p class="formInput">
+										<input name="firstName" type="text" id="firstName" autocomplete="off" required/>
+									</p>
+									<p class="formLabel">
+										<label for="lastName">Last Name*</label>
+									</p>
+									<p class="formInput">
+										<input name="lastName" type="text" id="lastName" autocomplete="off" required/>
+									</p>
+									<p class="formLabel">
+										<label for="emailInput">Email Address*</label>
+									</p>
+									<p class="formInput">
+										<input name="emailInput" type="email" id="emailInput" placeholder="example@ritzparis.com" autocomplete="off" required/>
+									</p>
+									<p class="formChk">
+										<input type="checkbox" id="chk" title="chk" required checked/>
+										<p class="formText">By ticking this box you agree to receive email updates from Birch Community. You can unsubscribe at any time and view our privacy policy <a href="#" title="privacyPolicy">here</a>.</p>
+									</p>
+									<p class="formSubmit">
+										<input type="submit" id="submit" value="SIGN ME UP" title="submit"/>
+									</p>
+								</fieldset>
+							</form>
+						</div>
+						<div class="dd2">
+							This site is protected by reCAPTCHA and the Google <a href="#" title="privacyPolicy">Privacy Policy</a> and <a href="#" title="termsOfServise">Terms of Service</a> apply.
+						</div>
+					</dd>
+				</dl>
+			</section>
+			<div id="popLogin">
+				<h2>Welcome to Ritz Paris</h2>
+				<a class="close" href="#" title="close"><img src="img/icon/close.png" alt="close"/></a>
+				<section id="signIn">
+					<h3>Sign in to your accont</h3>
+					<form action="#" method="POST">
+						<fieldset>
+							<legend>Sign in</legend>
+							<dl>
+								<dt>
+									<label for="useremail">Email or Membership Number</label>
+								</dt>
+								<dd>
+									<input id="useremail" type="text" name="useremail" title="Please enter your full email or membership number." autofocus autocomplete="off" required/>
+								</dd>
+								<dt>
+									<label for="userpw">Password</label>
+								</dt>
+								<dd>
+									<input id="userpw" type="password" name="userpw" required/>
+								</dd>
+							</dl>
+							<p class="checkbox">
+								<input id="checkbox" type="checkbox" name="checkbox" checked/><label for="checkbox">Remember me</label>
+							</p>
+							<p class="submit">
+								<input type="submit" title="SIGN IN" value="SIGN IN"/>
+							</p>
+						</fieldset>
+					</form>
+					<p class="link"><a href="#" title="find pw">Forgot password</a></p>
+					<p class="link"><a href="#" title="activate">Activate online accout</a></p>
+					<div class="iconArea">
+						<p class="icon">
+							<a href="#" title="apple"><img src="img/logo/apple.png" alt="apple"/></a>
+						</p>
+						<p class="icon">
+							<a href="#" title="google"><img src="img/logo/google.png" alt="google"/></a>
+						</p>
+						<p class="icon">
+							<a href="#" title="facebook"><img src="img/logo/facebook.png" alt="facebook"/></a>
+						</p>
+					</div>
+				</section>
+				<section id="join">
+					<h3>Join Ritz Paris</h3>
+					<p class="joinImg"><img src="img/gallery/m38.jpg" alt="garden"/></p>
+					<ul>
+						<li>● Enjoy our lowest rates, all the time</li>
+						<li>● Free in-room Wi-Fi</li>
+						<li>● Mobile check-in and more</li>
+					</ul>
+					<p class="joinNow"><a href="#" title="joinNow">JOIN NOW</a></p>
+				</section>
+			</div>
+		</div>
+		<div id="full">
+		</div>
+		<footer id="footer">
+			<div id="footerInner">
+				<p class="logo">
+					<a href="index.html" title="main page">
+						<img src="img/main/logo/ritzLogo.png" alt="ritzLogo"/>
+					</a>
+				</p>
+				<div class="footerDesc">
+					<ul>
+						<li>
+							<dl>
+								<dt id="first">GET TO KNOW US</dt>
+								<dd class="first"><a href="#" title="aboutRitz">About Ritz Paris</a></dd>
+								<dd class="first"><a href="#" title="club">Ritz Club</a></dd>
+								<dd class="first"><a href="#" title="boutique">The Boutique</a></dd>
+								<dd class="first"><a href="#" title="L'ÉCOLE RITZ ESCOFFIER">L'ÉCOLE RITZ ESCOFFIER</a></dd>
+								<dd class="first"><a href="#" title="Privacy Policy">Privacy Policy</a></dd>
+							</dl>
+						</li>
+						<li class="underline">
+							<dl>
+								<dt id="second">GET IN TOUCH</dt>
+								<dd class="second"><a href="#" title="tel">+33 1 43 16 30 30</a></dd>
+								<dd class="second"><a href="#" title="contact">contact</a></dd>
+								<dd class="second">
+									<address>15 place<br/>Vendôme 75001 Paris</address>
+									<a class="map" href="https://goo.gl/maps/XnNDrFo1jMWdv1CW8" title="googleMap">
+										<img src="img/main/map.jpg" alt="map"/>
+									</a>
+								</dd>
+							</dl>
+						</li>
+						<li class="follow">
+							<dl>
+								<dt id="third">FOLLOW US</dt>
+								<dd class="third"><a href="#" title="facebook"><img src="img/main/logo/facebook.png" alt="facebook"/></a></dd>
+								<dd class="third"><a href="#" title="instagram"><img src="img/main/logo/instagram.png" alt="instagram"/></a></dd>
+								<dd class="third"><a href="#" title="twitter"><img src="img/main/logo/twitter.png" alt="twitter"/></a></dd>
+								<dd class="third"><a href="#" title="youtube"><img src="img/main/logo/youtube.png" alt="youtube"/></a></dd>
+							</dl>
+							<form action="#" method="get">
+								<fieldset>
+									<legend>NewsletterDesc</legend>
+									<label for="NewsletterDesc">Newsletter:</label>
+									<input name="NewsletterDesc" type="text" id="NewsletterDesc" value="Enter your email"/>
+									<input type="submit" id="emailSubmit" value="OK"/>
+								</fieldset>
+							</form>
+							<p class="copy"><a href="mailto:work2357@naver.com" title="copyrwriter">&copy; JEEHAE, 2021</a></p>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</footer>
+		<footer id="mobFooter">
+			<ul class="menu">
+				<li>
+					<a class="aBtn" href="#none" title="GET TO KNOW US">
+						<i><img src="img/icon/getUs.png" alt="Get to Know Us"/></i>
+						GET TO KNOW US
+					</a>
+					<div class="sMenu">
+						<a href="#" title="aboutRitz">About Ritz Paris</a>
+						<a href="#" title="club">Ritz Club</a>
+						<a href="#" title="boutique">The Boutique</a>
+						<a href="#" title="L'ÉCOLE RITZ ESCOFFIER">L'ÉCOLE RITZ ESCOFFIER</a>
+						<a href="#" title="Privacy Policy">Privacy Policy</a>
+					</div>
+				</li>
+				<li>
+					<a class="aBtn" href="#none" title="GET IN TOUCH">
+						<i><img src="img/icon/touch.png" alt="Get in Touch"/></i>
+						GET IN TOUCH
+					</a>
+					<div class="sMenu">
+						<a href="#" title="tel">+33 1 43 16 30 30</a>
+						<a href="#" title="contact">contact</a>
+						<a href="#" title="addres">15 place<br/>Vendôme 75001 Paris</a>
+					</div>
+				</li>
+				<li>
+					<a class="aBtn" href="#none" title="FOLLOW US">
+						<i><img src="img/icon/follow.png" alt="Follow Us"/></i>
+						FOLLOW US
+					</a>
+					<div class="sMenu">
+						<a href="#" title="facebook"><img src="img/main/logo/facebook.png" alt="facebook"/> facebook</a>
+						<a href="#" title="instagram"><img src="img/main/logo/instagram.png" alt="instagram"/>instagram</a>
+						<a href="#" title="twitter"><img src="img/main/logo/twitter.png" alt="twitter"/>twitter</a>
+						<a href="#" title="youtube"><img src="img/main/logo/youtube.png" alt="youtube"/>youtube</a>
+					</div>
+				</li>
+			</ul>
+		</footer>
+	</div>
+ </body>
+</html>
+<!--
+	[header]
+		https://elmodernehotel.com/en/
+	[discount]
+		https://www.birchcommunity.com/
+-->
